@@ -1,0 +1,221 @@
+/* Required height of parents of the Half Page Carousel for proper displaying carousel itself */
+html,
+body,
+.view {
+  height: 100%;
+}
+
+/* Half Page Carousel itself*/
+.carousel {
+  height: 50%;
+}
+.carousel .carousel-inner {
+  height: 100%;
+}
+.carousel .carousel-inner .carousel-item,
+.carousel .carousel-inner .active {
+  height: 100%;
+}
+
+/* Adjustment for mobile devices */
+@media (max-width: 776px) {
+  .carousel {
+    height: 100%;
+  }
+}
+
+/* Navbar animation top menu*/
+
+.navbar {
+ 
+  background-color: #c8080e; 
+ 
+  background-image: linear-gradient(
+    to right, 
+    #ffffff 0%,     
+    #c8080e 50%,    
+    #1a1a1a 100%    
+  );
+
+  color: #000; 
+}
+
+
+
+
+/* .navbar {
+  background-color: rgba(0, 0, 0, 0.2);
+}  */
+
+.top-nav-collapse {
+  /* background-color: #8d1d2e; */
+    background-color: #c8080e; 
+ 
+  background-image: linear-gradient(
+    to bottom, 
+    #1a1a1a96 0%,  
+    #c8080ea9 50%,   
+    #ffffff 100%     
+      
+     
+  );
+
+  color: #000; 
+}
+
+/* Adding color to the Navbar on mobile */
+@media only screen and (max-width: 768px) {
+  .navbar {
+      background-color: #c8080e; 
+ 
+  background-image: linear-gradient(
+    to bottom,
+    #1a1a1a96 0%,  
+    #c8080ea9 50%,   
+    #ffffff 100%    
+  );
+
+  color: #000; 
+  }
+  /* .navbar {
+    background-color: rgba(0, 0, 0, 0.2);
+  }  */
+
+
+  .top-nav-collapse {
+    /* background-color: #8d1d2e; */
+    background-color: #c8080e;
+  }
+}
+
+/*
+@media only screen and (max-width: 768px) {
+  .carousel {
+    display: none;
+  }
+
+}
+
+
+/* Footer color for sake of consistency with Navbar */
+.page-footer {
+  /* background-color: #8d1d2e; */
+  /* background-color: #c8080e; */
+    background-color: #c8080e; 
+ 
+  background-image: linear-gradient(
+    to bottom, 
+       
+    #5c5c5c 80%,    
+    #ffffff 100%    
+  );
+
+  color: #000; 
+}
+
+.info {
+  margin-top: 25%;
+  left: 10%;
+  width: 100%;
+  text-align: center;
+}
+
+.info-reverse {
+  margin-top: 25%;
+  right: 10%;
+  width: 100%;
+  text-align: center;
+}
+
+.centralizar {
+  width: 100%;
+  text-align: center;
+}
+
+.text-icons {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.scroll-to-top {
+  position: fixed;
+  right: 15px;
+  bottom: 3px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  color: white;
+  background-color: #c8080e;
+  line-height: 45px;
+}
+
+.scroll-to-top:focus,
+.scroll-to-top:hover {
+  color: white;
+}
+
+.scroll-to-top:hover {
+  background-color: #c8080e;
+}
+
+.scroll-to-top i {
+  font-weight: 800;
+}
+
+/*Edited*/
+
+/*.navbar-brand>img {
+  width: 5rem;
+  height: 50px;
+
+}
+
+.dropdown-toggle>div {
+  background: #707B7C;
+}
+
+.dropdown-menu {
+  background: #707B7C;
+  border-radius: 3px;
+}
+*/
+.my-6 {
+  margin-top: 4rem !important;
+}
+
+@media (max-width: 1199px){
+
+  .my-acess-panel{
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1007px){
+
+  .my-acess-panel{
+    font-size: 8px;
+  }
+}
+
+/*End Edition*/
+
+
+.smalltitle-container {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  height: 30px; /* Altura desejada da div */
+}
+
+.smalltitle {
+  margin: 0; /* Remover margens do texto */
+}
+
+.commu-img{
+  background-image: url(/res/site/img/notification.jpg);
+  background-size: 80%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+

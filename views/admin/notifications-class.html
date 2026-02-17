@@ -1,0 +1,200 @@
+<link rel="shortcut icon" href="/res/site/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/res/admin/plugins/font-awesome/css/font-awesome.min.css">
+ <!-- Style -->
+ <link rel="stylesheet" href="/res/admin/dist/css/styleclass.css">
+<!DOCTYPE html >
+<head>
+
+  <!--[if gte mso 9]><style type=â€text/cssâ€>
+        body {
+        font-family: arial, sans-serif!important;
+        }
+        </style>
+    <![endif]-->
+</head>
+<body >
+    <table border="0" width="100%" cellpadding="0" cellspacing="0" >
+ <!--Botões-->
+    <tr>
+        <td>
+          <a>
+            <img class="logo" src="/res/site/img/shineray-da-fonte-desde.png">
+          </a>
+        </td>
+      </tr>
+      <div class="no-print">
+        <a  class="button" href="/admin/notifications"><i class="fa fa-address-book"></i> <i class="fa fa-arrow-circle-left"></i>
+        Voltar para lista
+        </a>  
+      </div>
+      <div class="no-print">
+        <a  class="button" href="/admin/"><i class="fa fa-home"></i>
+        Home
+        </a>  
+      </div>
+      <div class="no-print">
+        <a  class="button" href="/admin/notifications/{$notification.id_notificacao}"><i class="fa fa-check-square-o"></i>
+        Voltar para classificação
+        </a>  
+      </div>
+      <div class="no-print">
+          <a href="#" class="button"   onclick="window.print();" ><i class="fa fa-print"></i> Imprimir / <i class="fa fa-save"></i> Salvar </a>
+      </div>
+    </table>
+
+         
+      
+      <table border="0" width="590" align="center" cellpadding="0" cellspacing="0" class="container590">
+      
+          <tr>
+            <td height="20" width="5" style="font-size: 20px; line-height: 80px;">&nbsp;</td>
+          </tr>
+          
+        <tr>
+          <td align="left">
+              <tr>
+                <td align="left"
+                  style="color: #141414; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
+                  <!-- section text ======-->
+                  <div >
+                    <div >
+                      <form >
+                        <div class="form-group" align="center">
+                          <label align="center"
+                          style="font-size: 25px; font-family: 'Roboto', Calibri, sans-serif; line-height: 50px;">
+                          <a href="" target="_blank" style="color: #312c32; text-decoration: none;">
+                            Ficha de Notificação</a></label>
+                        </div>
+                        <div class="form-group">
+                          <label align="center"
+                          style="color: #343434; font-size: 24px; font-family: Quicksand, Calibri, sans-serif; font-weight:700;letter-spacing: 3px; line-height: 35px;"
+                          class="main-header">
+                          <!-- section text ======-->
+                          <div align="center" style="line-height: 35px" class="no-print">
+                            De Eventos pela <span style="color: #8D3132;">Intranet</span>
+                          </div></label>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                          <label><strong>Número da notificação online:</strong> {$notification.id_notificacao}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Nome:</strong> {$notification.nome_pac}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Data de nascimento:</strong> {function="formatDatePtBr($notification.dt_nasc)"}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Atendimento:</strong> {$notification.atendimento}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Numero do Registro:</strong> {$notification.registro}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Data de internamento:</strong> {function="formatDatePtBr($notification.dt_internamento)"}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Data da notificação:</strong> {function="formatDatePtBr($notification.dt_notificacao)"}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Data Ocorrência:</strong> {function="formatDatePtBr($notification.dt_oco)"}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Horário:</strong> {$notification.hr_oco}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Setor Notificante:</strong> {$notification.st_cante}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Setor Notificado:</strong> {$notification.st_cado}</label>
+                        </div>
+                        <div class="form-group" >
+                          <label><strong>Descrição:</strong> {$notification.descricao}</label>
+                        </div>
+                        <div class="form-group" >
+                          <label><strong>Qualidade e segurança do paciente:</strong> {$notification.patientsecurity}</label>
+                        </div>
+                        <div class="form-group" >
+                          <label><strong>Classificação do incidente:</strong> {$notification.qclass_incident}</label>
+                        </div>
+                        <div class="form-group" >
+                          <label><strong>Classificação da ocorrência:</strong> {$notification.qclass_occ}</label>
+                        </div>
+                        <div class="form-group" >
+                          <label><strong>Classificação do dano:</strong> {$notification.qdegree_damg}</label>
+                        </div>
+                        <div class="form-group">
+                          <label  ><strong>Prazo do retorno:</strong> {$notification.return_date}</label>
+                        </div>
+                        <!-- <div class="form-group" >
+                          <label><strong>Processo:</strong> {$notification.process}</label>
+                        </div> -->
+                        <div class="form-group" >
+                          <label><strong>Problema:</strong> {$notification.problem}</label>
+                        </div>
+                        <div class="form-group" >
+                          <label><strong>Fato ocorrido:</strong> {$notification.fact_occurred}</label>
+                        </div>
+                        <div class="form-group" >
+                          <label><strong>Data da validação:</strong> {$notification.validation_date}</label>
+                        </div>
+                       <!--  <div class="form-group" >
+                          <label><strong>Ação proposta implantada:</strong> {$notification.proposed_action}</label>
+                        </div> -->
+                        <div class="form-group">
+                          <label  ><strong>Conclusão verificação:</strong> {$notification.conclusion}</label>
+                        </div>    
+                        <div class="form-group" >
+                          <label>
+                            <table>
+                            <tr>
+                              <td height="20" width="5" style="font-size: 20px; line-height: 30px;">&nbsp;</td>
+                            </tr>
+                            </table>
+                          <strong>
+                            <center>Email us: <br> </strong><a href="mailto:"
+                            style="color: #888888; font-size: 14px; font-family: 'Roboto', Calibri, Sans-serif; font-weight: 150;">notificacao@shineray.com.br</a>
+                          <p style="line-height: 15px"  >
+                            Atenciosamente,</br>
+                            Gerenciamento de Risco
+                          </center>
+                        </div>     
+                      </form>
+                      </div>
+                    </div>  
+                  </tr>
+      </table>
+  </td>
+  <table>
+    <tr>
+      <td align="left">
+          <tr>
+            <td align="left"
+              style="color: #141414; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
+              <!-- section text ======-->
+    <div>
+     
+     
+      </div>
+        <p>
+          <footer>
+         <center>
+           <img src="/res/site/img/shineray-da-fonte-rodape.png"
+             style="
+           width: 60%;
+            ">
+          </center>
+        </p>
+     </footer>
+    </div>
+ </table>
+<!-- end section -->
+<!-- main section -->
+<!-- end section -->
+<!-- contact section -->
+<!-- end section -->
+<!-- footer ====== -->
+<!-- end footer ====== -->
+</body>
+</html>
+

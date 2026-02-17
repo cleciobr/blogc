@@ -1,0 +1,205 @@
+
+<!-- Navbar -->
+<!-- Modal -->
+<!--Popup-->
+<!-- <div
+class="modal fade"
+id="myModal"
+tabindex="-1"
+role="dialog"
+aria-labelledby="myModalLabel"
+aria-hidden="true"
+>    -->
+<!-- Change class .modal-sm to change the size of the modal -->
+<!-- <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title w-100" id="myModalLabel" >
+            Ficha de Notificação de Eventos
+      </h2>
+      <button
+        type="button"
+        id="btn-close"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+      > 
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <br>
+    <div class="centralizar">
+      <a href="/notificacao">
+        <img
+          src="/res/site/img/svg/file.svg"
+          alt="popups"
+          class="img-fluid"
+        />
+      </a>
+      <br>
+      <hr>
+      <h4>Os dados informados neste formulário são de total</h4>
+      <h4>sigilo, sendo manuseados apenas pelo Gerenciamento de Risco.</h4>
+      <hr>
+    </div>
+  </div>
+</div>
+</div> -->
+<!-- End Modal-->
+<!--Popup-->
+<!--Main Navigation-->
+<main class="mt-5 pt-5 mb-5 pb-3" >
+<div class="container " >
+{if="$success == 1"}
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      Sua Comunicação foi enviada com <strong>sucesso!</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+  </div>
+</div>
+{/if}
+<div class="row" >
+  <div class="col-md-12">
+    <div class="card wow bounceInUp">
+      <div class="card-header" style="background-color: #326bd4d5;"> 
+        <h3 style="text-align: center; color: aliceblue;">Canal de Comunicação Interna</h3>
+      </div>
+      <div class="card-body register-card-body"  style="opacity: 400rem;">
+<p class="login-box-msg"></p>
+
+<h5>Sobre a Comunicação</h5>
+<hr>
+1º - Não há a necessidade de se identificar;
+<br>
+2º - Os eventos de dessa comunicação envolvem colaboradores;
+<br>
+<!-- 3º - Eventos envolvendo pacientes, precisam constar o nome do paciente, data de nascimento, o nº do prontuário e registro;</p> -->
+<br>
+<h5>Nos Comunique !</h5>
+Sinta-se seguro, as informações não serão vinculadas a nenhum colaborador específico.;     
+<br>
+<p class="login-box-msg" style="color: #c71515;">Preencha o formulario abaixo para realizar a Comunicação*</p>
+<hr>
+
+      <form  role="form" action="" method="post" >
+        <div class="form-group">
+          <label for="nome">Nome do Paciente: </label>
+          <input type="text" class="form-control" placeholder="Digite o nome do paciente" id="nome" name="nome_pac">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="dt_nasc">Data de Nasc.*:</label>
+            <input type="date" class="form-control" id="dt_nasc" name="dt_nasc" >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="registro">Registro:</label>
+            <input type="number" class="form-control" id="registro" name="registro" placeholder="Digite o número do registro">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="dt_relato">Data do Relato*:</label>
+            <input type="datetime-local" class="form-control" id="dt_relato" name="dt_relato" >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="dt_oco">Data Ocorrencia*:</label>
+            <input type="datetime-local" class="form-control" id="dt_oco" name="dt_oco" >
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group col-md-6">
+              <label for="st_cante">Setor Notificante*: </label>
+              <select 
+                required
+                type="text"
+                id="st_cante"
+                name="st_cante"
+                class="form-control"
+              >
+                <option disabled selected value="">Escolha o setor notificante
+                {loop="$departments"}
+                <option value="{$value.name}">{$value.name}
+                {/loop}
+              </select>
+              
+            </div>
+
+
+          <div class="form-group col-md-6">
+              <label for="st_cado">Setor Notificado*: </label>
+              <select 
+                required
+                type="text"
+                id="st_cado"
+                name="st_cado" 
+                class="form-control"
+              >
+                <option disabled selected value="">Escolha o setor notificado
+                  {loop="$departments"}
+                <option value="{$value.name}">{$value.name}
+                  {/loop}
+              </select>
+            </div>
+         </div>
+        <div class="form-group">
+          <label for="descricao">Descrição da ocorrência*: </label>
+          <textarea id="descricao" name="descricao" class="form-control" placeholder="Descreva a ocorrência com todos os detalhes" rows="5" required ></textarea>
+        </div>
+      
+
+        <div class="form-group">
+          <label for="solution">O que você fez para tentar resolver?: </label>
+          <textarea 
+            rows="5"
+            id="solution"
+            name="solution"
+            class="form-control"
+            placeholder="Descreva a ocorrência com todos os detalhes"
+          ></textarea>
+        </div>
+       
+
+    <!-- <div class="form-group col-md-6">
+      <div class="form-group">
+        <label for="file">Anexar Arquivo: </label>
+        <div>
+           <small>
+              <strong>Arquivos suportados: 
+              <span class="text-red">.jpg, .jpeg, .png, .pdf, .rar, .zip</span> 
+              </strong>
+           </small>
+        </div>
+        <small>
+           <strong> 
+              Caso o arquivo enviado seja diferente do especificado acima, o sistema enviará como anexo uma imagem padrão do sistema e não arquivo errôneamente enviado.
+           </strong>
+        </small>
+        <input type="file" class="form-control" id="file" name="file" />
+     </div>
+    </div> -->
+        <!-- /.col -->
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary btn-block">Enviar Comunicação</button>
+        </div>
+
+
+        <!-- /.col -->
+      
+    </form>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
+</div>
+  </div>
+</div>
+</div>
+
+</div>
+<!-- /.register-box -->
+</main>
+
+</body>

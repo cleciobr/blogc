@@ -1,0 +1,152 @@
+
+#logincard{
+  border-radius: 2em;
+  box-shadow: #c8080e;
+} 
+
+  .img-user-panel {
+    position: relative;
+  }
+  
+  [class*="sidebar-dark"] .img-user-panel {
+    border-bottom: 1px solid #4f5962;
+  }
+  
+  [class*="sidebar-light"] .img-user-panel {
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .img-user-panel,
+  .img-user-panel .info {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  .img-user-panel .image {
+    padding-left: none;
+    display: inline-block;
+  }
+  
+  .img-user-panel img {
+    width: 4.0rem;
+    height: auto;
+  }
+  
+  .img-user-panel .info {
+    display: inline-block;
+    padding: 25px 5px 5px 10px;
+  }
+  
+  .img-user-panel .status,
+  .img-user-panel .dropdown-menu {
+    font-size: 0.875rem;
+  }
+
+  .login-img{
+    background-image: url(/res/admin/dist/img/perfil-notification.jpg);
+    background-size: 80%;
+    background-position: 10%;
+    padding-top: 5%;
+    background-position-x: left;
+    background-repeat: no-repeat;
+    
+  }
+
+  .logo-cl{
+    width: 20%;
+  }
+  .logof-cl{
+    width: 10%;
+  }
+
+  .login-shi{
+    font-size: 25px; 
+    background-color:#fc1e1e; 
+    color: rgb(255, 255, 255);
+  }
+
+  .dropdown-front {
+    position:absolute!important; 
+    margin-left:97px;
+    margin-top: 6px;
+}
+
+
+  .close-button {
+  position: absolute;
+  top: -12px;
+  left: 5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  }
+
+  .sideber-cl{
+    background-color: #c8080e; 
+ 
+  background-image: linear-gradient(
+    to right, 
+       
+    #5c5c5c 60%,    
+    #ffffff 100%    
+  );
+
+  color: #000; 
+  }
+
+
+  .totaltable {
+    margin-left: 65rem;
+    margin-bottom: -3.5rem;
+
+  }
+
+  
+.smalltitle-container {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  height: 30px; /* Altura desejada da div */
+}
+
+.smalltitle {
+  margin: 0; /* Remover margens do texto */
+}
+
+@media print {
+.no-print {
+  visibility: hidden;
+}
+}
+
+
+.form-control{
+  border-color: #2693B0 !important;
+
+}
+
+.card-header{
+  display: flex !important;
+  align-items: center !important;
+  height: 20px !important;
+}
+
+.card-header-reports{
+  margin: 0px !important;
+  /* border-color: #8D1D2E !important; */
+  border-color: #c8080e !important;
+}
+
+.card-title{
+  margin: 0 !important;
+}
+
+select{
+  height: 40px !important;
+}
+
+/* .themesidbar{
+
+  z-index:initial;
+} */

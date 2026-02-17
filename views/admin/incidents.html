@@ -1,0 +1,65 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1>Lista de incidentes</h1>
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                <li class="breadcrumb-item active">Incidentes</li>
+            </ol>
+            </div>
+        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+        <div class="col-12">
+            <div class="card">
+            <div class="box-header">
+                <a href="/admin/incidents/create" class="btn btn-success pull-right" style="margin-right: 20px; margin-top: 10px;"><i class="fa fa-plus-circle"></i>  Cadastrar Incidente</a>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="table-responsive">
+                <table id="users" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Nome do Incidente</th>
+                    <th>Código do Incidente</th>
+                    <th style="width: 140px">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {loop="$incidents"}
+                    <tr>
+                    <td>{$value.id_incident}</td>
+                    <td>{$value.name}</td>
+                    <td>{$value.cod_incident}</td>
+                    <td>
+                        <a href="/admin/incidents/{$value.id_incident}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Editar</a>
+                        <a href="/admin/incidents/{$value.id_incident}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Excluir</a>
+                    </td>
+                    </tr>
+                    {/loop}
+                </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

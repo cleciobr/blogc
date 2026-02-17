@@ -1,0 +1,91 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Lista de aniversariantes ativos</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/birthdays">Lista de aniversariantes</a></li>
+            <li class="breadcrumb-item active">aniversariantes ativos</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="box-header">
+            <a
+              href="/admin/birthdays/create"
+              class="btn btn-success pull-right"
+              style="margin-right: 20px; margin-top: 10px;"
+              >Cadastrar aniversariantes</a
+            >
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table id="users" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Data do aniversário</th>
+                  <th>Título do(s) aniversariante(s)</th>
+                  <th>Aniversariando hoje?</th>
+                  <th>Data de cadastramento</th>
+                  <th style="width: 140px">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                {loop="$birthdays"}
+                <tr>
+                  <td>{$value.id_birthday}</td>
+                  <td>{$value.date_birthday}</td>
+                  <td>{$value.name_birthday}</td>
+                  <td>{if="$value.birthday_active == '1'"}
+                    Sim
+                  {else}
+                    Não
+                  {/if}
+                  </td>
+                  <td style="width: 100px">
+                    {function="formatDate($value.dt_birthday)"}
+                  </td>
+                  <td style="width: 200px">
+                    <a
+                      href="/admin/birthdays/{$value.id_birthday}"
+                      class="btn btn-primary btn-sm"
+                      ><i class="fa fa-edit"></i> Editar</a
+                    >
+                    <a
+                      href="/admin/birthdays/{$value.id_birthday}/delete"
+                      onclick="return confirm('Deseja realmente excluir este registro?')"
+                      class="btn btn-danger btn-sm"
+                      ><i class="fa fa-trash"></i> Excluir</a
+                    >
+                  </td>
+                </tr>
+                {/loop}
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <button type="submit" class="btn btn-primary alert-info"><i class="fa fa-save"></i> Salvar</button>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

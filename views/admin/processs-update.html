@@ -1,0 +1,66 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Lista de Processos</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/processs">Processos</a></li>
+            <li class="breadcrumb-item active">Atualizar Processo</li>
+        </ol>
+        </div>
+    </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header alert-info">
+            <h3 class="card-title">Atualizar Processo</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" action="/admin/processs/{$process.id_process}" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Nome do segurança do paciente</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome do segurança do paciente" value="{$process.name}" required>
+                </div>
+                <div class="form-group">
+                    <label for="descrition">descrição do segurança do paciente</label>
+                    <label for="descrition"><span style="color: red;">(Este campo não é obrigatório)</span></label>
+                    <input type="text" class="form-control" id="descrition" name="descrition" placeholder="Descrição do segurança do paciente" value="{$process.descrition}">
+                </div>
+                <div class="form-group">
+                    <label for="cod_process">Código do segurança do paciente</label>
+                    <label for="cod_process"><span style="color: red;">(Este campo não é obrigatório)</span></label>
+                    <input type="text" class="form-control" id="cod_process" name="cod_process" placeholder="Digite o código do segurança do paciente" value="{$process.cod_process}">
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary alert-info">Salvar</button>
+            </div>
+            </form>
+        </div>
+        <!-- /.card -->
+        </div>
+        <!--/.col  -->
+    </div>
+    <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

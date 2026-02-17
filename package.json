@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "gl": "^5.0.0",
+    "minimist": "^1.2.6",
+    "sweetalert": "^2.1.2",
+    "tar": "^6.1.11"
+  }
+}

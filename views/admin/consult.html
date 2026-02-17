@@ -1,0 +1,71 @@
+<!-- Botão para abrir o modal -->
+<section>
+    <div id="buttonIcon">
+    <button type="button" class="btn btn-grey" data-toggle="modal" data-target="#ConsultModal" id="notificationButton">
+        <i class="fa fa-bell" {if="$alert!=$alertconsult"}id="bellIcon"{/if} style="color: aliceblue;" ></i>
+        {if="$alert!=$alertconsult"}
+            <i class="fa fa-exclamation" id="exclamationIcon" data-target="#exclamation" style="color: red;" ></i>
+        {/if}
+    </button>
+    </div>  
+    <!-- Modal -->
+    <div class="modal" id="ConsultModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Cabeçalho do Modal -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Mensagens de alerta!</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Corpo do Modal -->
+                <div class="modal-body">
+                    <label>Notificações de Plano terapêutico:</label>
+                    <p>{if="$alert!=$alertconsult"}Novo plano terapêutico inserido no medview {/if}</p>
+                    <div id="notificationHistory"></div>
+                    <audio id="notificationSound" src="/res/admin/dist/sounds/atenção novo plano terapêutico registrado.mp3" preload="auto"></audio>
+                </div>
+                <!-- Rodapé do Modal -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Adicione os arquivos JavaScript do Bootstrap e jQuery -->
+<script>
+    function notificationHistory(){
+        notificationHistory = "<p>Notificação 1</p><p>Notificação 2</p><p>Notificação 3</p>";
+        $('#notificationHistory').html(notificationHistory);}
+</script>
+<script>
+    if({$alert} != {$alertconsult}) {function playSoundAndShowModal() {
+        var audio = document.getElementById('notificationSound');
+        audio.play();
+        $('#ConsultModal').modal('show');
+    }}
+    if({$alert} == {$alertconsult}) {setInterval(checkForNewRecords, 5000);}
+    if({$alert} != {$alertconsult}) {setInterval(checkForNewRecords, 1800000);} //30
+
+    $(document).ready(function() {
+        checkForNewRecords();
+    });
+ </script>
+        <script>
+
+            if({$alert} != {$alertconsult}) function playSoundAndShowModal() {
+                var audio = document.getElementById('notificationSound');
+                audio.play();
+                $('#ConsultModal').modal('show');
+            }
+        
+        </script>
+        <script>
+            if({$alert} != {$alertconsult}) {
+                document.getElementById('bellIcon').classList.add('swingdown');
+                
+                // Adicione a classe de animação para fazer a exclamação piscar
+                document.getElementById('exclamationIcon').classList.add('blink');
+            }
+        </script>
+    </section>

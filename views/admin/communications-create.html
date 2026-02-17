@@ -1,0 +1,148 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Cadastro</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/communications">Comunicações</a></li>
+            <li class="breadcrumb-item active">Cadastrar Comunicação</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header alert-info">
+              <h3 class="card-title">Cadastrar nova Comunicação/h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <div class="card-body register-card-body">
+              {if="$_POST == ''"}
+      <div class="card-body">
+        <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h5><i class="icon fa fa-check"></i> Comunicação enviado com sucesso!</h5>
+        </div>
+      </div>
+      {/if}
+              <form role="form" action="/admin/notifications/create" method="post">
+                <div class="form-group">
+                  <label for="nome">Nome do Paciente: </label>
+                  <input type="text" class="form-control" placeholder="Digite o nome do paciente" id="nome" name="nome_pac">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="registro">Registro:</label>
+                    <input type="number" class="form-control" id="registro" name="registro"
+                      placeholder="Digite o número do registro" min="1" max="9999999">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="dt_oco">Data Ocorrencia*:</label>
+                    <input type="date" class="form-control" id="dt_oco" name="dt_oco" required>
+                  </div>
+                </div>
+            
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="st_cante">Setor Notificante*: </label>
+                    <select required type="text" 
+                    id="st_cante" 
+                    name="st_cante" 
+                    class="form-control">
+                    
+                      <option disabled selected value="">Escolha o setor notificante
+                        {loop="$departments"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+            
+                  </div>
+            
+            
+                  <div class="form-group col-md-6">
+                    <label for="st_cado">Setor Notificado*: </label>
+                    <select required type="text" id="st_cado" name="st_cado" class="form-control">
+                      <option disabled selected value="">Escolha o setor notificado
+                        {loop="$departments"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                </div>
+            
+                <div class="form-group">
+                  <label for="desc">Descrição da ocorrência*: </label>
+                  <textarea id="desc" name="descricao" class="form-control"
+                    placeholder="Descreva a ocorrência com todos os detalhes" rows="5" maxlength="420" required></textarea>
+                </div>
+            
+            
+                <div class="form-group">
+                  <label for="desc">O que você fez para tentar resolver: </label>
+                  <textarea rows="5" id="solution" name="solution" class="form-control"
+                    placeholder="Descreva a ocorrência com todos os detalhes" maxlength="420"></textarea>
+                </div>
+            
+            </div>
+            
+
+
+
+
+            <div class="form-group col-md-6">
+              <div class="form-group">
+                <label for="file">Anexar Arquivo: </label>
+                <div>
+                   <small>
+                      <strong>Arquivos suportados: 
+                      <span class="text-red">.jpg, .jpeg, .png, .pdf, .rar, .zip</span> 
+                      </strong>
+                   </small>
+                </div>
+                <small>
+                   <strong> 
+                      Caso o arquivo enviado seja diferente do especificado acima, o sistema enviará como anexo uma imagem padrão do sistema e não arquivo errôneamente enviado.
+                   </strong>
+                </small>
+                <input type="file" class="form-control" id="file" name="file" />
+             </div>
+             </div>
+
+
+
+
+
+            
+                
+              <!-- /.col -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-block alert-info">Enviar Notificação</button>
+              </div>
+              
+              
+              <!-- /.col -->
+  
+            </form>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col  -->
+      </div>
+      <!-- /.row -->
+      </section>
+    </div><!-- /.container-fluid -->
+  

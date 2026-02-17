@@ -1,0 +1,66 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1>Lista de segurança do colaboradores</h1>
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                <li class="breadcrumb-item active">Segurança dos colaboradores</li>
+            </ol>
+            </div>
+        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+        <div class="col-12">
+            <div class="card">
+            <div class="box-header">
+                <a href="/admin/patientsecuritys/create" class="btn btn-success pull-right" style="margin-right: 20px; margin-top: 10px;">Cadastrar Segurança do colaborador</a>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="table-responsive">
+                <table id="users" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Nome do Segurança do colaborador</th>
+                    <th>Código do Segurança do colaborador</th>
+                    <th style="width: 140px">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {loop="$patientsecuritys"}
+                    <tr>
+                    <td>{$value.id_patientsecurity}</td>
+                    <td>{$value.name}</td>
+                    <td>{$value.cod_patientsecurity}</td>
+                    <td>
+                        <a href="/admin/patientsecuritys/{$value.id_patientsecurity}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Editar</a>
+                        <a href="/admin/patientsecuritys/{$value.id_patientsecurity}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Excluir</a>
+                    </td>
+                    </tr>
+                    {/loop}
+                </tbody>
+                </table>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,23 @@
+/* Style notification */
+.notification-icon {
+    cursor: pointer;
+  }
+  
+  /* Estilos para o popup do calendário */
+  .notification-popup {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 999;
+  }
+  
+  .close-btn {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  

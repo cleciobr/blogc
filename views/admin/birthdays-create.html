@@ -1,0 +1,172 @@
+{include="sidemenu"}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Anivesariante(s)</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/birthdays">Anivesariante(s)</a></li>
+            <li class="breadcrumb-item active">Cadastrar anivesariante(s)</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header alert-info">
+              <h3 class="card-title">Anivesariante(s)</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- Tag enctype="multipart/form-data" foi retirardo dentro da TAG form-->
+            <!-- form start -->
+        <form role="form" action="/admin/birthdays/create" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                   {if="isset($_GET.success) && $_GET.success == 1"}
+                      <div class="alert alert-success">
+                          <h5><i class="icon fa fa-check"></i> E-mail enviado com Sucesso!</h5>
+                          O registro foi salvo e o e-mail disparado.
+                      </div>
+                  {/if}
+
+                  {if="isset($_GET.error) && $_GET.error == 'mail'"}
+                      <div class="alert alert-danger">
+                          <h5><i class="icon fa fa-exclamation-triangle"></i> Falha no Envio!</h5>
+                          Os dados foram salvos no banco, mas o servidor de e-mail recusou a conexão. Verifique as credenciais.
+                      </div>
+                  {/if}
+
+                <div class="form-group">
+                    <label for="name_birthday">Título aniversariante(s)</label>
+                    <input type="text" class="form-control" id="name_birthday" name="name_birthday" 
+                          value="Aniversariante(s) do dia!" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="email_recipient">Para qual e-mail será enviado</label>
+                        <input type="email" class="form-control" id="email_recipient" name="email_recipient" readonly value="clecioshineraybrasil@gmail.com"
+                              placeholder="exemplo@shineraydobrasil.com.br" required>
+                        <small class="text-muted">Este e-mail receberá os alertas de aniversário.</small>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="date_birthday">Data do(s) anivesariante(s)</label>
+                        <input type="date" class="form-control" id="date_birthday" name="date_birthday" 
+                              value='{function="date('Y-m-d')"}' required>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-8">
+                    <label for="file">Fotos</label>
+                    <input required type="file" class="form-control" id="file" name="files[]" multiple/>
+                    <p class="help-block">Selecione as fotos para o e-mail.</p>
+                    <!-- REMOVIDO DUPLICIDADE: Deixamos apenas um container de preview -->
+                    <div id="image-preview-container" style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;"></div>
+                </div>
+
+                <input type="hidden" name="id_user" value='{function="getUserId()"}'>
+            </div>
+            <div class="form-group col-md-5">
+                  <input type="checkbox" class="form-check-input flat-red" id="birthday_active" name="birthday_active" value='{function="getUserId()"}' checked>
+                  <label for="birthday_active">Aniversariante Ativo?</label>
+                <label for="id_user" style="display:none">
+                  <input type="checkbox" class="form-check-input flat-red" id="id_user" name="id_user" value='{function="getUserId()"}' required checked>
+                  Aceite os termos...
+                </label>
+              </div>
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success">
+                    <i class="fa fa-paper-plane"></i> Salvar e Enviar Agora
+                </button>
+            </div>
+        </form>
+
+        <style>
+             .btn-remove-image {
+                  background-color: #ff5248; 
+                  color: #eef5df; 
+                  border: none;
+                  border-radius: 50%;
+                  width: 28px;
+                  height: 28px;
+                  font-size: 16px;
+                  font-weight: bold;
+                  cursor: pointer;
+                  text-align: center;
+                  line-height: 28px; 
+                  padding: 0;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+              }
+
+              .btn-remove-image:hover {
+                  background-color: #e60000; /* Vermelho mais escuro no hover */
+              }
+            </style>
+
+           <script>
+              let arquivosAtuais = [];
+
+              document.querySelector('#file').addEventListener('change', function() {
+                  const input = this;
+                  
+                  // Converte a FileList em Array para manipular
+                  arquivosAtuais = Array.from(input.files);
+                  renderizarPreviews();
+              });
+
+              function renderizarPreviews() {
+                  const container = document.querySelector('#image-preview-container');
+                  container.innerHTML = ''; // Limpa a tela
+
+                  arquivosAtuais.forEach((file, index) => {
+                      const reader = new FileReader();
+                      reader.onload = function(e) {
+                          // Criar o wrapper da imagem e botão
+                          const div = document.createElement('div');
+                          div.style.position = 'relative';
+                          
+                          div.innerHTML = `
+                              <img src="${e.target.result}" style="width: 120px; height: 120px; object-fit: cover;" class="img-thumbnail">
+                              <button type="button" onclick="removerImagem(${index})" 
+                                  style="position: absolute; top: -5px; right: -5px;" 
+                                  class="btn-remove-image">x</button> 
+                          `;
+                          container.appendChild(div);
+                      }
+                      reader.readAsDataURL(file);
+                  });
+              }
+
+              function removerImagem(index) {
+                  arquivosAtuais.splice(index, 1);
+                  const dt = new DataTransfer();
+                  arquivosAtuais.forEach(file => dt.items.add(file));
+                  document.querySelector('#file').files = dt.files;
+                  renderizarPreviews();
+              }
+              </script>
+
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col  -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

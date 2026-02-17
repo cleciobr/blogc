@@ -1,0 +1,593 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<section>
+<div class="content-wrapper">
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Dashboard</h1>
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+{if="getUserInadmin() == 0"}
+<!-- / Dashboard-->
+<div class="content ">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10">
+        <!-- Content -->
+        <div class="jumbotron">
+          <h1 class="display-10">
+            Painel adiministrativo Shineray
+          </h1>
+          <p class="lead">
+            Esse sistema foi concebido para os colaboradores responsáveis
+            por todos os processos Administrativo da shineray fazendo todo o
+            gerenciamento interno.
+          </p>
+          Data de hoje: <strong>{function="DateAtual()"}</strong><br>
+          <hr class="my-4" />
+          <!-- <p>Cadastrando postagens para serem expostas na intranet.</p>
+                  <a class="btn alert-info" href="/blog" role="button"
+                    >Blog Shineray</a
+                  > -->
+          <hr class="my-4" />
+          <p>Cadastrar Notificações manuais</p>
+          <a class="btn alert-info" href="/admin/notifications/create" role="button">Notificações manuais</a>
+          <a href="/admin/multiplenotifications/create" class="btn btn-info">Cadastrar Múltiplas Notificações</a>
+          <hr>
+          <p>Classificação das Notificações:</p>
+          <a class="statusclassgreen btn btn-success"  href="/admin/notifications/finished" >Concluido</a>
+          <a  class="statusclassyellow btn btn-warning"  href="/admin/notifications/ontime" >No prazo</a>
+          <a class="statusclassred btn btn-danger" href="/admin/notifications/kept">Mantida</a>
+          <a class="statusclassred btn btn-primary" href="/admin/notifications/noclass">Notificações a classificar</a>
+        
+        </div>
+      </div>
+      <!-- / Dashboard-->
+      <!-- Contagem de notifications today-->
+      <div class="col-md-2">
+        <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3><span class="counter">{function="totalNotificToday()"}</span></h3>
+            <p>Notificações <small>hoje</small></p>
+          </div>
+          <div class="icon">
+            <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i></a>
+          </div>
+          <a href="/admin/notifications/today" class="small-box-footer">Mais detalhes <i
+              class="fa fa-arrow-circle-right"></i></a>
+        </div>
+        <!-- / Contagem de notifications today-->
+        <!-- Contagem de notifications month-->
+        <div class="col-md-14">
+          <!-- small box -->
+          <div class="small-box nav-link alert-info">
+            <div class="inner">
+              <h3><span class="counter">{function="totalNotificMonth()"}</span></h3>
+              <p>Notificações <small>no mês</small></p>
+            </div>
+            <div class="icon">
+              <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i></a>
+            </div>
+            <a href="/admin/notifications/month" class="small-box-footer">Mais detalhes <i
+                class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- / Contagem de notifications month-->
+        <!-- Contagem de notifications year-->
+        <div class="col-md-14">
+          <!-- small box -->
+          <div class="small-box nav-link alert-info">
+            <div class="inner">
+              <h3><span class="counter">{function="totalNotificYear()"}</span></h3>
+              <p>Notificações <small>no ano</small></p>
+            </div>
+            <div class="icon">
+              <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i> </a>
+            </div>
+            <a href="/admin/notifications/year" class="small-box-footer">Mais detalhes <i
+                class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- / Contagem de notifications year-->
+<!-- Contagem de notifications Total-->
+<div class="col-md-10">
+  <div class="row">
+    <div class="col-md-10 notitotal">
+      <!-- small box -->
+      <div class="small-box nav-link alert-info">
+        <div class="inner">
+          <h3>
+            <Center><span class="counter">{function="totalNotifications()"}</span></Center>
+          </h3>
+          <Center>
+            <p>Total de Notificações</p>
+          </Center>
+        </div>
+        <div class="icon">
+          <a><i class="ion ion-stats-bars"></i></a>
+        </div>
+        <a href="/admin/notifications" class="small-box-footer">Mais detalhes <i
+            class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End notifications-->
+<div class="col-md-2">
+  <!-- small box -->
+  <!-- Contagem de postagens-->
+  <!-- <div class="small-box bg-success">
+              <div class="inner">
+                <h3><span class="counter">{function="totalPosts()"}</span></h3>
+                <p>Postagens <small>no total</small></p>
+              </div>
+              <div class="icon">
+                <a><i class="ion ion-stats-bars"></i></a>
+              </div>
+              <a href="/admin/posts" class="small-box-footer"
+                >Mais detalhes <i class="fa fa-arrow-circle-right"></i
+              ></a>
+            </div> -->
+  <!-- <div class="small-box bg-success">
+              <div class="inner">
+                <h3><span class="counter">{function="totalNotifications()"}</span></h3>
+                <p>Notificações <small>no total</small></p>
+              </div>
+              <div class="icon">
+                <a><i class="ion ion-stats-bars" style="font-size: 55px;"></i></a>
+              </div>
+              <a href="/admin/notifications" class="small-box-footer"
+                >Mais detalhes <i class="fa fa-arrow-circle-right"></i
+              ></a>
+            </div> -->
+  <!-- <div class="small-box bg-success">
+              <div class="inner">
+                <h3><span class="counter">{function="totalBirthdaysActive()"}</span></h3>
+                <p>aniversariantes ativos <small>ativados</small></p>
+              </div>
+              <div class="icon">
+                <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i></a>
+              </div> 
+              <a href="/admin/birthdays/active" class="small-box-footer"
+            >Mais detalhes <i class="fa fa-arrow-circle-right"></i         
+              ></a>         
+            </div>   -->
+    </div>
+<hr class="mb-5" />
+ <h4 class="mt-4 mb-2">Ultimas Postagens</h4>
+          <div class="row">
+            {loop="$posts"}
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card card-primary card-outline h-100">
+              <img
+                class="card-img-top img-fluid"
+                src="{$value.desphoto}"
+                alt="{$value.titulo}"
+                style="height: 150px; object-fit: cover;"
+              />
+              <!-- Adiciona classes flexbox no body -->
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title"><strong>{$value.titulo}</strong></h5>
+                <!-- Faz o parágrafo crescer para empurrar o resto para baixo -->
+                <p class="card-text flex-grow-1">
+                  {function="cortaStr($value.texto)"} </p><p>...</p>
+                
+                <!-- Div para alinhar os botões lado a lado -->
+                <div class="d-flex justify-content-between gap-2 mt-auto">
+                  <a
+                    href="/blog/{$value.id_post}/{$value.titulo}"
+                    class="btn btn-info btn-sm flex-fill"
+                    >Ver Postagem</a
+                  >
+                  <a href="/admin/posts/{$value.id_post}" class="btn btn-primary btn-sm flex-fill">
+                    <i class="fa fa-edit"></i> Editar
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+            {/loop} 
+        {/if} 
+{if="getUserInadmin() == 1"}
+<!--Dashboard-->
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10">
+        <!-- Content -->
+        <div class="jumbotron">
+          <h1 class="display-10">
+            Painel Admin do sistema de postagens da shineray Shineray
+          </h1>
+          <p class="lead">
+            Esse sistema foi concebido para os colaboradores responsáveis
+            pela parte de marketing da shineray fazendo todo o
+            gerenciamento de divulgação interno.
+          </p>
+          Data de hoje: <strong>{function="DateAtual()"}</strong><br>
+          <hr class="my-4" />
+          <p>Cadastrando postagens para serem expostas na intranet.</p>
+          <a class="btn alert-info" href="/blog" role="button">Blog Shineray</a>
+        </div>
+      </div>
+      <!-- / Dashboard-->
+      <div class="col-md-2">
+        <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3><span class="counter">{function="totalPosts()"}</span></h3>
+            <p>Postagens <small>no total</small></p>
+          </div>
+          <div class="icon">
+            <a> <i class="ion ion-stats-bars"></i></a>
+          </div>
+          <a href="/admin/posts" class="small-box-footer">Mais detalhes <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <hr class="mb-5" />
+      <h4 class="mt-4 mb-2">Ultimas Postagens</h4>
+      <div class="row">
+        {loop="$posts"}
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card card-primary card-outline">
+            <img class="card-img-top img-fluid" src="{$value.desphoto}" alt="{$value.titulo}" style="height: 200px;" />
+            <div class="card-body">
+              <h5 class="card-title"><strong>{$value.titulo}</strong></h5>
+              <p class="card-text">{function="cortaStr($value.texto)"} ...</p>
+              <a href="/blog/{$value.id_post}/{$value.titulo}" class="btn btn-primary">Ver Postagem</a>
+            </div>
+          </div>
+        </div>
+        {/loop}
+      </div>
+      {/if}
+      <!-- Início IF Tabela de pesquisa de notificação-->
+      {if="getUserInadmin() == 2"}
+      <!--notifications-->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-10">
+              <!-- Content -->
+              <div class="jumbotron">
+                <h1 class="display-10">
+                  Painel de sistema de Notificações da Shineray
+                </h1>
+                <p class="lead">
+                  Esse sistema foi concebido para os colaboradores responsáveis
+                  pela parte interna, fazendo todo
+                  gerenciamento de Notificações da shineray.
+                </p>
+                Data de hoje: <strong>{function="DateAtual()"}</strong><br>
+                <hr class="my-4" />
+                <p>Cadastrar Notificações manuais</p>
+                <a class="btn alert-info" href="/admin/notifications/create" role="button">Notificações manuais</a>
+                <a href="/admin/multiplenotifications/create" class="btn btn-info">Cadastrar Múltiplas Notificações</a>
+                <hr>
+                <p>Classificação das Notificações:</p>
+                <a class="statusclassgreen btn btn-success"  href="/admin/notifications/finished" >Concluido</a>
+                <a  class="statusclassyellow btn btn-warning"  href="/admin/notifications/ontime" >No prazo</a>
+                <a class="statusclassred btn btn-danger" href="/admin/notifications/kept">Mantida</a>
+                <a class="statusclassred btn btn-primary" href="/admin/notifications/noclass">Notificações a classificar</a>
+              </div>
+               
+                        
+                        
+            </div>
+            <!-- Contagem de notifications today-->
+            <div class="col-md-2">
+              <!-- small box -->
+              <div class="small-box bg-success">
+                <div class="inner">
+                  <h3><span class="counter">{function="totalNotificToday()"}</span></h3>
+                  <p>Notificações <small>hoje</small></p>
+                </div>
+                <div class="icon">
+                  <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i></a>
+                </div>
+                <a href="/admin/notifications/today" class="small-box-footer">Mais detalhes <i
+                    class="fa fa-arrow-circle-right"></i></a>
+              </div>
+              <!-- / Contagem de notifications today-->
+              <!-- Contagem de notifications month-->
+              <div class="col-md-14">
+                <!-- small box -->
+                <div class="small-box nav-link alert-info">
+                  <div class="inner">
+                    <h3><span class="counter">{function="totalNotificMonth()"}</span></h3>
+                    <p>Notificações <small>no mês</small></p>
+                  </div>
+                  <div class="icon">
+                    <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i></a>
+                  </div>
+                  <a href="/admin/notifications/month" class="small-box-footer">Mais detalhes <i
+                      class="fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+              <!-- / Contagem de notifications month-->
+              <!-- Contagem de notifications year-->
+              <div class="col-md-14">
+                <!-- small box -->
+                <div class="small-box nav-link alert-info">
+                  <div class="inner">
+                    <h3><span class="counter">{function="totalNotificYear()"}</span></h3>
+                    <p>Notificações <small>no ano</small></p>
+                  </div>
+                  <div class="icon">
+                    <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i> </a>
+                  </div>
+                  <a href="/admin/notifications/year" class="small-box-footer">Mais detalhes <i
+                      class="fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- / Contagem de notifications year-->
+          <!-- Contagem de notifications Total-->
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-10 notitotal">
+                <!-- small box -->
+                <div class="small-box nav-link alert-info">
+                  <div class="inner">
+                    <h3>
+                      <Center><span class="counter">{function="totalNotifications()"}</span></Center>
+                    </h3>
+                    <Center>
+                      <p>Total de Notificações</p>
+                    </Center>
+                  </div>
+                  <div class="icon">
+                    <a><i class="ion ion-stats-bars"></i></a>
+                  </div>
+                  <a href="/admin/notifications" class="small-box-footer">Mais detalhes <i
+                      class="fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <!-- End notifications-->
+            <!-- / Contagem de postagens Total-->
+            <!--/ início da página principal da notificação-->
+            <!-- <div class="content">
+              <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-10"> -->
+            <!-- Content -->
+            <!-- <div class="jumbotron">
+                <h1 class="display-10">
+                  Painel de sistema de notificação da shineray Shineray
+                </h1>
+                <p class="lead">
+                  Esse sistema foi concebido para dos colaboradores responsáveis
+                  pela parte do Gerenciamento de Risco, fazendo todo
+                  gerenciamento de notificações interno da shineray.
+                </p>
+                Data de hoje: <strong>{function="DateAtual()"}</strong><br>
+                <hr class="my-4" />
+                <p>Cadastrar notificações manuais por Gerenciamento de Risco</p>
+                <a class="btn alert-info" href="/admin/notifications/create" role="button"
+                  >Notificações manuais</a
+                >
+              </div>
+            </div> -->
+            <!-- Contagem de postagens Hoje-->
+            <!-- <div class="col-md-2"> -->
+            <!-- small box -->
+            <!-- <div class="small-box bg-success">
+                <div class="inner">
+                  <h3><span class="counter">{function="totalNotificToday()"}</span></h3>
+                  <p>Notificações <small>hoje</small></p>
+                </div>
+                <div class="icon">
+                  <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i></a>
+                </div> 
+                <a href="/admin/notifications/today" class="small-box-footer"
+              >Mais detalhes <i class="fa fa-arrow-circle-right"></i         
+                ></a>         
+              </div>-->
+            <!-- / Contagem de postagens Hoje-->
+            <!-- Contagem de postagens Mês-->
+            <!-- <div class="col-md-14"> -->
+            <!-- small box -->
+            <!-- <div class="small-box nav-link alert-info">
+                <div class="inner">
+                  <h3><span class="counter">{function="totalNotificMonth()"}</span></h3>
+                  <p>Notificações <small>no mês</small></p>
+                </div>
+                <div class="icon">
+                  <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i></a>
+                </div> 
+                <a href="/admin/notifications/month" class="small-box-footer"
+              >Mais detalhes <i class="fa fa-arrow-circle-right"></i         
+                ></a>         
+              </div>              
+            </div> -->
+            <!-- / Contagem de postagens Mês-->
+            <!-- Contagem de postagens Ano-->
+            <!-- <div class="col-md-14"> -->
+            <!-- small box -->
+            <!-- <div class="small-box nav-link alert-info">
+                <div class="inner">
+                  <h3><span class="counter">{function="totalNotificYear()"}</span></h3>
+                  <p>Notificações <small>no ano</small></p>
+                </div>
+                <div class="icon">
+                 <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i> </a>
+                </div> 
+                <a href="/admin/notifications/year" class="small-box-footer"
+              >Mais detalhes <i class="fa fa-arrow-circle-right"></i         
+                ></a>         
+              </div>              
+             </div>
+             </div>
+          </div> -->
+            <!-- / Contagem de postagens Ano-->
+            <!-- Contagem de postagens Total-->
+            <!-- <div class="col-md-10">
+            <div class="row">
+            <div class="col-md-10 notitotal"> -->
+            <!-- small box -->
+            <!-- <div class="small-box nav-link alert-info">
+                <div class="inner">
+                  <h3><Center><span class="counter">{function="totalnotifications()"}</span></Center></h3>
+                  <Center><p>Notificações no total</p></Center>
+                </div>
+                <div class="icon">
+                  <a><i class="ion ion-stats-bars"></i></a>
+                </div> 
+                <a href="/admin/notifications" class="small-box-footer"
+              >Mais detalhes <i class="fa fa-arrow-circle-right"></i         
+                ></a>         
+              </div>              
+            </div>
+          </div> -->
+            <!-- / Contagem de postagens Total-->
+            <!--/ Fim da página principal da notificação-->
+            <!-- Main content -->
+            <!-- <section class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card"> -->
+                <!-- <div class="box-header">
+                  <a href="/notification" class="btn btn-success pull-right" style="margin-right: 20px; margin-top: 10px;">Cadastrar Notificação</a>
+              </div> -->
+                <!-- <div class="card-body">
+                <table id="users" class="table table-bordered table-striped">
+                  <thead>
+                      <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Paciente</th>
+                      <th>Descrição</th>
+                      <th>Prontuario</th>
+                      <th>Registro</th>
+                      <th>Setor Notificante</th>
+                      <th>Setor Notificado</th>
+                      <th>Data de Criação</th>
+                  </thead>
+                  <tbody>
+                      {loop="$notifications"}
+                        <tr>
+                          <td>{$value.id_notification}</td>
+                          <td>{$value.praise}</td>
+                          <td>{$value.dt_comm}</td>
+                          <td>{$value.descricao_oco}</td>
+                          <td>{$value.dt_oco}</td>
+                          <td>{$value.feedback}</td>
+                          <td>{$value.nome}</td>
+                          <td>{function="formatDate($value.dt_comm)"}</td>
+                        </tr>
+                      {/loop}
+                  </tbody>
+                </table> -->
+              </div> 
+                <!-- /.row -->
+            </div>
+                <!-- /.container-fluid -->
+            </div> 
+                <!-- /.content -->
+            {/if}
+            {if="getUserInadmin() == 3"}
+            <div class="content">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-10">
+                    <!-- Content -->
+                    <div class="jumbotron">
+                      <h1 class="display-10">
+                        Painel de sistema de Cadastramento da shineray Shineray
+                      </h1>
+                      <p class="lead">
+                        Esse sistema foi concebido para dos colaboradores responsáveis
+                        pela parte da telefonia ou recepção, fazendo cadastramento de ramais e aniversariantes
+                        interno da shineray.
+                      </p>
+                      Data de hoje: <strong>{function="DateAtual()"}</strong><br>
+                      <hr class="my-4" />
+                      <p>Cadastrar Ramal ou Aniversariantes:</p>
+                      <a class="btn alert-info" href="/admin/ramais/create" role="button">Cadastrar ramal</a>
+                      <a class="btn alert-info" href="/admin/birthdays/create" role="button">Cadastrar aniversariante</a>
+                    </div>
+                  </div>
+                  <!-- Contagem de postagens Hoje-->
+                  <div class="col-md-2">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                      <div class="inner">
+                        <h3><span class="counter">{function="totalBirthdaysActive()"}</span></h3>
+                        <p>aniversariantes ativos <small>Lista de aniversariantes de plantão</small></p>
+                      </div>
+                      <div class="icon">
+                        <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i></a>
+                      </div>
+                      <a href="/admin/birthdays/active" class="small-box-footer">Mais detalhes <i
+                          class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                    <!-- / Contagem de postagens Hoje-->
+                  </div>
+                  <!-- / Contagem de postagens Mês-->
+                  <!-- Contagem de postagens Ano-->
+
+                </div>
+              </div>
+              <!-- / Contagem de postagens Ano-->
+              <!-- Main content -->
+              <section class="content">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="card">
+                      <!-- /.row -->
+                    </div>
+                    <!-- /.container-fluid -->
+                  </div>
+                  <!-- /.content -->
+                  <hr class="mb-5" />
+                  <h4 class="mt-4 mb-2">Ultimas Postagens</h4>
+                  <div class="row">
+                    {loop="$posts"}
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="card card-primary card-outline">
+                        <img class="card-img-top img-fluid" src="{$value.desphoto}" alt="{$value.titulo}"
+                          style="height: 200px;" />
+                        <div class="card-body">
+                          <h5 class="card-title"><strong>{$value.titulo}</strong></h5>
+                          <p class="card-text">{function="cortaStr($value.texto)"}</p>
+                          <a href="/blog/{$value.id_post}/{$value.titulo}" class="btn btn-primary">Ver Postagem</a>
+                        </div>
+                      </div>
+                    </div>
+                    {/loop}
+                  </div>
+                  {/if}
+                  <!-- FIM IF Tabela de pesquisa de notificação-->
+
+        
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+          </div>
+          <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+      </section>

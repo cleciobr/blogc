@@ -1,0 +1,152 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Lista do modelo de assinatura</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/subscriptions">Assinaturas</a></li>
+            <li class="breadcrumb-item active">Alterar assinatura</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header alert-info">
+              <h3 class="card-title">Alterar modelo de Assinatura</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+      <form role="form" action="/admin/subscriptions/{$subscription.id_subscription}" method="POST" enctype="multipart/form-data">
+          <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="cod_subscription">Código do modelo</label>
+                  <input type="text" class="form-control" id="cod_subscription" name="cod_subscription" value="{$subscription.cod_subscription}"
+                    placeholder="Digite o código do modelo">
+                </div>
+                 <div class="form-group col-md-7"></div>
+                <div class="form-group col-md-6">
+                  <label for="name">Nome do modelo</label>
+                  <input type="text" class="form-control" id="name" name="name" value="{$subscription.name}"
+                    placeholder="Digite o nome do titulo" required>
+                </div>
+                
+                <!-- <div class="form-group col-md-3">
+                  <label for="name_color">Cor do cargo</label>
+                  <input type="text" class="form-control" id="name_color" name="name_color" value="{$subscription.name_color}"
+                    placeholder="Digite o nome do titulo" required>
+                </div> -->
+            <div class="form-group col-md-3">
+                <label for="name_color">Cor do cargo na moldura</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>Atual:</div>
+                    <input type="color" class="form-control" id="name_color" name="name_color" 
+                          list="default-colors" 
+                          value="{$subscription.name_color}" 
+                          oninput="updateColorPreview(this.value)"
+                          style="height: 40px; width: 60px; padding: 2px; cursor: pointer;">
+            
+                    
+                    <div id="color-indicator" style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid #ccc; background-color: {$subscription.name_color};"></div>
+                    
+
+              <span id="hex-text" style="font-family: monospace; font-size: 14px; font-weight: bold;">{$subscription.name_color}</span>
+              </div>
+
+              <datalist id="default-colors">
+                  <option value="#e30613">Vermelho Shineray</option>
+                  <option value="#183e7a">Azul Shineray</option>
+                  <option value="#000000">Preto</option>
+                  <option value="#ffffff">Branco</option>
+              </datalist>
+              <small class="text-muted">Selecione ou clique para personalizar.</small>
+          </div>
+
+               
+                <div class="form-group col-md-7">
+                  <label for="description">Descrição do modelo</label>
+                  <input type="text" class="form-control" id="description" name="description" value="{$subscription.description}"
+                    placeholder="Digite o nome do titulo">
+                </div>
+                  <div class="form-group col-md-7">
+                    <input type="hidden" name="photos_to_delete" id="photos-to-delete" value="">
+                      <div class="form-group">
+                        <label for="file">Foto</label>
+                        <input type="file" class="form-control" id="file" name="file" value="{$subscription.desphoto}">
+                      </div>
+                  </div>  
+                  <div class="card card-widget">
+                      <div class="card-body">
+                          <img class="img-responsive img-fluid" id="image-preview" src="{$subscription.desphoto}?v={function="time()"}">
+                      </div>
+                  </div>
+                <div class="form-group col-md-12">
+                  <label for="subscription_active">
+                      {if="$subscription.subscription_active == 1"}
+                      <input type="checkbox" class="form-check-input flat-red" id="subscription_active" name="subscription_active" value='{function="getUserId()"}' checked>
+                      
+                      <span><strong style="color:blue;"> Modelo de assinatura Ativo </strong></span>
+
+                      {else}
+
+                      <input type="checkbox" class="form-check-input flat-red" id="subscription_active" name="subscription_active" value='{function="getUserId()"}'>
+                      
+                      <span><strong style="color:red;"> Marque está opção para ativar o modelo de assinatura</strong></span>
+                      {/if}
+                    </label>
+                </div>
+
+
+              <div class="card-footer">
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar Alterações</button>
+              </div>
+          </div>
+                    
+                <br>
+
+           </div>
+                <div class="form-group col-md-2"> 
+                  <label style="display:none" for="id_user">
+                    <input type="checkbox" class="form-check-input flat-red" id="id_user" name="id_user"
+                      value='{function="getUserId()"}' required checked>
+                    Aceite os termos...
+                  </label>
+                </div>
+      </form>
+            
+         <script>
+            document.querySelector('#file').addEventListener('change', function(){
+              var file = new FileReader();
+              file.onload = function() {
+                document.querySelector('#image-preview').src = file.result;
+              }
+              file.readAsDataURL(this.files[0]);
+            });
+
+          </script>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col  -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+

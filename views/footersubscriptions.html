@@ -1,0 +1,184 @@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+    function updatePreview() {
+        const select = document.getElementById('in-bg');
+        const colorFromDb = select.options[select.selectedIndex].getAttribute('data-color') || '#e30613';
+        document.getElementById('out-role').style.color = colorFromDb;
+        document.getElementById('bg-display').src = document.getElementById('in-bg').value;
+        document.getElementById('out-name').innerText = document.getElementById('in-name').value || 'Nome';
+        document.getElementById('out-role').innerText = document.getElementById('in-role').value || 'Setor';
+        document.getElementById('out-loc').innerText = document.getElementById('in-loc').value || 'Unidade';
+        document.getElementById('out-phone').innerText = document.getElementById('in-phone').value || '(00) 00000-0000';
+        document.getElementById('out-ramal').innerText = document.getElementById('in-ramal').value || 'Ramal: 0000';
+        document.getElementById('out-cel').innerText = document.getElementById('in-cel').value || 'Celular: (00) 00000-0000';
+        document.getElementById('out-email').innerText = document.getElementById('in-email').value || 'email@shineraydobrasil.com.br';
+        
+    }
+
+    function downloadImage() {
+        const signature = document.getElementById('signature-preview');
+        html2canvas(signature, { 
+            scale: 2,
+            useCORS: true,
+            backgroundColor: null
+        }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'assinatura-' + (document.getElementById('in-name').value || 'shineray') + '.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    }
+
+    function copyHTML() {
+        const name = document.getElementById('out-name').innerText;
+        const role = document.getElementById('out-role').innerText;
+        const loc = document.getElementById('out-loc').innerText;
+        const phone = document.getElementById('out-phone').innerText;
+        const ramal = document.getElementById('out-ramal').innerText;
+        const email = document.getElementById('out-email').innerText;
+        
+        // Caminho absoluto para a imagem de fundo (precisa ser uma URL pública para funcionar no e-mail)
+        const bgUrl = window.location.origin + '/' + document.getElementById('in-bg').value;
+
+        const htmlCode = `<!-- Início da Assinatura -->
+<table cellpadding="0" cellspacing="0" border="0" style="width: 600px; font-family: Arial, sans-serif; background-color: #ffffff;">
+    <tr>
+        <td style="position: relative;">
+            <img src="${bgUrl}" width="600" style="display: block; border: 0;" alt="Assinatura Shineray">
+            <div style="position: absolute; top: 40%; left: 4%; width: 35%;">
+                <div style="font-size: 16px; font-weight: bold; color: #000; text-transform: capitalize;">${name}</div>
+                <div style="font-size: 11px; color: #C41219; margin-top: 2px;">${role}</div>
+            </div>
+            <div style="position: absolute; top: 22%; left: 50%; font-size: 10px; color: #444; line-height: 1.6;">
+                <div style="margin-bottom: 8px;">${loc}</div>
+                <div style="margin-bottom: 10px;">${phone}</div>
+                <div style="margin-bottom: 8px;">${ramal}</div>
+                <div>${email}</div>
+            </div>
+        </td>
+    </tr>
+</table>
+<!-- Fim da Assinatura -->`;
+        
+        navigator.clipboard.writeText(htmlCode).then(() => {
+            alert('Código HTML copiado! Lembre-se que para o HTML funcionar em e-mails externos, a imagem da moldura deve estar hospedada em um servidor público.');
+        });
+    }
+</script>
+
+<script>
+function updateColorPreview(color) {
+    document.getElementById('color-indicator').style.backgroundColor = color;
+    document.getElementById('hex-text').innerText = color.toUpperCase();
+}
+</script>
+<!-- <script>
+    function mascaraCelular(input) {
+    let v = input.value;
+    
+    v = v.replace(/\D/g, "");
+    
+    if (v.length > 0) {
+        v = v.replace(/^(\d{2})(\d)/g, "($1) $2");
+    }
+    if (v.length > 9) {
+        v = v.replace(/(\d{5})(\d)/, "$1-$2");
+    } else if (v.length > 5) {
+        v = v.replace(/(\d{4})(\d)/, "$1-$2");
+    }
+
+    input.value = v;
+}
+
+</script> -->
+<script>
+    function mascaraCelular(input) {
+    const prefixo = "Celular: ";
+    let v = input.value;
+    if (!v.startsWith(prefixo)) {
+        v = prefixo + v.replace(prefixo, "");
+    }
+
+    let numeros = v.substring(prefixo.length).replace(/\D/g, "");
+
+
+    if (numeros.length > 0) {
+        numeros = numeros.replace(/^(\d{2})(\d)/g, "($1) $2");
+    }
+    if (numeros.length > 9) {
+        numeros = numeros.replace(/(\d{5})(\d)/, "$1-$2");
+    } else if (numeros.length > 5) {
+        numeros = numeros.replace(/(\d{4})(\d)/, "$1-$2");
+    }
+    input.value = prefixo + numeros;
+}
+
+function mascaraTelefone(input) {
+    const prefixo = "Telefone: ";
+    let v = input.value;
+    if (!v.startsWith(prefixo)) {
+        v = prefixo + v.replace(prefixo, "");
+    }
+
+    let numeros = v.substring(prefixo.length).replace(/\D/g, "");
+
+
+    if (numeros.length > 0) {
+        numeros = numeros.replace(/^(\d{2})(\d)/g, "($1) $2");
+    }
+    if (numeros.length > 9) {
+        numeros = numeros.replace(/(\d{5})(\d)/, "$1-$2");
+    } else if (numeros.length > 5) {
+        numeros = numeros.replace(/(\d{4})(\d)/, "$1-$2");
+    }
+    input.value = prefixo + numeros;
+}
+
+function mascaraRamal(input) {
+    const prefixo = "Ramal: ";
+    let v = input.value;
+
+    if (!v.startsWith(prefixo)) {
+        v = prefixo + v.replace(prefixo, "");
+    }
+    let numeros = v.substring(prefixo.length).replace(/\D/g, "");
+
+    input.value = prefixo + numeros;
+}
+
+
+</script>
+<script>
+   function sugerirDominios(input) {
+    const valor = input.value;
+    const datalist = document.getElementById('email-options');
+    const selectMoldura = document.getElementById('in-bg');
+    
+    const modeloNome = selectMoldura.options[selectMoldura.selectedIndex].text.toUpperCase();
+    
+    let dominioPadrao = "@gmail.com"; // fallback
+    if (modeloNome.includes("BCI")) {
+        dominioPadrao = "@grupobci.rec.br";
+    } else if (modeloNome.includes("SHINERAY")) {
+        dominioPadrao = "@shineraydobrasil.com.br";
+    }
+
+    const dominios = [dominioPadrao, "@outlook.com", "@outlook.com.br", "@gmail.com"];
+
+    if (valor.includes('@')) {
+        datalist.innerHTML = "";
+        return;
+    }
+
+    datalist.innerHTML = "";
+    if (valor.length > 0) {
+        dominios.forEach(dom => {
+            const option = document.createElement('option');
+            option.value = valor + dom; // Ex: joao + @grupobci.re.br
+            datalist.appendChild(option);
+        });
+    }
+}
+
+</script>
+{include="footer"}

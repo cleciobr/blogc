@@ -1,0 +1,145 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        
+        <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/admin/users">Usuários</a></li>
+                <li class="breadcrumb-item active">Atualizar usuário</li>
+            </ol>
+            </div>
+        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header alert-info">
+                <h3 class="card-title">Atualizar usuário:</h3>
+                </div>
+                <!-- /.card-header -->
+
+            
+                <!-- form start -->
+<form role="form" action="/admin/users/{$user.id_user}" method="post" enctype="multipart/form-data">
+    <div class="card-body">
+        <!-- Status do Usuário -->
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="user_active" name="user_active" value="1" {if="$user.user_active == 1"}checked{/if}>
+                <label class="custom-control-label" for="user_active">
+                    {if="$user.user_active == 1"}
+                        <span class="text-primary"><strong>Usuário ativo</strong></span>
+                    {else}
+                        <span class="text-danger"><strong>Marque para ativar o usuário</strong></span>
+                    {/if}
+                </label>
+            </div>
+        </div>
+
+        <!-- Linha 1: Nome e Login -->
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="desname">Nome</label>
+                <input type="text" class="form-control" id="desname" name="desname" maxlength="23" value="{$user.desname}" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" id="login" name="login" maxlength="23" value="{$user.login}" required>
+            </div>
+        </div>
+
+        <!-- Linha 2: Setor e Foto -->
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="setor">Setor</label>
+                <select required id="setor" name="setor" class="form-control">
+                    <option value="{$user.setor}" selected>{$user.setor}</option>
+                    {loop="$departments"}
+                        {if="$value.name != $user.setor"}
+                        <option value="{$value.name}">{$value.name}</option>
+                        {/if}
+                    {/loop}
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="file">Foto do Perfil</label>
+                <input type="file" class="form-control" id="file" name="file" onchange="previewImage(this)">
+                <div class="mt-2">
+                    <img id="image-preview" src="{$user.desphoto}" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Nível de Acesso -->
+        <div class="form-group">
+            <label><strong>Nível de Acesso</strong></label>
+            <div class="mt-2">
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="access0" name="inadmin" class="custom-control-input" value="0" {if="$user.inadmin == 0"}checked{/if}>
+                    <label class="custom-control-label" for="access0">Administrador</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="access1" name="inadmin" class="custom-control-input" value="1" {if="$user.inadmin == 1"}checked{/if}>
+                    Marketing
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="access2" name="inadmin" class="custom-control-input" value="2" {if="$user.inadmin == 2"}checked{/if}>
+                    Qualidade
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="access3" name="inadmin" class="custom-control-input" value="3" {if="$user.inadmin == 3"}checked{/if}>
+                    Telefonia / Recepção
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RODAPÉ COM BOTÕES AJEITADOS -->
+    <div class="card-footer d-flex justify-content-between">
+        <button type="submit" class="btn btn-success">
+            <i class="fa fa-save"></i> Salvar Alterações
+        </button>
+        
+        <a href="/admin/users/{$user.id_user}/delete" 
+           onclick="return confirm('Deseja realmente excluir este usuário?')" 
+           class="btn btn-outline-danger">
+            <i class="fa fa-trash"></i> Excluir Usuário
+        </a>
+    </div>
+</form>
+            </div>
+            <!-- /.card -->
+            </div>
+            <!--/.col  -->
+        </div>
+        <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <script>
+    
+        document.querySelector('#file').addEventListener('change', function(){
+          var file = new FileReader();
+          file.onload = function() {
+            document.querySelector('#image-preview').src = file.result;
+          }
+          file.readAsDataURL(this.files[0]);
+        });
+    
+      </script>

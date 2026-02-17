@@ -1,0 +1,209 @@
+{include="header"}
+<!-- Estilos Exclusivos da Seção de Vídeos -->
+<style>
+  .modern-video-section {
+    padding: 60px 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Título*/
+  .modern-title {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .modern-title span {
+    color: #e31d1a; /* Vermelho Shineray */
+    position: relative;
+  }
+
+  /* Card de Vídeo Estilo Glassmorphism */
+  .video-card-modern {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  .video-card-modern:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    background: #fff;
+  }
+
+  /* Label do Processo */
+  .process-label {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 4px 15px;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+
+  .video-card-modern h4 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  /* Container do vídeo */
+  .video-wrapper-modern {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  }
+
+  /* Ajuste de Grid para não ficar gigante */
+  .video-row-modern {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+</style>
+<!--- Main Content -->
+<main class="mt-5 pt-5">
+  <div class="container">
+    <a href="/views/">
+      <section class="card wow fadeIn zoom"
+        style="background-image: url(/res/site/img/Shineray.webp); height: 700px;">
+        <!-- Content -->
+        <div class="card-body text-dark text-center py-5 px-5 my-5">
+          <h1 class="mb-4"></h1>
+          <p class="mb-4">
+            <strong></strong>
+          </p>
+        </div>
+        <!-- Content -->
+      </section>
+    </a>
+    <hr class="mt-5" />
+ 
+
+<!-- Seção de Vídeos-->
+<section class="modern-video-section wow fadeIn">
+  <div class="container">
+    
+    <h1 class="modern-title">Nossos <span>Processos</span></h1>
+
+    <div class="row justify-content-center">
+      
+      <!-- Vídeo 1 -->
+      <div class="col-lg-6 col-md-12">
+        <div class="video-card-modern">
+          <span class="process-label">Etapa 01</span>
+          <h4>Processos de Produção 1</h4>
+          <div class="video-wrapper-modern">
+            <video class="video-fluid z-depth-1 js-player" controls>
+              <source src="/res/site/videos/processo 1.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vídeo 2 -->
+      <div class="col-lg-6 col-md-12">
+        <div class="video-card-modern">
+          <span class="process-label">Etapa 02</span>
+          <h4>Processos de Produção 2</h4>
+          <div class="video-wrapper-modern">
+            <video class="video-fluid z-depth-1 js-player" controls>
+              <source src="/res/site/videos/processo 2.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vídeo 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="video-card-modern">
+          <span class="process-label">Etapa 03</span>
+          <h4>Processos 3</h4>
+          <div class="video-wrapper-modern">
+            <video class="video-fluid z-depth-1 js-player" controls>
+              <source src="/res/site/videos/processo 3.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vídeo 4 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="video-card-modern">
+          <span class="process-label">Etapa 04</span>
+          <h4>Processos 4</h4>
+          <div class="video-wrapper-modern">
+            <video class="video-fluid z-depth-1 js-player" controls>
+              <source src="/res/site/videos/processo 4.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vídeo 5 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="video-card-modern">
+          <span class="process-label">Etapa 05</span>
+          <h4>Processos 5</h4>
+          <div class="video-wrapper-modern">
+            <video class="video-fluid z-depth-1 js-player" controls>
+              <source src="/res/site/videos/processo 5.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  </div>
+</main>
+<!--- End Main Content -->
+
+<!-- botao scroll to top-->
+<a class="scroll-to-top rounded" data-toggle="tooltip" data-placement="top" title="Voltar ao topo" href="#top"
+  style="display: inline;">
+  <i class="fa fa-angle-up"></i>
+</a>
+
+{include="footer"}
+
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script type="text/javascript" src="/res/site/js/jquery-3.2.1.min.js"></script>
+<!-- -->
+<script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="/res/site/js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="/res/site/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="/res/site/js/mdb.min.js"></script>
+
+<script type="text/javascript" src="/res/site/js/scrolltotop.js"></script>
+<!-- Initializations -->
+<script type="text/javascript">
+  // Animations initialization
+  new WOW().init();
+
+  // Initialize Plyr video players
+  const players = Array.from(document.querySelectorAll("video")).map(
+    p => new Plyr(p)
+  );
+</script>

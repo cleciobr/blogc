@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="150px" height="150px" class="img-fluid"><g><circle style="fill:#8D1D2E" cx="256" cy="256" r="256" data-original="#4AB8A1" class="active-path" data-old_color="#8d1d2e"/><polygon style="fill:#CCCCCC;" points="412,216 100,216 256,108 " data-original="#CCCCCC"/><rect x="100" y="216" style="fill:#B3B3B3;" width="312" height="188" data-original="#B3B3B3"/><path style="fill:#FFFFFF;" d="M392,164c0-8.8-7.2-16-16-16H136c-8.8,0-16,7.2-16,16v180c0,8.8,7.2,16,16,16h240c8.8,0,16-7.2,16-16  V164z" data-original="#FFFFFF"/><g>
+	<polygon style="fill:#E6E6E6;" points="244,312 100,404 100,216  " data-original="#E6E6E6"/>
+	<polygon style="fill:#E6E6E6;" points="268,312 412,404 412,216  " data-original="#E6E6E6"/>
+</g><polygon style="fill:#F5F5F5" points="412,404 100,404 256,296 " data-original="#F5F5F5" class=""/><g>
+	<rect x="168" y="172" style="fill:#CCCCCC;" width="80" height="8" data-original="#CCCCCC"/>
+	<rect x="168" y="200" style="fill:#CCCCCC;" width="176" height="8" data-original="#CCCCCC"/>
+	<rect x="168" y="216" style="fill:#CCCCCC;" width="176" height="8" data-original="#CCCCCC"/>
+	<rect x="168" y="232" style="fill:#CCCCCC;" width="176" height="8" data-original="#CCCCCC"/>
+	<rect x="168" y="248" style="fill:#CCCCCC;" width="176" height="8" data-original="#CCCCCC"/>
+</g></g> </svg>

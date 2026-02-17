@@ -1,0 +1,133 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Lista de Evento</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/events">Eventos</a></li>
+            <li class="breadcrumb-item active">Cadastrar Eventos</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header alert-info">
+              <h3 class="card-title">Cadastrar novo Evento</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" action="/admin/events/create" method="post" enctype="multipart/form-data">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="name_event">Nome do Evento</label>
+                  <input type="text" class="form-control" id="name_event" name="name_event"
+                    placeholder="Digite o nome do Evento" required>
+                </div>
+                <div class="form-group">
+                  <label for="description_event">Descrição do Evento</label>
+                  <textarea class="form-control" id="description_event" name="description_event" placeholder="Digite descrição do evento"required></textarea >
+                </div>              
+               <div class="form-group">
+                <label for="file">Fotos</label>
+                <input required type="file" class="form-control" id="file" name="files[]" multiple/>
+                <div id="image-preview-container" style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;"></div>
+              </div>
+                <!-- checkbox -->
+                <div class="form-group">
+                  <label for="id_user" style="display:none">
+                    <input type="checkbox" class="form-check-input flat-red" id="id_user" name="id_user"
+                      value='{function="getUserId()"}' required checked>
+                    Aceite os termos...
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+             <style>
+             .btn-remove-image {
+                  background-color: #ff5248; 
+                  color: #eef5df; 
+                  border: none;
+                  border-radius: 50%;
+                  width: 28px;
+                  height: 28px;
+                  font-size: 16px;
+                  font-weight: bold;
+                  cursor: pointer;
+                  text-align: center;
+                  line-height: 28px; 
+                  padding: 0;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+              }
+
+              .btn-remove-image:hover {
+                  background-color: #e60000; /* Vermelho mais escuro no hover */
+              }
+            </style>
+
+           <script>
+              let arquivosAtuais = [];
+
+              document.querySelector('#file').addEventListener('change', function() {
+                  const input = this;
+                  
+                  // Converte a FileList em Array para manipular
+                  arquivosAtuais = Array.from(input.files);
+                  renderizarPreviews();
+              });
+
+              function renderizarPreviews() {
+                  const container = document.querySelector('#image-preview-container');
+                  container.innerHTML = ''; // Limpa a tela
+
+                  arquivosAtuais.forEach((file, index) => {
+                      const reader = new FileReader();
+                      reader.onload = function(e) {
+                          // Criar o wrapper da imagem e botão
+                          const div = document.createElement('div');
+                          div.style.position = 'relative';
+                          
+                          div.innerHTML = `
+                              <img src="${e.target.result}" style="width: 120px; height: 120px; object-fit: cover;" class="img-thumbnail">
+                              <button type="button" onclick="removerImagem(${index})" 
+                                  style="position: absolute; top: -5px; right: -5px;" 
+                                  class="btn-remove-image">x</button> 
+                          `;
+                          container.appendChild(div);
+                      }
+                      reader.readAsDataURL(file);
+                  });
+              }
+
+              function removerImagem(index) {
+                  arquivosAtuais.splice(index, 1);
+                  const dt = new DataTransfer();
+                  arquivosAtuais.forEach(file => dt.items.add(file));
+                  document.querySelector('#file').files = dt.files;
+                  renderizarPreviews();
+              }
+              </script>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col  -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

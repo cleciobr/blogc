@@ -1,0 +1,68 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Lista de Danos</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/degree_damgs">Danos</a></li>
+            <li class="breadcrumb-item active">Atualizar Dano</li>
+        </ol>
+        </div>
+    </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header alert-info">
+            <h3 class="card-title">Atualizar Dano</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" action="/admin/degree_damgs/{$degree_damg.id_degree_damg}" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Nome da classificação do dano</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome do dano" value="{$degree_damg.name}" required>
+                </div>
+                <div class="form-group">
+                    <label for="days_degree_damg">Quantos dias para classificação do dano?</label>
+                    <input type="number" class="form-control" id="days_degree_damg" name="days_degree_damg" placeholder="Quantos dias de dano?" value="{$degree_damg.days_degree_damg}" required>
+                </div>
+                <div class="form-group">
+                    <label for="descrition">Descrição</label>
+                    <input type="text" class="form-control" id="descrition" name="descrition" placeholder="Descrição do dano" value="{$degree_damg.descrition}" required>
+                </div>
+                <div class="form-group">
+                    <label for="cod_degree_damg">Código do dano<span style="color: red;"> (Este campo não é obrigatório)</span></label>
+                    <input type="text" class="form-control" id="cod_degree_damg" name="cod_degree_damg" placeholder="Digite o código do dano" value="{$degree_damg.cod_degree_damg}">
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary alert-info">Salvar</button>
+            </div>
+            </form>
+        </div>
+        <!-- /.card -->
+        </div>
+        <!--/.col  -->
+    </div>
+    <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

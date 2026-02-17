@@ -1,0 +1,133 @@
+/* iCheck plugin Square skin, blue
+----------------------------------- */
+.icheckbox_square-blue,
+.iradio_square-blue {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url(blue.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_square-blue {
+    background-position: 0 0;
+}
+    .icheckbox_square-blue.hover {
+        background-position: -24px 0;
+    }
+    .icheckbox_square-blue.checked {
+        background-position: -48px 0;
+    }
+    .icheckbox_square-blue.disabled {
+        background-position: -72px 0;
+        cursor: default;
+    }
+    .icheckbox_square-blue.checked.disabled {
+        background-position: -96px 0;
+    }
+
+.iradio_square-blue {
+    background-position: -120px 0;
+}
+    .iradio_square-blue.hover {
+        background-position: -144px 0;
+    }
+    .iradio_square-blue.checked {
+        background-position: -168px 0;
+    }
+    .iradio_square-blue.disabled {
+        background-position: -192px 0;
+        cursor: default;
+    }
+    .iradio_square-blue.checked.disabled {
+        background-position: -216px 0;
+    }
+
+/* Retina support */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-moz-min-device-pixel-ratio: 1.5),
+       only screen and (-o-min-device-pixel-ratio: 3/2),
+       only screen and (min-device-pixel-ratio: 1.5) {
+    .icheckbox_square-blue,
+    .iradio_square-blue {
+        background-image: url(blue@2x.png);
+        -webkit-background-size: 240px 24px;
+        background-size: 240px 24px;
+    }
+}
+
+
+.font-login{
+    color: #8d1d2e;
+    font-size: 2rem;
+    text-shadow: 0px 0px 1px #8d1d2e;
+    border-radius: 8px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.font-login:hover{
+    -webkit-filter: drop-shadow(1px 1px 1px #8d1d2e);
+    filter: drop-shadow(0px 0px 0px #8d1d2e);
+
+}
+
+.login-shi{
+    
+    
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.login-shi:hover{
+    -webkit-filter: drop-shadow(20px 20px 10px #fc1e1e);
+    filter: drop-shadow(0px 0px 1px #fc1e1e);
+
+}
+
+.statusclassred{
+    background-color: #bb1212;
+            border-color: #fc1e1e;
+            box-shadow: 0px 0px 4px 1px #fa3c3c ;
+            display: inline-block;
+            width: 165px;
+            height: 40px;
+            position: relative;
+            top: 0px;
+            right: -5px;
+            margin-right: 8px;
+            border-radius: 7px;
+}
+
+.statusclassgreen{
+    background-color: #30a33a;
+            border-color: #2cc44d;
+            box-shadow: 0px 0px 4px 1px #40c962 ;
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            position: relative;
+            top: 0px;
+            right: -7px;
+            margin-right: 5px; 
+            border-radius: 7px
+}
+
+.statusclassyellow{
+    background-color: #c4c715d5;
+            border-color: #fbff0e;
+            box-shadow: 0px 0px 2px 1px #f7f331 ;
+            display: inline-block ;
+            width: 135px;
+            height: 40px;
+            position: relative;
+            top: 0px;
+            right: -7px;
+            margin-right: 8px;
+            border-radius: 7px;
+}

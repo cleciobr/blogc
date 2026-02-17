@@ -1,0 +1,444 @@
+{include="sidemenu"}
+<!--Main Navigation-->
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                            <!-- Content Header (Page header) -->
+                        <section class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <h1>Relatório de Notificações</h1>
+                                        </div>
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right">
+                                            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                            <li class="breadcrumb-item">Relatório</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div><!-- /.container-fluid -->
+                        </section>
+                    <!-- First boletim -->
+                    <!-- Main content -->
+                        <section class="content">
+                            <div class="row" >
+                                <div class="col-md-12">
+                                    {if="isset($_POST['month']) && isset($_POST['year'])&& $_POST['month'] != '' && $_POST['year'] != ''"}
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                Boletim gerado com <strong> sucesso!</strong>
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/if}
+                                    {if="isset($_POST['month']) && isset($_POST['year']) && $_POST['month'] != '' && $_POST['year'] != ''"}
+                                                <div class="card wow fadeInLeftBig" > 
+                                                    <div class="form-group col-md-12" style="background-color: #3d8d1d; color: aliceblue;">
+                                                        <label>Acesso rápido para download dos boletins!</label>
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <div class="form-row">
+                                                                    <h6 style="text-align: center; color: #8D1D2E; background-color: aliceblue; font-size: 15px;">
+                                                                        <strong>{if="$selector=''"}{else}{$names} -{/if}</strong></h6>
+                                                                    <h6 style="text-align: center; color: #000000; background-color: aliceblue; font-size: 15px;">{if="$selector=''"}{else} {$month} / {$year}{/if}</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-2">
+                                                            <div class="text-center" >
+                                                                <button class="btn btn-info mt-3 no-print" onclick="downloadDivAsJpg()">Download boletim Status</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <div class="text-center" >
+                                                                <button class="btn btn-info mt-3 no-print2" onclick="downloadDivAsJpg2()">Download boletim Classificação</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <div class="text-center" >
+                                                                <button class="btn btn-info mt-3 no-print3" onclick="downloadDivAsJpg3()">Download boletim Tipo/Processo</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {/if}
+                                    <div class="card wow fadeInLeftBig"> <!-- card reports -->
+                                            <div class="container ">
+                                                <div class="form-group" >
+                                                    <div class="col-md-12">
+                                                            <form role="form" action="/admin/reports" method="post">
+                                                                <div required class="card-header form-group col-md-12 text-center" style="background-color: #c8080e;color: aliceblue; height: 10px;" > 
+                                                                    <div class="form-row btn-block">
+                                                                            <h5 class="card-title" >Boletim de Notificações por setor</h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group col-md-10 btn-block" >
+                                                                    <div class="form-group col-md-12 btn-block text-center" style="left: 100px;">
+                                                                        <label for="st_cante">Setor</label>
+                                                                        <select required type="text" id="st_cante" name="st_cante" class="form-control"> 
+                                                                            <option readonly selected value="">Selecione o setor para gerar o boletim</option>
+                                                                            {loop="$departments"}
+                                                                            <option value="{$value.name}">{$value.name}</option>
+                                                                            {/loop}
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12" style="left: 100px;">
+                                                                        <label for="month" style="left: 100px;" > Mês:</label>
+                                                                        <input placeholder="Digite o mês. Ex.: 04" class="form-control col-md-3" type="number" id="month" name="month" min="01" max="12" step="1" value="{function="{formatDateMes(month);"}"  required>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12 " style="left: 100px;">
+                                                                        <label for="year" > Ano:</label>
+                                                                        <input placeholder="Digite o ano. Ex.: 2050" class="form-control col-md-3" type="number" id="year" name="year" min="1900" max="9999" step="1" value="{function="{formatDateAno(year);"}"  required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-footer form-group col-md-12">
+                                                                        <button type="submit" class="btn btn-info btn-block">Gerar Boletim</button>
+                                                                </div>
+                                                            </form>
+                                                    </div><!-- /.col -->
+                                                </div><!-- /.row -->
+                                            </div><!-- /container -->
+                                        </div><!-- card reports -->
+                                            <br>
+                                            
+                                                <!-- First boletim -->
+                                                {if="isset($_POST['month']) && isset($_POST['year']) && $_POST['month'] != '' && $_POST['year'] != ''"}
+                                                    <!-- {if="isset($_POST['month']) && isset($_POST['year'])&& $_POST['month'] != '' && $_POST['year'] != ''"}
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="alert alert-success alert-dismissible fade attention show" role="alert">
+                                                                        Boletim gerado com <strong> sucesso!</strong>
+                                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {/if} -->
+                                            <div class="card wow fadeInLeftBig">  <!-- First card boletim -->
+                                                    <div class="text-center" >
+                                                        <button class="btn btn-warning mt-3 no-print" onclick="downloadDivAsJpg()">Download do boletim Status</button>
+                                                    </div>
+                                                    <br>
+                                             <div id="contentdownload"> 
+                                                    <div class="card-header-reports" style="background-color: #c8080e; height: 135px;" > 
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-2" style="padding:10px;">
+                                                                <img src="/res/admin/dist/img/logoshineray.png" width="180" height="65">
+                                                            </div>
+                                                            <div class="form-group col-md-8">
+                                                                <h3 style="text-align: center; color: aliceblue; padding:5px; font-size: 30px;">Boletim da Qualidade e Segurança do Paciente</h3>
+                                                            </div>
+                                                            <div class="form-group col-md-1">
+                                                            </div>
+                                                            <div class="form-group col-md-1" style="padding:10px;">
+                                                                <h6 style="text-align: center; background-color: aliceblue;padding:5px; font-size: 15px;"><strong> Mês / Ano</strong></h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                                <div class="form-group col-md-2">
+                                                                </div>
+                                                            <div class="form-group col-md-1" >
+                                                                <h6 style="text-align: center; background-color: aliceblue;  padding:5px;font-size: 15px;"><strong>SETOR:</strong></h6>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <h6 style="text-align: center; color: #8D1D2E; background-color: aliceblue;  padding:5px; font-size: 15px;"><strong>{if="$selector=''"}{else}{$names}{/if}</strong></h6>
+                                                            </div>
+                                                                <div class="form-group col-md-2" >
+                                                                </div>
+                                                            <div class="form-group col-md-1" style="padding:10px;">
+                                                                <h6 style="text-align: center; color: #000000; background-color: aliceblue; font-size: 15px;">{if="$selector=''"}{else}{$month} / {$year}{/if}</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="text-center">
+                                                        <button class="btn btn-primary mt-3 no-print" onclick="window.print();">Imprimir</button>
+                                                    </div>  -->
+                                                    <br>
+                                                        <div class="card-body register-card-body"  style="opacity: 400rem;">
+                                                
+                                                        <p class="login-box-msg"></p>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                        <h6 class="text-center"><strong>STATUS DAS NOTIFICAÇÕES RECEBIDAS NO MÊS</strong></h6>
+                                                                        
+                                                                    </div><div class="form-group col-md-12">
+                                                                        <canvas id="statusNotificationsByMonthChartCado" width="250" height="250"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="col-md-12 bg-gray p-3 mb-3"style="height: 35px;">
+                                                                        <h6 class="text-center"><strong>STATUS DAS NOTIFICAÇÕES RECEBIDAS NO ANOS</strong></h6>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <canvas id="statusNotificationsByYearChartCado" width="250" height="250"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="col-md-12 bg-gray p-3 mb-3"style="height: 35px;">
+                                                                        <h6 class="text-center"><strong>STATUS DAS NOTIFICAÇÕES REALIZADA PELO SETORS POR MÊS</strong></h6>
+                                                                    </div>
+                                                                        <div class="form-group col-md-12">
+                                                                        <canvas id="notificationsBySectorByMonthChartCante" width="250" height="250"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="col-md-12 bg-gray p-3 mb-3"style="height: 35px;">
+                                                                        <h6 class="text-center"><strong>STATUS DAS NOTIFICAÇÕES REALIZADA PELO SETORS POR ANO</strong></h6>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <canvas id="notificationsBySectorByYearChartCante" width="250" height="250"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="col-md-12 bg-gray p-3 mb-3"style="height: 35px;">
+                                                                    <h6 class="text-center"><strong>OCORRENCIA DE NOTIFICAÇÕES REALIZADA POR MÊS E TOTAL DE TODOS OS MESES</strong></h6>
+                                                                </div>
+                                                                
+                                                                <div class="form-group col-md-12">
+                                                                    <canvas id="notificationsByMonthChartVertical" width="800" height="400"></canvas>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="text-center" >
+                                                                <button class="btn btn-warning mt-3 no-print" onclick="downloadDivAsJpg()">Download do boletim</button>
+                                                            </div> -->
+                                                        </div><!-- /.card-body -->
+                                                </div><!--Download-->
+                                            </div><!-- First card boletim -->
+                                </div><!-- /.container-fluid -->
+                                {/if}
+                            </section>
+                            <!-- Second boletim -->
+                            <!-- Main content -->
+                                <section class="content">
+                                    <div class="row" >
+                                        <div class="col-md-12">
+                                            <div class="card wow fadeInLeftBig"> <!-- Second card boletim -->
+                                                <div class="container ">
+                                                    <br>
+                                                        <!-- Second boletim -->
+                                                        {if="isset($_POST['month']) && isset($_POST['year']) && $_POST['month'] != '' && $_POST['year'] != ''"}
+                                                <div class="text-center" >
+                                                    <button class="btn btn-warning mt-3 no-print2" onclick="downloadDivAsJpg2()">Download do boletim Classificação</button>
+                                                </div>
+                                                <br>
+                                                <div id="contentdownload2"> 
+                                                        <div class="card-header-reports" style="background-color: #c8080e; height: 135px;" > 
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-2" style="padding:10px;">
+                                                                    <img src="/res/admin/dist/img/logoshineray.png" width="180" height="65">
+                                                                </div>
+                                                                <div class="form-group col-md-8" style="padding:10px;">
+                                                                    <h3 style="text-align: center; color: aliceblue; font-size: 30px">Boletim da Qualidade e Segurança do Paciente</h3>
+                                                                </div>
+                                                                <div class="form-group col-md-1">
+                                                                </div>
+                                                                <div class="form-group col-md-1" style="padding:10px;">
+                                                                    <h6 style="text-align: center; background-color: aliceblue;padding:5px; font-size: 15px;"><strong> Mês / Ano</strong></h6>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                    <div class="form-group col-md-2">
+                                                                    </div>
+                                                                <div class="form-group col-md-1" >
+                                                                    <h6 style="text-align: center; background-color: aliceblue;  padding:5px;font-size: 15px;"><strong>SETOR:</strong></h6>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <h6 style="text-align: center; color: #8D1D2E; background-color: aliceblue; padding:5px; font-size: 15px;"><strong>{if="$selector=''"}{else}{$names}{/if}</strong></h6>
+                                                                </div>
+                                                                    <div class="form-group col-md-2" >
+                                                                    </div>
+                                                                <div class="form-group col-md-1" style="padding:10px;">
+                                                                    <h6 style="text-align: center; color: #000000; background-color: aliceblue; font-size: 15px;">{if="$selector=''"}{else}{$month} / {$year}{/if}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <div class="text-center">
+                                                            <button class="btn btn-primary mt-3 no-print2" onclick="window.print();">Imprimir</button>
+                                                        </div>  -->
+                                                        <br>
+                                                            <div class="card-body register-card-body"  style="opacity: 400rem;">
+                                                    
+                                                            <p class="login-box-msg"></p>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-6">
+                                                                        <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                            <h6 class="text-center"><strong>CLASSIFICAÇÃO DA OCORRÊNCIA / MÊS</strong></h6>
+                                                                            
+                                                                        </div><div class="form-group col-md-12">
+                                                                            <canvas id="notificationsByMonthChartHorizontalOco" width="250" height="250"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group col-md-6">
+                                                                        <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                            <h6 class="text-center"><strong>CLASSIFICAÇÃO DA OCORRÊNCIA / ANO</strong></h6>
+                                                                        </div>
+                                                                        <div class="form-group col-md-12">
+                                                                            <canvas id="notificationsByYearChartHorizontalOco" width="250" height="250"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-6">
+                                                                        <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                            <h6 class="text-center"><strong>GRAU DO DANO / ANO</strong></h6>
+                                                                        </div>
+                                                                            <div class="form-group col-md-12">
+                                                                            <canvas id="notificationsByMonthChartVerDano" width="250" height="250"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group col-md-6">
+                                                                        <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                            <h6 class="text-center"><strong>GRAU DO DANO / ANO</strong></h6>
+                                                                        </div>
+                                                                        <div class="form-group col-md-12">
+                                                                            <canvas id="notificationsByYearChartVerDano" width="250" height="250"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="form-group col-md-6">
+                                                                        <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                            <h6 class="text-center"><strong>DESCRIÇÃO DA OCORRÊNCIA / MÊS</strong> - Metas de segurança</h6>
+                                                                            <!-- <h6 class="text-center">Metas de segurança</h6> -->
+                                                                        </div>
+                                                                            <div class="form-group col-md-12">
+                                                                            <canvas id="notificationsByMonthChartVerDesoco" width="250" height="250"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group col-md-6">
+                                                                        <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                            <h6 class="text-center"><strong>DESCRIÇÃO DA OCORRÊNCIA / ANO</strong> - Metas de segurança</h6>
+                                                                              <!-- <h6 class="text-center">Metas de segurança</h6> -->
+                                                                        </div>
+                                                                            <div class="form-group col-md-12">
+                                                                            <canvas id="notificationsByYearChartVerDesoco" width="250" height="250"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- /.card-body -->
+                                                    </div><!--Download-->
+                                                </div>
+                                            </div><!-- Second card boletim -->
+                                        </div><!-- /.row -->
+                                    </div><!-- /.container-fluid -->
+                                    {/if}
+                        </section>  <!-- Second boletim -->
+                          <!-- Third boletim -->
+                            <!-- Main content -->
+                            <section class="content">
+                                <div class="row" >
+                                    <div class="col-md-12">
+                                        <div class="card wow fadeInLeftBig"> <!-- third card boletim -->
+                                            <div class="container ">
+                                                <br>
+                                                    <!-- Third boletim -->
+                                                    {if="isset($_POST['month']) && isset($_POST['year']) && $_POST['month'] != '' && $_POST['year'] != ''"}
+                                            <div class="text-center" >
+                                                <button class="btn btn-warning mt-3 no-print3" onclick="downloadDivAsJpg3()">Download do boletim Tipo/Processo</button>
+                                            </div>
+                                            <br>
+                                            <div id="contentdownload3"> 
+                                                    <div class="card-header-reports" style="background-color: #c8080e; height: 135px;" > 
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-2" style="padding:10px;">
+                                                                <img src="/res/admin/dist/img/logoshineray.png" width="180" height="65">
+                                                            </div>
+                                                            <div class="form-group col-md-8" style="padding:10px;">
+                                                                <h3 style="text-align: center; color: aliceblue; font-size: 30px">Boletim da Qualidade e Segurança do Paciente</h3>
+                                                            </div>
+                                                            <div class="form-group col-md-1">
+                                                            </div>
+                                                            <div class="form-group col-md-1" style="padding:10px;">
+                                                                <h6 style="text-align: center; background-color: aliceblue;padding:5px;font-size: 15px;"><strong> Mês / Ano</strong></h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                                <div class="form-group col-md-2">
+                                                                </div>
+                                                            <div class="form-group col-md-1" >
+                                                                <h6 style="text-align: center; background-color: aliceblue; padding:5px; font-size: 15px;"><strong>SETOR:</strong></h6>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <h6 style="text-align: center; color: #8D1D2E; background-color: aliceblue; padding:5px; font-size: 15px;"><strong>{if="$selector=''"}{else}{$names}{/if}</strong></h6>
+                                                            </div>
+                                                                <div class="form-group col-md-2" >
+                                                                </div>
+                                                            <div class="form-group col-md-1" style="padding:10px;">
+                                                                <h6 style="text-align: center; color: #000000; background-color: aliceblue;font-size: 15px;">{if="$selector=''"}{else}{$month} / {$year}{/if}</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="text-center">
+                                                        <button class="btn btn-primary mt-3 no-print2" onclick="window.print();">Imprimir</button>
+                                                    </div>  -->
+                                                    <br>
+                                                        <div class="card-body register-card-body"  style="opacity: 400rem;">
+                                                
+                                                        <p class="login-box-msg"></p>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                        <h6 class="text-center"><strong>TIPOS DE INCIDENTE / MÊS</strong></h6>
+                                                                        
+                                                                    </div><div class="form-group col-md-12">
+                                                                        <canvas id="notificationsByMonthChartHorizontalIn" width="250" height="250"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                        <h6 class="text-center"><strong>TIPOS DE INCIDENTE - ANO</strong></h6>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <canvas id="notificationsByYearChartHorizontalIn" width="250" height="250"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                        <h6 class="text-center"><strong>PROCESSO MAIS NOTIFICADOS PELO SETOR / ANO</strong></h6>
+                                                                    </div>
+                                                                        <div class="form-group col-md-12">
+                                                                        <canvas id="notificationsByMonthChartHorizontalPro" width="250" height="250"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <div class="col-md-12 bg-gray p-3 mb-3" style="height: 35px;">
+                                                                        <h6 class="text-center"><strong>PROCESSOS MAIS NOTIFICADOS PELO SETOR / ANO</strong></h6>
+                                                                    </div>
+                                                                    <div class="form-group col-md-12">
+                                                                        <canvas id="notificationsByYearChartHorizontalPro" width="250" height="250"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- /.card-body -->
+                                                </div><!--Download-->
+                                            </div>
+                                        </div> <!-- third card boletim -->
+                                    </div><!-- /.row -->
+                                </div><!-- /.container-fluid -->
+                                {/if}
+                    </section> <!-- Third boletim -->
+
+
+            </div>
+            <!-- /.content-header -->
+        </div>
+            </body>
+               
+</div>
+

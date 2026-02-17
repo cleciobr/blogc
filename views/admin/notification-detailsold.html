@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acrescentar dias à data atual</title>
+</head>
+<body>
+
+<form>
+  <label for="opcao">Escolha uma opção:</label>
+  <select id="opcao">
+    <option value="0">Selecione</option>
+    <option value="3">Moderado + 3 dias</option>
+    <option value="5">Classificação + 5 dias</option>
+    <option value="10">Dano + 10 dias</option>
+    <!-- Adicione outras opções conforme necessário -->
+  </select>
+  <br>
+  <label for="data">Data:</label>
+  <input type="text" id="data" readonly>
+</form>
+
+<script>
+document.getElementById('opcao').addEventListener('change', function() {
+  var opcaoSelecionada = parseInt(this.value);
+  if (opcaoSelecionada > 0) {
+    var dataAtual = new Date();
+    var novaData = new Date(dataAtual.getTime() + opcaoSelecionada * 24 * 60 * 60 * 1000);
+    var dia = novaData.getDate();
+    var mes = novaData.getMonth() + 1;
+    var ano = novaData.getFullYear();
+    var dataFormatada = dia + '/' + mes + '/' + ano;
+    document.getElementById('data').value = dataFormatada;
+  } else {
+    document.getElementById('data').value = ''; 
+  }
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+<!-- ########################################################################################################## -->
+<form role="form" action="" method="post">
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label for="dt_notificacao">Data da Notificação*:</label>
+        <input type="text" class="form-control" id="dt_notificacao" name="dt_notificacao" value="{function="DateAtual()"}" readonly >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nome_pac">Nome do Paciente: </label>
+        <input type="text" class="form-control" placeholder="Digite o nome do paciente" id="nome_pac" name="nome_pac">
+      </div>
+        <div class="form-group col-md-2">
+          <label for="dt_nasc">Data de Nasc.*:</label>
+          <input type="date" class="form-control" id="dt_nasc" name="dt_nasc" >
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="atendimento">Atendimento:</label>
+          <input type="number" class="form-control" id="atendimento" name="atendimento" placeholder="Digite o atendimento">
+        </div>
+      
+        <div class="form-group col-md-6">
+          <label for="registro">Registro:</label>
+          <input type="number" class="form-control" id="registro" name="registro" placeholder="Digite o número do registro">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="dt_internamento">Data de internamento*:</label>
+          <input type="date" class="form-control" id="dt_internamento" name="dt_internamento" >
+        </div>
+      
+        <div class="form-group col-md-2">
+          <label for="dt_oco">Data Ocorrencia*:</label>
+          <input type="date" class="form-control" id="dt_oco" name="dt_oco" >
+        </div>
+        <div class="form-group col-md-2">
+          <label for="hr_oco">Hora da ocorrência*:</label>
+          <input type="time" class="form-control" id="hr_oco" name="hr_oco" >
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="st_cante">Setor Notificante*: </label>
+            <select required type="text" id="st_cante" name="st_cante" class="form-control"> 
+              <option disabled selected value="">Escolha o setor notificante
+              {loop="$departments"}
+              <option value="{$value.name}">{$value.name}
+              {/loop}
+            </select>
+          </div>
+        <div class="form-group col-md-6">
+            <label for="st_cado">Setor Notificado*: </label>
+            <select 
+              required
+              type="text"
+              id="st_cado"
+              name="st_cado" 
+              class="form-control"
+            >
+              <option disabled selected value="">Escolha o setor notificado
+                {loop="$departments"}
+              <option value="{$value.name}">{$value.name}
+                {/loop}
+            </select>
+          </div>
+       </div>
+       <div class="form-group">
+        <label for="class_incident">Classificação do incidente: </label>
+        <input type="text" class="form-control" placeholder="Digite a classificação do incidente" id="class_incident" name="class_incident">
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="class_occ">Classificação da ocorrência: </label>
+          <input type="text" class="form-control" placeholder="Escolha a classificação da ocorrência" id="class_occ" name="class_occ">
+        </div> 
+        <div class="form-group col-md-6">
+          <label for="degree_damg">Classificação do dano: </label>
+          <input type="text" class="form-control" placeholder="Escolha a classificação do dano" id="degree_damg" name="degree_damg">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="descricao">Descrição da ocorrência*: </label>
+        <textarea id="descricao" name="descricao" class="form-control" placeholder="Descreva a ocorrência com todos os detalhes" rows="5" required ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="solution">O que foi realizado após a ocorrência / Ação imediata? </label>
+        <textarea 
+          rows="5"
+          id="solution"
+          name="solution"
+          class="form-control"
+          placeholder="Descreva a ocorrência com todos os detalhes"
+        ></textarea>
+      </div>
+     
+    </div>
+<!-- ########################################################################################################## -->
+
+
+
+
+
+
+

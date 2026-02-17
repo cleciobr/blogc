@@ -1,0 +1,80 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Lista de Conclusão verificaçãos</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/conclusions">Conclusão verificaçãos</a></li>
+            <li class="breadcrumb-item active">Atualizar Conclusão verificação</li>
+        </ol>
+        </div>
+    </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header alert-info">
+            <h3 class="card-title">Atualizar Conclusão verificação</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" action="/admin/conclusions/{$conclusion.id_conclusion}" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Nome do segurança do paciente</label>
+                    {if="$conclusion.id_conclusion <= '2'"}
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome do segurança do paciente" value="{$conclusion.name}" required disabled>
+                    {else}
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome do segurança do paciente" value="{$conclusion.name}" required>
+                    {/if}
+                </div>
+                <div class="form-group">
+                    <label for="descrition">descrição do segurança do paciente</label>
+                    <label for="descrition"><span style="color: red;">(Este campo não é obrigatório)</span></label>
+                    {if="$conclusion.id_conclusion <= '2'"}
+                    <input type="text" class="form-control" id="descrition" name="descrition" placeholder="Descrição do segurança do paciente" value="{$conclusion.descrition}" required disabled>
+                    {else}
+                    <input type="text" class="form-control" id="descrition" name="descrition" placeholder="Descrição do segurança do paciente" value="{$conclusion.descrition}">
+                    {/if}
+                </div>
+                <div class="form-group">
+                    <label for="cod_conclusion">Código do segurança do paciente</label>
+                    <label for="cod_conclusion"><span style="color: red;">(Este campo não é obrigatório)</span></label>
+                    {if="$conclusion.id_conclusion <= '2'"}
+                    <input type="text" class="form-control" id="cod_conclusion" name="cod_conclusion" placeholder="Digite o código do segurança do paciente" value="{$conclusion.cod_conclusion}" required disabled>
+                   {else}
+                    <input type="text" class="form-control" id="cod_conclusion" name="cod_conclusion" placeholder="Digite o código do segurança do paciente" value="{$conclusion.cod_conclusion}">
+                   {/if}
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                {if="$conclusion.id_conclusion <= '2'"}{else}
+                <button type="submit" class="btn btn-primary alert-info">Salvar</button>
+                {/if}
+            </div>
+            </form>
+        </div>
+        <!-- /.card -->
+        </div>
+        <!--/.col  -->
+    </div>
+    <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

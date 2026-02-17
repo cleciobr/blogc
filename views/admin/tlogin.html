@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html >
+<head> 
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Acesso | Administrativo</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/res/admin/dist/css/adminlte.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="/res/admin/plugins/iCheck/square/blue.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Link do favicon -->
+  <link rel="shortcut icon" href="/res/admin/dist/img/shineray2.ico" type="image/x-icon">
+  <!-- Your custom styles (optional) -->
+  <link href="/res/site/css/style.css" rel="stylesheet" />
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/res/admin/dist/css/style.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="/res/admin/plugins/font-awesome/css/font-awesome.min.css">
+   <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- <link rel="stylesheet" href="/res/admin/dist/css/all.5.15.4.min.css" /> -->
+
+  
+</head>
+    <!-- <nav
+      class="btn navbar-expand" >
+      <div>
+        <a href="/" class="btn btn-primary btn-block alert-info" id="btn-login"><i class="fa fa-arrow-left mr-2"></i>Voltar para o canal</a>
+      </div>
+      </div>
+    </nav> -->
+<!-- <body class="hold-transition login-page"> -->
+   <div class="card-body">
+          <!-- /.col -->
+          <div class="col">
+            <a href="/" class="btn btn-primary btn-primary"><i class="fa fa-arrow-circle-left"></i> Voltar ao intranet</a>
+          </div>
+          <!-- /.col -->
+      </div>
+<body class="hold-transition login-img" >
+
+<div class="login-box">
+  <!-- /.login-logo -->
+  <div class="card" id="logincard">
+    <div class="card-body login-card-body">
+      <a href="/">
+      <div class="login-logo small-box nav-link font-login login-shi" >
+        <b>Acesso Administrativo</b>
+      </div></a>
+        <p class="login-box-msg"></p>
+      <form action="/admin/login" method="post">
+        <div class="form-group has-feedback">
+          <input type="text" id="login" name="login" class="form-control" placeholder="Usuário" required>
+          
+        </div>
+        <div class="form-group has-feedback">
+          <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required>
+          
+        </div>
+        {if="$erro == 1"}
+        <p style="color: #c8080e">Usuário ou senha incorreta.</p>
+        {/if}
+        <div class="row">
+          
+          <!-- /.col -->
+          <div class="col">
+            <button type="submit" class="btn btn-primary btn-block btn-danger" id="btn-login">Entrar</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <br>
+      <p class="mb-1" style="text-align: center;">
+        Esqueceu a senha?
+      </p>
+      <p class="mb-0" style="text-align: center;">
+        <a href="http://glpi" target="_blank">Clique aqui para abrir um chamado</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="/res/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/res/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- iCheck -->
+<script src="/res/admin/plugins/iCheck/icheck.min.js"></script>
+
+<script src="/res/admin/dist/js/validaLogin.js"></script>
+
+
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass   : 'iradio_square-blue',
+      increaseArea : '20%' // optional
+    })
+  })
+</script>
+</body>
+</html>

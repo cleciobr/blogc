@@ -1,0 +1,11 @@
+Shineray
+
+Nome do funcionário: Gotham Bold / 17pt / Cor HEX: #000000
+Setor: Gotham Medium / 12pt / Cor HEX: #e30613
+Cidade, Telefone, Ramal e email: Gotham Medium / 8pt / Cor HEX: #666666
+
+Grupo BCI
+
+Nome do funcionário: Gotham Bold / 17pt / Cor HEX: #000000
+Setor: Gotham Medium / 12pt / Cor HEX: #183e7a
+Cidade, Telefone, Ramal e email: Gotham Medium / 8pt / Cor HEX: #666666

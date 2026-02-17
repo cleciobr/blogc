@@ -1,0 +1,131 @@
+@CHARSET "ISO-8859-1";
+*{
+	margin: 0;
+	padding: 0;
+ }
+		
+body {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;
+	}
+.nomeGT {
+	font-family: arial;
+	font-size: 18px;color: #000000;
+	font-weight: bold;
+	position:absolute;
+	top: 3px;
+	left: 228px;
+	}
+.setorGT {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 12px;color: #787270;
+	font-weight: bold;
+	position:absolute;
+	top: 20px;
+	left: 230px;
+	}
+.EndGT {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #787270;
+	font-weight: normal;
+	position:absolute;
+	top: 80px;
+	left: 280px;
+	}
+.CEPGT {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #787270;
+	font-weight: normal;
+	position:absolute;
+	top: 90px;
+	left: 315px;
+	}
+.FoneGT {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #000000;
+	font-weight: normal;
+	position:absolute;
+	top: 40px;
+	left: 250px;
+	border: 0px solid;
+ 	border-color:black;
+	}
+.nomeTelGT {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #837e7c;
+	font-weight: bold;
+ 	}
+.nomeSHI {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 12px;color: #f72b0d;
+	font-weight: bold;
+	font-style: normal;
+	position:absolute;
+	top: 3px;
+	left: 325px;
+	}
+.setorSHI {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #060000;
+	font-weight: bold;
+	position:absolute;
+	top: 20px;
+	left: 330px;
+	}
+.EndSHI {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #787270;
+	font-weight: bold;
+	position:absolute;
+	top: 75px;
+	left: 365px;
+	}
+.CEPSHI {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #787270;
+	font-weight: bold;
+	position:absolute;
+	top: 90px;
+	left: 315px;
+	}
+.FoneSHI {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #837e7c;
+	font-weight: bold;
+	position:absolute;
+	top: 35px;
+	left: 340px;
+	border: 0px solid;
+ 	border-color:black;
+	}
+.TituloSHI {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #837e7c;
+	font-weight: bold;
+	position:absolute;
+	top: 63px;
+	left: 355px;
+	border: 0px solid;
+ 	border-color:black;
+	}
+.nomeTelSHI {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #837e7c;
+	font-weight: bold;
+ 	}
+.SiteSHI {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 10px;color: #000000;
+	font-weight: bold;
+	position:absolute;
+	top: 85px;
+	left: 370px;
+	}
+.gruposhi {
+	font-family: arial;
+	font-size: 18px;color: #000000;
+	font-weight: bold;
+	position:absolute;
+	top: 3px;
+	left: 250px;
+	}

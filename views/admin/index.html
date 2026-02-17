@@ -1,0 +1,165 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<section>
+<div class="content-wrapper">
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Dashboard</h1>
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+{if="getUserInadmin() == 0"}
+<div class="content mt-4">
+  <div class="container-fluid">
+    
+    <!-- Header Modernizado -->
+<div class="row mb-4">
+  <div class="col-12">
+    <!-- p-4 e shadow-sm para o card, d-flex e flex-wrap para não quebrar em telas médias -->
+    <div class="p-4 bg-white shadow-sm rounded d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+      
+      <div class="mb-3 mb-md-0">
+        <!-- d-flex e align-items-center para alinhar o texto "Painel Admin" com a logo ao lado -->
+        <h1 class="font-weight-bold mb-1 d-flex align-items-center flex-wrap">
+          Painel Admin 
+          <img src="/res/site/img/shineray-motos-logo-01.png" class="ml-2" style="width: 120px; height: auto;" />
+        </h1>
+        
+        <p class="text-muted mb-2">
+          Gestão interna de processos. 
+          Hoje é <strong>{function="DateAtual()"}</strong> 
+          às <strong id="relogio-real">00:00:00</strong>
+        </p>
+
+        <!-- Imagem secundária com margem controlada -->
+        <div class="mt-2">
+          <img src="/res/site/img/sbm2.png" class="img-fluid" style="max-height: 180px;" /> 
+        </div>
+      </div>
+      
+      <!-- d-flex e gap (via classes de margem mr-2) para os botões -->
+      <div class="d-none d-md-flex align-items-center">
+        <a class="btn btn-outline-danger mr-2 text-nowrap" href="/admin/ramais">
+          <i class="fa fa-plus mr-1"></i> Ramais
+        </a>
+        <a class="btn btn-outline-danger mr-2 text-nowrap" href="/admin/departments">
+          <i class="fa fa-plus mr-1"></i> Setores
+        </a>
+        <a class="btn btn-danger text-nowrap" href="/admin/events">
+          <i class="fa fa-plus mr-1"></i> Eventos
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+    <!-- Cards de Métricas Estilo Dashboard -->
+    <div class="row">
+      <div class="col-lg-3 col-6">
+        <div class="card border-0 shadow-sm rounded-lg overflow-hidden">
+          <div class="card-body p-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="text-uppercase text-muted small font-weight-bold mb-0">Hoje</p>
+                <h2 class="font-weight-bold mb-0">{function="totalNotificToday()"}</h2>
+              </div>
+              <div class="bg-success text-white rounded-circle p-3" style="opacity: 0.8;">
+                <i class="fa fa-bell fa-lg"></i>
+              </div>
+            </div>
+            <a href="/admin/" class="stretched-link small text-success font-weight-bold">Ver mais</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-6">
+        <div class="card border-0 shadow-sm rounded-lg overflow-hidden">
+          <div class="card-body p-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <p class="text-uppercase text-muted small font-weight-bold mb-0">Mês</p>
+                <h2 class="font-weight-bold mb-0">{function="totalNotificMonth()"}</h2>
+              </div>
+              <div class="bg-info text-white rounded-circle p-3">
+                <i class="fa fa-calendar fa-lg"></i>
+              </div>
+            </div>
+            <a href="/admin/" class="stretched-link small text-info font-weight-bold">Ver mais</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total -->
+      <!-- ... -->
+    </div>
+
+    <!-- Filtros Rápidos / Status -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm p-3">
+          <div class="d-flex flex-wrap gap-2 align-items-center">
+            <span class="mr-3 text-muted"><strong>Atalho:</strong></span>
+            <a class="btn btn-sm btn-outline-success px-3 rounded-pill" href="/admin/birthday">Enviar Aniversariante do dia</a>
+            <a class="btn btn-sm btn-outline-warning px-3 rounded-pill" href="/admin/ramais">Cadastrar/altera ramais</a>
+            <a class="btn btn-sm btn-outline-danger px-3 rounded-pill" href="/admin/users">Cadastrar/ alterar Usuários</a>
+            <a class="btn btn-sm btn-outline-primary px-3 rounded-pill" href="/admin/posts">Cadastrar/ alterar banner</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feed de Postagens -->
+    <h4 class="mt-5 mb-4 font-weight-bold">Últimas Postagens</h4>
+    <div class="row">
+      {loop="$posts"}
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="card border-0 shadow-sm h-100 transition-hover">
+          <img src="{$value.desphoto}" class="card-img-top" style="height: 160px; object-fit: cover; border-radius: 8px 8px 0 0;" alt="{$value.titulo}">
+          <div class="card-body d-flex flex-column">
+            <h6 class="font-weight-bold text-dark">{$value.titulo}</h6>
+            <p class="small text-muted flex-grow-1">{function="cortaStr($value.texto)"}...</p>
+            <div class="btn-group mt-2">
+              <a href="/blog/{$value.id_post}/{$value.titulo}" class="btn btn-light btn-sm border">Ver</a>
+              <a href="/admin/posts/{$value.id_post}" class="btn btn-light btn-sm border text-primary"><i class="fa fa-edit"></i> Editar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/loop}
+    </div>
+
+  </div>
+</div>
+
+<style>
+  .transition-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+  .gap-2 { gap: 0.5rem; }
+  .rounded-lg { border-radius: 12px !important; }
+</style>
+{/if}
+                  <!-- FIM IF de admin-->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+          </div>
+          <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+      </section>

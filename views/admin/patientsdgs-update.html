@@ -1,0 +1,67 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Lista de Colaboradores</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/patientsdgs">Colaboradores</a></li>
+            <li class="breadcrumb-item active">Atualizar Colaboradore</li>
+        </ol>
+        </div>
+    </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header alert-info">
+            <h3 class="card-title">Atualizar Colaboradore</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" action="/admin/patientsdgs/{$patientdgs.COD_PAC}" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="COD_PAC">Registro do colaborador</label>
+                    <input type="text" class="form-control" id="COD_PAC" name="COD_PAC" placeholder="Digite o código do setor" 
+                    value="{if="$patientdgs.COD_PAC != ''"}{$patientdgs.COD_PAC}{else}{/if}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="NOME_SEGU">Nome do colaborador</label>
+                    <input type="text" class="form-control" id="NOME_SEGU" name="NOME_SEGU" placeholder="Digite o nome do setor" 
+                    value="{if="isset($patientdgs.NOME_SEGU) && $patientdgs.NOME_SEGU != ''"}{$patientdgs.NOME_SEGU}{else}{/if}" required>
+                </div>
+                <div class="form-group">
+                    <label for="LEITO">Leito</label>
+                    <input type="text" class="form-control" id="LEITO" name="LEITO" placeholder="Digite o nome do setor" 
+                    value="{if="isset($patientdgs.LEITO) && $patientdgs.LEITO != ''"}{$patientdgs.LEITO}{else}{/if}" required readonly>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary alert-info">Salvar</button>
+            </div>
+            </form>
+        </div>
+        <!-- /.card -->
+        </div>
+        <!--/.col  -->
+    </div>
+    <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

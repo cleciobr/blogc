@@ -1,0 +1,577 @@
+<body id="top">
+  <header>
+    {loop="$popups"} {if="$value.popup_active == $displayPopupControl"}
+    <div
+      class="modal fade"
+      id="{$key}"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <!-- Change class .modal-sm to change the size of the modal -->
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title w-100" id="myModalLabel">
+              {$value.popup_title}
+            </h2>
+            <button
+              type="button"
+              id="btn-{$key}"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img src="{$value.desphoto}" alt="popups" class="img-fluid" />
+          </div>
+        </div>
+      </div>
+    </div>
+    {else} {$displayPopupControl = 1} {/if} {/loop}
+    <!-- <!-- Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <!--  Change class .modal-sm to change the size of the modal -->
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title w-100" id="myModalLabel">
+              Manuais e Vídeos do Prontuário Eletrônico
+            </h2>
+            <button
+              type="button"
+              id="btn-close"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <a href="/docs">
+              <img
+                src="/res/site/img/intranet-docs.jpg"
+                alt="popups"
+                class="img-fluid"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal-->
+Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <!--  Change class .modal-sm to change the size of the modal --> 
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title w-100" id="myModalLabel">
+              Manuais e Vídeos do Prontuário Eletrônico
+            </h2>
+            <button
+              type="button"
+              id="btn-close"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <a href="/docs">
+              <img
+                src="/res/site/img/intranet-docs.jpg"
+                alt="popups"
+                class="img-fluid"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal-->
+
+    <!-- Navbar -->
+    <nav
+      class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"
+      id="scrollNav"
+    >
+      <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand" href="/">
+          <img class="logo" src="/res/site/img/logo.png" alt="Intranet" />
+          <strong>Intranet</strong>
+        </a>
+
+        <!-- Collapse -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/events">Eventos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/notificacao">Notificação</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/docs">Docs</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link js-scroll-trigger" href="#ramais"> Ramais </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Ferramentas</a
+              >
+              <div
+                class="dropdown-menu "
+                aria-labelledby="navbarDropdown"
+                style="background: #8d1d2e"
+              >
+                <a class="dropdown-item" href="//glpi/" target="_blank"
+                  >Helpdesk</a
+                >
+                <a class="dropdown-item" href="//Email" target="_blank"
+                  >Email</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="https://t"
+                  target="_blank"
+                  >E</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="//sislu.dasa.com.br"
+                  target="_blank"
+                  >Cerpe</a
+                >
+                <a class="dropdown-item" href="/convenants-list"
+                  >Lista de Convênios</a
+                >
+              </div>
+            </li>
+          </ul>
+
+          <!-- Right -->
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a
+                href="http://shineray.com.br"
+                class="nav-link border border-light rounded"
+                target="_blank"
+              >
+                <i class="fa fa-medkit mr-2"></i>Shineray
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!--Carousel Wrapper-->
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide carousel-fade"
+      data-ride="carousel"
+    >
+      <div class="carousel-inner">
+        {loop="$posts"} {if="$value.post_active == $displayBannerControl"}
+        {if="$classActiveControl == 2"}
+        <div class="carousel-item active zoom">
+          <a href="/blog/{$value.id_post}/{$value.titulo}"
+            ><img
+              class="d-block w-100 img-fluid"
+              src="{$value.desphoto}"
+              alt="{$value.titulo}"
+          /></a>
+        </div>
+        {$classActiveControl = 1} {else}
+        <div class="carousel-item zoom">
+          <a href="/blog/{$value.id_post}/{$value.titulo}"
+            ><img
+              class="d-block w-100 img-fluid"
+              src="{$value.desphoto}"
+              alt="{$value.titulo}"
+          /></a>
+        </div>
+        {/if} {else} {$displayBannerControl = 1} {/if} {/loop}
+      </div>
+
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <!--/.Carousel Wrapper-->
+  </header>
+
+  <!--Main layout-->
+  <main>
+    <div class="container">
+
+     <section class="mt-5 wow fadeIn">
+       <div class="row">
+         <div class="col">
+           <h2 class="h2 mb-3" style="text-align: center">
+           {loop="$event"} {$value.name_event} {/loop}
+           </h2>
+         </div>
+       </div>
+       <!-- Grid row -->
+       <div class="row mt-3">
+       <!--First columnn-->
+         {loop="$photos"}
+         <div class="col-lg-4 col-md-6 mb-3 zoom">
+           <a data-fancybox="gallery" href="{$value.desphoto}"
+            ><img
+          src="{$value.desphoto}"
+          style="width: 400px; height: 200px;"
+          alt="thumbnail"
+          class="img-thumbnail img-fluid z-depth-1 mb-r"
+      /></a>
+    </div>
+    {/loop}
+  </div>
+  <!-- Grid row -->
+
+  <!-- Grid row -->
+  <nav class="d-flex justify-content-center wow fadeIn">
+    <ul class="pagination">
+      <li class="page-item active">
+        <a class="page-link btn btn-primary" href="/events">Ver Eventos</a>
+      </li>
+    </ul>
+  </nav>
+</section>
+
+<hr class="my-5" />
+
+
+     <!-- Section icones -->
+         <section class="mt-5 wow fadeIn" id="icons">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="centralizar">
+              <a href="/events"
+                ><img
+                  src="/res/site/img/svg/envelope.svg" width="120" height="130"
+                  class="img-fluid img-responsive"
+              /></a>
+            </div>
+             <div class="text-icons">
+              <h3 class="h3 mb-3">Eventos</h3>
+              <p>
+                Eventos no intranet.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="centralizar">
+              <a class="js-scroll-trigger" href="/treinamentos"
+                ><img
+                  src="/res/site/img/svg/aprender.svg"
+                  class="img-fluid img-responsive" width="120" height="130"
+              /></a>
+            </div>
+            <div class="text-icons">
+              <h3 class="h3 mb-3">Treinamentos importantes</h3>
+              <p>
+                "A mente que se abre a um novo conhecimento jamais retorna ao seu 
+                tamanho original. Cultive-a com diligência, pois o aprendizado 
+                constante é o combustível da alma."<br>
+                                              <div align="right">"Charles Spurgeon".</div>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-6 col-sm-12 mb-2">
+            <div class="centralizar">
+              <a
+                href="file://///svr04"
+                target="_blank"
+                ><img
+                  src="/res/site/img/svg/file.svg"
+                  class="img-fluid img-responsive" width="110" height="120"
+              /></a>
+            </div>
+            <div class="text-icons">
+              <h3 class="h3 mb-3">teste<br></h3>
+              <p>
+                Consulte o site shineray.
+                <br />
+                **
+              </p>
+
+              <!-- Basic dropdown -->
+              <!-- <div class="btn-group">
+                <button
+                  class="btn btn-primary dropdown-toggle"
+                  type="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Clique para obter credencial
+                </button>
+
+                <div class="dropdown-menu">
+                  <a class="dropdown-item"
+                    >Usuario: <strong>Visitante</strong></a
+                  >
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item">Senha: <strong>shineray</strong></a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+           <div class="col-md-6 col-sm-12">
+            <div class="centralizar">
+              <a href="https://protheus12.grupobci.rec.br:11000/webapp/" target="_blank"
+                ><img
+                  src="/res/site/img/protheus.jpg"  width="300" height="300"
+                  class="img-fluid img-responsive"
+              /></a>
+            </div>
+            <div class="text-icons">
+              <h3 class="h3 mb-3">Protheus</h3>
+              <p><h5 class="h6 mb-3">Por que o Protheus na Shineray?</h5> <br>
+                O sistema foi escolhido por ser robusto e modular, atendendo às 
+                necessidades complexas de uma montadora, incluindo o gerenciamento 
+                de estoque de peças, linha de montagem e conformidade com obrigações 
+                fiscais brasileiras. 
+                <br />
+                A Shineray atua com o apoio da TOTVS para impulsionar a eficiência 
+                operacional em sua fábrica, localizada em Pernambuco, e em sua rede de 
+                concessionárias. 
+              </p>
+              <div class="btn-group">
+                 <a href="https://protheus12.grupobci.rec.br:11000/webapp/" target="_blank"
+                >
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                >
+                  Clique para acessar PROTHEUS
+                </button></a>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="my-5" />
+
+      <!--Section: Main info-->
+      <section class="mt-5 wow fadeIn">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-md-6 mb-4">
+            <div class="project">
+              <div class="project__card">
+                <img
+                  src="/res/site/img/missao.jpeg"
+                  class="img-fluid z-depth-1-half"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-md-6 mb-4 ">
+            <div class="info">
+              <!-- Main heading -->
+              <h2 class="h2 mb-3">Missão, Visão e Valores</h2>
+              <p style="text-align: justify;">
+                Representam a identidade organizacional da instituição e
+                definem: a razão de sua existência (Missão), o objetivo a longo
+                prazo (Visão), e as crenças e ideias que formam a base da
+                organização (Valores).
+              </p>
+            </div>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!--Section: Main info-->
+
+      <hr class="my-5" />
+
+      <section class="mt-5 wow fadeIn">
+        <div class="class">
+          <h1 class="h1 mb-3" style="text-align: center">
+            Metas Internacionais de Segurança do Colaborador
+          </h1>
+          <p style="text-align: center">
+            A shineray implementa metas para segurança do colaborador com o <br />
+            objetivo de oferecer um ambiente cada vez mais seguro aos colaboradores,
+            acompanhantes e profissionais de saúde.
+          </p>
+        </div>
+        <br />
+
+        <div class="owl-carousel">
+          <div>
+            <img
+              src="/res/site/img/meta-1.jpg"
+              class="img-fluid px-4"
+              alt="Meta 1"
+            />
+          </div>
+          <div>
+            <img
+              src="/res/site/img/meta2.jpg"
+              class="img-fluid px-4"
+              alt="Meta 2"
+            />
+          </div>
+          <div>
+            <img
+              src="/res/site/img/meta3.jpg"
+              class="img-fluid px-4"
+              alt="Meta 3"
+            />
+          </div>
+          <div>
+            <img
+              src="/res/site/img/meta4New.jpg"
+              class="img-fluid px-4"
+              alt="Meta 4"
+            />
+          </div>
+          <div>
+            <img
+              src="/res/site/img/meta5.jpg"
+              class="img-fluid px-4"
+              alt="Meta 5"
+            />
+          </div>
+          <div>
+            <img
+              src="/res/site/img/meta6New.jpg"
+              class="img-fluid px-4"
+              alt="Meta 6"
+            />
+          </div>
+        </div>
+      </section>
+      <!--Section: Main info-->
+
+      <hr class="my-5" id="ramais" />
+
+      <section class="mt-5 mb-5 wow fadeIn">
+        <div class="tabelaRamal">
+          <div class="infoRamal">
+            <!-- Main heading -->
+            <h1 class="h1 mb-3" style="text-align: center">Lista de Ramais</h1>
+            <p style="text-align: center">
+              A shineray é muito grande não dá pra decorar todos os ramais
+              <br />
+              Digite o setor ou o ramal ou o colaborador e clique em
+              <strong>Pesquisar</strong> e faça uma consulta:
+            </p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <!--Table-->
+            <table
+              id="tabelaRamais"
+              class="table table-hover table-responsive-md table-fixed table-striped"
+            >
+              <!--Table head-->
+              <thead>
+                <tr>
+                  <th>Setor</th>
+                  <th>Ramal</th>
+                  <th>Colaborador</th>
+                </tr>
+              </thead>
+              <!--Table head-->
+
+              <!--Table body-->
+              <tbody>
+                {loop="$ramal"}
+                <tr>
+                  <th>{$value.setor}</th>
+                  <td>{$value.ramal}</td>
+                  <td>{$value.colaborador}</td>
+                </tr>
+
+                {/loop}
+              </tbody>
+              <!--Table body-->
+            </table>
+            <!--Table-->
+          </div>
+        </div>
+      </section>
+      <!--Main layout-->
+    </div>
+  </main>
+</body>

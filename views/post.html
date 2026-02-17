@@ -1,0 +1,80 @@
+{include="header"}
+  <!--Main Navigation-->
+  <!--Main layout-->
+  <main class="mt-5 pt-5">
+    <div class="container">
+      <!--Section: Post-->
+      <section class="mt-4">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col mb-4">
+            <!--Featured Image-->
+            <div class="card mb-4 wow fadeIn">
+              <img src="{$post.desphoto}" class="img-fluid" alt="" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <!--Card-->
+            <div class="card mb-4 wow fadeIn">
+              <!--Card content-->
+              <div class="card-body">
+                <blockquote class="blockquote">
+                  <footer class="blockquote-footer">
+                    <strong>Autor:</strong>
+                    <cite title="Source Title"> {$post.autor}</cite>
+                    <br />
+                    Atualizado em {function="formatDate($post.dtpost)"}
+                  </footer>
+                </blockquote>
+                <h4 class="mb-3 font-weight-bold dark-grey-text">
+                  <strong>{$post.titulo}</strong>
+                </h4>
+                <p style="text-align: justify;">
+                  {function="formataStr($post.texto)"}
+                </p>
+              </div>
+            </div>
+            <!--/.Card-->
+          </div>
+          <!--/ .Col-->
+          <div class="col-md-4 mb-4">
+            <div class="card mb-4 wow fadeIn">
+              <div class="card-header">Últimas Postagens</div>
+              <!--Card content-->
+              <div class="card-body">
+                <ul class="list-unstyled">
+                  {loop="$posts"}
+                  <li class="media my-4">
+                    <a href="/blog/{$value.id_post}/{$value.url_slug}"><img class="d-flex mr-3" src="{$value.desphoto}"
+                        alt="{$value.titulo}" style="height: 30px; width: 70px;" /></a>
+                    <div class="media-body">
+                      <a href="/blog/{$value.id_post}/{$value.url_slug}">
+                        <h5 class="mt-0 mb-1 font-weight-bold">
+                          {$value.titulo}
+                        </h5>
+                      </a>
+                      {function="cortaStr($value.texto)"}
+                    </div>
+                  </li>
+                  {/loop}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/ .Row-->
+      </section>
+      <!--Section: Post-->
+    </div>
+    <!--/. Container-->
+  </main>
+  <!--Main layout-->
+  <!-- botao scroll to top-->
+  <a class="scroll-to-top rounded" data-toggle="tooltip" data-placement="top" title="Voltar ao topo" href="#top"
+    style="display: inline;">
+    <i class="fa fa-angle-up"></i>
+  </a>
+  {include="footer"}

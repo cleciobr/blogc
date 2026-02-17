@@ -1,0 +1,97 @@
+{include="header"}
+    <!--Main layout-->
+    <main class="mt-5 pt-5">
+      <div class="container">
+        <!--Section: Jumbotron-->
+        <!-- <section class="gradient-custom  wow fadeIn" > -->
+        <section>
+          <!-- Content -->
+          <div class="jumbotron" style="border-radius: 2rem;">
+            <div class="form-row" >
+              <div class="form-group col-md-2" >
+              <!-- <h1 style="color: rgba(170, 13, 13, 0.863); font-size: 3rem;font-weight: 450;line-height: 1.2;">
+                Blog
+              </h1> -->
+              <img src="/res/site/img/blog.png" style="width: 70%;">
+              </div>
+               <div class="form-group col-md-2" >
+              <img src="/res/site/img/ssssbm.webp"style="width: 160%;">
+              <p class="lead" style="color: rgb(255, 240, 240)"></p>
+              <hr class="my-4" />
+              <p style="color: aliceblue"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--Section: Jumbotron-->
+<section class="pt-5">
+  {loop="$posts"}
+  <!--Grid row-->
+  <div class="row mt-3 wow fadeIn">
+    <!--Grid column-->
+    <div class="col-lg-6 col-md-6 mb-4">
+      <!--Featured image-->
+      <div class="z-depth-1 zoom">
+        <a href="/blog/{$value.id_post}/{$value.url_slug}">
+          <img
+            src="{$value.desphoto}"
+            class="img-fluid img-thumbnail"
+            alt="{$value.titulo}"
+            style="width:550px; height: 200px; object-fit: cover"
+          />
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+    </div>
+    <!--Grid column-->
+    <!--Grid column-->
+    <div class="col-lg-6 col-md-6 mb-4">
+      <h3 class="mb-3 font-weight-bold dark-grey-text">
+        {$value.titulo}
+      </h3>
+      <p class="grey-text">{function="cortaStr($value.texto)"}</p>
+      <a
+        href="/blog/{$value.id_post}/{$value.url_slug}"
+        class="btn btn-primary btn-md"
+        >Leia mais
+        <i class="fa fa-play ml-2"></i>
+      </a>
+    </div>
+    <!--Grid column-->
+  </div>
+  <!--Grid row-->
+  <hr class="mb-5" />
+  {/loop}
+  <!--Pagination-->
+  <nav class="d-flex justify-content-center wow fadeIn">
+    <ul class="pagination pg-blue">
+      <li class="page-item active">
+        {if="$pagina > 1"}
+        <a class="page-link btn btn-primary" href="{$pages.antes.link}"
+          >Posts mais novos</a
+        >
+        {/if} {if="$pagina <> $paginas"}
+        <a class="page-link btn btn-primary" href="{$pages.depois.link}"
+          >Posts mais Antigos</a
+        >
+        {/if}
+      </li>
+    </ul>
+  </nav>
+  <!--Pagination-->
+</section>
+      </div>
+    </main>
+    <!--Main layout-->
+    <!-- botao scroll to top-->
+    <a
+      class="scroll-to-top rounded"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Voltar ao topo"
+      href="#top"
+      style="display: inline;"
+    >
+      <i class="fa fa-angle-up"></i>
+    </a>
+    {include="footer"}

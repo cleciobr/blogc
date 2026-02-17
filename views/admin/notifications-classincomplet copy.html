@@ -1,0 +1,230 @@
+{include="sidemenu"}
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Lista de Notificações com classificação incompleto</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/notifications">Home</a></li>
+            <li class="breadcrumb-item active">Notificações com classificação incompleto</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- <div class="card-body">Status:
+    <table>
+      <thead>
+        <tr>
+          <th><a class="statusclassgreen btn btn-success"  href="/admin/notifications/finished" >
+            Classificado</a>
+          </th>
+          <th><a  class="statusclassyellow btn btn-warning"  href="/admin/notifications/noclass" >
+            Não Classificado</a>
+          </th>
+          <th><a class="statusclassred btn btn-danger" href="/admin/notifications/classincomplet">
+            Incompleto</a>
+          </th>
+  
+      </thead>
+    </table>
+  </div> -->
+ <!--Notification-->
+ <section class="content">
+  <div class="row">
+      <div class="col-12">
+          <div class="card">
+              <div class="box-header d-flex justify-content-center align-items-center" style="width: 20rem; height: 50px;">
+                  <div class="col-3">
+                      <div style="margin-left: -120px;" class="notification-icon btn btn-success" data-toggle="modal" data-target="#notificationModal">
+                          Status das notificações: 📊
+                      </div>
+                      <!-- Modal notification-->
+                      <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="notificationModalLabel">Status</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <!-- notification display -->
+                                      <div class="card-body">Status: 
+                                        <table>
+                                          <thead>
+                                            <tr>
+                                              <th><a class="statusclassgreen btn btn-success"  href="/admin/notifications/finished" >
+                                               Concluido</a>
+                                              </th>
+                                              <th><a  class="statusclassyellow btn btn-warning"  href="/admin/notifications/ontime" >
+                                                No prazo</a>
+                                              </th>
+                                              <th><a class="statusclassred btn btn-danger" href="/admin/notifications/kept">
+                                                Mantida</a>
+                                              </th>
+                                      
+                                          </thead>
+                                        </table>
+                                      </div>
+                                      <!-- notification and -->
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!--Notification end-->
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="box-header">
+            <a href="/admin/multiplenotifications/create" class="btn btn-success pull-right" style="margin-right: 20px; margin-top: 10px;">Cadastrar Múltiplas Notificações</a>
+                    <a href="/admin/notifications/create" class="btn btn-success pull-right" style="margin-right: 20px; margin-top: 10px;">Cadastrar Notificação</a>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+            <table id="users" class="table table-bordered table-striped">
+              <thead>
+                <!-- <div class="box-header">
+                        <span colspan="8" id="qtd-registros" value="{function="total();"}" class="totaltable btn btn-success" >
+                        </span>
+                    </div> -->
+                <tr>
+                  <!-- <th style="width: 10px"><input type="checkbox" id="selectAll"></th> -->
+                  <th>Ações</th>
+                  <th  style="width: 1%">Id</th>
+                  <th>Dt notificação</th>
+                  <th>Paciente</th>
+                  <th>Nome do paciente</th>
+                  <th>Data de nascimento</th>
+                  <th>Atend.</th>
+                  <th>Registro</th>
+                  <th>Data internamento</th>
+                  <th>Data da Ocorrência</th>
+                  <th>Hora ocorrência</th>
+                  <th>Setor Notificante</th>
+                  <th>Setor Notificado</th>
+                  <th style="width: 10%">Descrição</th>
+                  <th>Solução</th>
+                  <th>Segurança do paciente</th>
+                  <th>class. Incidente</th>
+                  <th>class. Ocorrência</th>
+                  <th>Class. Dano</th>
+                  <th>Data de retorno</th>
+                  <th>Processo</th>
+                  <th>Problema</th>
+                  <th>Fato ocorrido</th>
+                  <th>Data de validação</th>
+                  <th>Ação proposta</th>
+                  <th>Investigação de evento</th>
+                  <th>Meta internacional de segurança</th>
+                  <th>conclusão</th>
+              </thead>
+              <tbody id="tbody">
+              {loop="$notificationsclassincomplet"}
+                  <tr data-id="{$value.id_notificacao}">
+                    <!-- <th><input type="checkbox" id="selectAll"></th> -->
+                    <td>
+                      <a href="/admin/notifications/{$value.id_notificacao}" class="btn btn-primary btn-sm">
+                          <i class="fa fa-edit"></i> Classificar
+                          <i class="fa fa-bookmark"></i>
+                      </a>
+                      <a href="/admin/notifications/class/{$value.id_notificacao}/print" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"
+                        style="
+                        width: 37px; 
+                        height: 20px;">
+                        </i>Imprimir</a>
+                    </td>
+                      <td>{$value.id_notificacao}</td>
+                      <td>
+                        {if="$value.dt_notificacao== '0000-00-00 00:00:00'"} 00/00/0000 {else} {function="formatDatePtBr($value.dt_notificacao)"} {/if}
+                      </td>
+                      <td>{$value.patient}</td>
+                      <td>
+                        {if="$value.nome_pac != ''"} 
+                        {$value.nome_pac}
+                        {else}
+                          -
+                        {/if}
+                      </td>
+                      <td>{$value.dt_nasc}</td>
+                      <td>{$value.atendimento}</td>
+                      <td>
+                        {if="$value.registro != '0'"}
+                        {$value.registro}
+                        {else}
+                          -
+                        {/if}
+                      </td>
+                      <td>{$value.dt_internamento}</td>
+                      <td>
+                        {if="$value.dt_oco == '0000-00-00 00:00:00'"} 00/00/0000 {else} {function="formatDatePtBr($value.dt_oco)"} {/if}
+                      </td>
+                      <td>{$value.hr_oco}</td>
+                      <td>{$value.st_cante}</td>
+                      <td>{$value.st_cado}</td>
+                      <td>{if="$value.descricao != ''"}
+                        {$value.descricao}
+                        {else}
+                        -
+                        {/if}
+                      </td>
+                      <td>
+                        {if="$value.solution != ''"}
+                        {$value.solution}
+                        {else}
+                        -
+                        {/if}
+                      </td>
+                      <td>{$value.patientsecurity}</td>
+                      <td>
+                        {$value.qclass_incident}
+                      </td>
+                      <td>
+                        {$value.qclass_occ}
+                      </td>
+                      <td>{$value.qdegree_damg}</td>
+                      <td>
+                        {if="$value.return_date== '0000-00-00 00:00:00'"} 00/00/0000 {else} {function="formatDatePtBr($value.return_date)"} {/if}
+                      </td>
+                      <td>{$value.process}</td>
+                      <td>{$value.problem}</td>
+                      <td>{$value.fact_occurred}</td>
+                      <td>{$value.validation_date}</td>
+                      <td>{$value.proposed_action}</td>
+                      <td>{$value.eventinvestigation}</td>
+                      <td>{$value.internacionalsecurity}</td>
+                      <td>{$value.conclusion}</td>
+                    </tr>
+                  {/loop} 
+              </tbody>
+            </table>
+            </div>
+              <div id="total"></div>
+          </div><!-- /.card -->
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
+    </div>
+  </section>
+
+</div>
+<!-- /.content-wrapper -->

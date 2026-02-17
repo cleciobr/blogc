@@ -1,0 +1,173 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Lista de Usuários</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+            <li class="breadcrumb-item active">Aniversariantes</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+                {if="isset($_GET.success) && $_GET.success == 1"}
+                      <div class="alert alert-success">
+                          <h5><i class="icon fa fa-check"></i> E-mail enviado com Sucesso!</h5>
+                          O registro foi salvo e o e-mail disparado.
+                      </div>
+                  {/if}
+
+                  {if="isset($_GET.error) && $_GET.error == 'mail'"}
+                      <div class="alert alert-danger">
+                          <h5><i class="icon fa fa-exclamation-triangle"></i> Falha no Envio!</h5>
+                          Os dados foram salvos no banco, mas o servidor de e-mail recusou a conexão. Verifique as credenciais.
+                      </div>
+                  {/if}
+    <div class="row">
+      <div class="col-12">
+        <!-- Birthday active -->
+        <div class="col-md-2">
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3><span class="counter">{function="totalBirthdaysActive()"}</span></h3>
+              <p>Ativos <small>Total de e-mail(s) enviado(s)</small></p>
+            </div>
+            <div class="icon">
+              <a><i class="ion ion-stats-bars" style="font-size: 60px;"></i></a>
+            </div> 
+            <a href="/admin/birthdays/active" class="small-box-footer"
+          >Mais detalhes <i class="fa fa-arrow-circle-right"></i         
+            ></a>         
+          </div> 
+       </div>
+        <div class="card">
+          <div class="box-header">
+            <a
+              href="/admin/birthdays/create"
+              class="btn btn-success pull-right"
+              style="margin-right: 20px; margin-top: 10px;"
+              ><i class="fa fa-plus-circle"></i>  Cadastrar Colaborador</a
+            >
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="mb-3">
+                  <button type="button" id="btn-delete-all" class="btn btn-danger" style="display:none;" onclick="excluirSelecionados()">
+                      <i class="fa fa-trash"></i> Excluir Selecionados (<span id="selected-count">0</span>)
+                  </button>
+              </div>
+            <table id="users" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th style="width: 10px">
+                        <!-- Checkbox para selecionar todos -->
+                        <input type="checkbox" id="check-all">
+                    </th>
+                    <th>Data de nascimento</th>
+                    <th>Nome do colaborador</th>
+                    <th>Aniversariando hoje?</th>
+                    <th>Data de cadastramento</th>
+                    <th style="width: 140px">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loop="$birthdays"}
+                  <tr>
+                    <td>
+                        <!-- Checkbox individual -->
+                        <input type="checkbox" class="check-item" value="{$value.id_birthday}">
+                    </td>
+                    <td>{function="formatDate($value.date_birthday)"}</td>
+                    <td>{$value.name_birthday}</td>
+                    <td>
+                      {if="$value.birthday_active == '1'"}
+                        <span class="badge badge-success">Sim</span>
+                      {else}
+                        <span class="badge badge-secondary">Não</span>
+                      {/if}
+                    </td>
+                    <td>{function="formatDate($value.dt_birthday)"}</td>
+                    
+                    <td>
+                      <a href="/admin/birthdays/{$value.id_birthday}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                      <a href="/admin/birthdays/{$value.id_birthday}/delete" onclick="return confirm('Deseja excluir?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                    </td>
+                  </tr>
+                  {/loop}
+                </tbody>
+
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const body = document.querySelector('body');
+    const btnDeleteAll = document.getElementById('btn-delete-all');
+    const selectedCountSpan = document.getElementById('selected-count');
+
+    function atualizarContador() {
+        const selecionados = document.querySelectorAll('.check-item:checked').length;
+        selectedCountSpan.textContent = selecionados;
+        btnDeleteAll.style.display = selecionados > 0 ? 'inline-block' : 'none';
+    }
+    
+    body.addEventListener('change', function(e) {
+        if (e.target && e.target.id === 'check-all') {
+            const isChecked = e.target.checked;
+            document.querySelectorAll('.check-item').forEach(item => {
+                item.checked = isChecked;
+            });
+            atualizarContador();
+        }
+    });
+
+    body.addEventListener('change', function(e) {
+        if (e.target && e.target.classList.contains('check-item')) {
+            if (!e.target.checked) {
+                document.getElementById('check-all').checked = false;
+            }
+            atualizarContador();
+        }
+    });
+});
+
+function excluirSelecionados() {
+    const selecionados = document.querySelectorAll('.check-item:checked');
+    const ids = Array.from(selecionados).map(cb => cb.value);
+
+    if (confirm('Tem certeza que deseja excluir os ' + ids.length + ' itens selecionados?')) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/admin/birthdays/delete-all';
+
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'ids';
+        input.value = ids.join(',');
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+</script>

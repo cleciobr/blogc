@@ -1,0 +1,65 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Lista de Incidentes</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/incidents">Incidentes</a></li>
+            <li class="breadcrumb-item active">Atualizar Incidente</li>
+        </ol>
+        </div>
+    </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header alert-info">
+            <h3 class="card-title">Atualizar Incidente</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" action="/admin/incidents/{$incident.id_incident}" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Nome do incidente</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome do incidente" value="{$incident.name}" required>
+                </div>
+                <div class="form-group">
+                    <label for="descrition">descrição do incidente</label>
+                    <input type="text" class="form-control" id="descrition" name="descrition" placeholder="Descrição do incidente" value="{$incident.descrition}" required>
+                </div>
+                <div class="form-group">
+                    <label for="cod_incident">Código do incidente</label>
+                    <label for="cod_incident"><span style="color: red;"> (Este campo não é obrigatório)</span></label>
+                    <input type="text" class="form-control" id="cod_incident" name="cod_incident" placeholder="Digite o código do incidente" value="{$incident.cod_incident}">
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary alert-info">Salvar</button>
+            </div>
+            </form>
+        </div>
+        <!-- /.card -->
+        </div>
+        <!--/.col  -->
+    </div>
+    <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

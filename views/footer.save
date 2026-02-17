@@ -1,0 +1,133 @@
+
+ 
+    <footer class="page-footer center-on-small-only ">
+      <!--Footer links-->
+      <div class="container my-5">
+        <div class="row mt-4">
+          <!--First column-->
+          <div class="col-lg-3 col-md-6">
+            <h5 class="title mb-3">
+              <strong>Sobre a Intranet</strong>
+            </h5>
+            <p>
+              A Intranet é uma plataforma de facilidades para o funcionário do
+              Shineray e também divulgação de materiais e eventos pertinentes a
+              todos.
+            </p>
+          </div>
+          <!--/.First column-->
+          <hr class="w-100 clearfix d-sm-none" />
+          <!--Second column-->
+          <div class="col-lg-2 col-md-6 ml-auto">
+            <h5 class="title mb-3">
+              Links
+            </h5>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/blog">Blog</a>
+              </li>
+              <li>
+                <a href="/events">Eventos</a>
+              </li>
+              <li>
+                <a href="/docs">Docs</a>
+              </li>
+              <li>
+                <a href="/treinamentos">Treinamentos</a>
+              </li>
+              <li>
+                <a href="/notificacao">Notificação</a>
+              </li>
+              <li>
+                <a href="/convenios">Lista de Convênios</a>
+              </li>
+            </ul>
+          </div>
+          <!--/.Second column-->
+          <hr class="w-100 clearfix d-sm-none" />
+          <!--Third column-->
+          <div class="col-lg-2 col-md-6 ml-auto">
+            <h5 class="title mb-3">
+              Ferramentas
+            </h5>
+            <ul>
+              <li>
+                <a
+                  href="http://setores"
+                  target="_blank"
+                  >teste</a
+                >
+              </li>
+              <li>
+                <a href="//glpi/" target="_blank">Sistema de chamado</a>
+              </li>
+              <li>
+                <a href="//Email/" target="_blank">Email</a>
+              </li>
+              <li>
+                <a href="https://t" target="_blank">E</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--/.Footer links-->
+
+      <hr />
+
+      <!--Call to action-->
+      <div class="call-to-action">
+        <h4 class="mb-5">Intranet Shineray</h4>
+        <ul>
+          <li>
+            <h6>
+              Tem alguma sugestão, reclamação, ideia para o seu dia a dia de
+              trabalho.
+            </h6>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="//Email/"
+              class="btn btn-primary"
+              rel="nofollow"
+              >Ouvidoria@shineray.com.br</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!--/.Call to action-->
+  <!--Copyright-->
+  <div class="footer-copyright">
+    <div class="container-fluid">
+    Copyright &copy; 2024 - <script type="text/javascript">document.write(new Date().getFullYear());</script>
+      <a target="_blank" href="//shineray.com.br"> Equipe de TI. Todos os direitos reservados. </a>
+    </div>
+  </div>
+  <!--/.Copyright-->
+    </footer>
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script
+      type="text/javascript"
+      src="/res/site/js/jquery-3.2.1.min.js"
+    ></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/res/site/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/res/site/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/res/site/js/mdb.js"></script>
+
+    <script type="text/javascript" src="/res/site/js/scrolltotop.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+      // Animations initialization
+      new WOW().init();
+    </script>
+  </body>
+</html>

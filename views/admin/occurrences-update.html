@@ -1,0 +1,93 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Lista de Ocorrências</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/occurrences">Ocorrências</a></li>
+            <li class="breadcrumb-item active">Atualizar Ocorrência</li>
+        </ol>
+        </div>
+    </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="container ">
+            {if="$success == True"}
+            <div class="row">
+                <div class="col-md-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Ocorrência cadastrado com <strong>sucesso</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                </div>
+            </div>
+            {/if}
+            </div>
+    <div class="row">
+        <!-- left column -->
+        <div class="col">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header alert-info">
+            <h3 class="card-title">Atualizar Ocorrência</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" action="/admin/occurrences/{$occurrence.id_occurrence}" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Nome da classificação do dano</label>
+                    <input type="text" class="form-control" id="name" name="name" 
+                    placeholder="{if="$occurrence.name == 'Incidente Com Dano'"}Não será possível realizar alterações neste campo, fale com o adimistrador do sistema!{else}{$occurrence.name}{/if}" 
+                    value="{if="$occurrence.name == 'Incidente Com Dano'"}{else}{$occurrence.name}{/if}" 
+                    {if="$occurrence.name != 'Incidente Com Dano'"} 
+                    required {else} readonly {/if}>
+                </div>
+                <div class="form-group">
+                    <label for="days_occurrence">Quantos dias para classificação do dano?</label>
+                    <input type="number" class="form-control" id="days_occurrence" name="days_occurrence" 
+                    placeholder="{if="$occurrence.days_occurrence == '-19999'"}Não será possível realizar alterações neste campo, fale com o adimistrador do sistema!{else}{$occurrence.days_occurrence}{/if}" 
+                    value="{if="$occurrence.days_occurrence == '-19999'"}{else}{$occurrence.days_occurrence}{/if}"
+                    {if="$occurrence.days_occurrence != '-19999'"} 
+                    required {else} readonly {/if}>
+                </div>
+                <div class="form-group">
+                    <label for="descrition">Descrição</label>
+                    <input type="text" class="form-control" id="descrition" name="descrition" placeholder="{if="$occurrence.days_occurrence == '-19999'"}Não será possível realizar alterações neste campo, fale com o adimistrador do sistema!{else}{$occurrence.descrition}{/if}" value="{if="$occurrence.days_occurrence == '-19999'"}Não será possível realizar alterações neste campo, fale com o adimistrador do sistema!{else}{$occurrence.descrition}{/if}" {if="$occurrence.days_occurrence != '-19999'"} 
+                    required {else} readonly {/if}>
+                </div>
+                <div class="form-group">
+                    <label for="cod_occurrence">Código do dano<span style="color: red;"> {if="$occurrence.days_occurrence != '-19999'"}(Este campo não é obrigatório){else}{/if}</span></label>
+                    <input type="text" class="form-control" id="cod_occurrence" name="cod_occurrence" placeholder="{if="$occurrence.days_occurrence == '-19999'"}Não será possível realizar alterações neste campo, fale com o adimistrador do sistema!{else}{$occurrence.cod_occurrence}{/if}" value="{if="$occurrence.days_occurrence == '-19999'"}Não será possível realizar alterações neste campo, fale com o adimistrador do sistema!{else}{$occurrence.cod_occurrence}{/if}"
+                    {if="$occurrence.days_occurrence != '-19999'"} 
+                     {else} readonly {/if}>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                {if="$occurrence.days_occurrence != '-19999'"}<button type="submit" class="btn btn-primary alert-info">Salvar</button>{else}{/if}
+            </div>
+            </form>
+        </div>
+        <!-- /.card -->
+        </div>
+        <!--/.col  -->
+    </div>
+    <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

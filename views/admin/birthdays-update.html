@@ -1,0 +1,229 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Lista de aniversariantes</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/birthdays">aniversariantes</a></li>
+            <li class="breadcrumb-item active">Alterar aniversariante</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header alert-info">
+              <h3 class="card-title">Alterar aniversariante</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+          <form role="form" action="/admin/birthdays/{$birthday.id_birthday}" method="POST" enctype="multipart/form-data">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="name_birthday">Nome do colaborador</label>
+                  <input type="text" class="form-control" id="name_birthday" name="name_birthday" value="{$birthday.name_birthday}"
+                    placeholder="Digite o nome do titulo" required>
+                </div>
+                <div class="form-row col-md-2">
+                    <label for="date_birthday">Data de nascimento</label>
+                    <input type="date"  class="form-control" name="date_birthday" value="{$birthday.date_birthday}" required>
+                </div>
+                 <!-- Adicione isso dentro da card-body para mostrar a foto atual -->
+                    
+                  <div class="form-group">
+
+
+            <!-- Campo oculto que armazena os nomes dos arquivos a serem deletados -->
+                    <input type="hidden" name="photos_to_delete" id="photos-to-delete" value="">
+                    <div class="form-group mt-4">
+    <label for="file"><i class="fa fa-upload"></i> Selecionar Novas Fotos</label>
+    <div class="custom-file">
+        <!-- O evento onchange é essencial aqui -->
+        <input type="file" class="form-control" id="file" name="files[]" multiple onchange="previewNovasFotos(this)">
+    </div>
+    <!-- Este container mostrará as fotos selecionadas antes de você salvar -->
+    <div id="new-images-preview" style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;"></div>
+</div>
+                </div>
+
+                    <label>Imagens Atuais:</label>
+        <div id="existing-images-container" style="display: flex; gap: 15px; flex-wrap: wrap;" class="form-group col-md-5">
+        {loop="$photos"}
+            <div id="photo-{$value.filename}-wrapper" style="position: relative; margin-top: 10px;">
+                <img class="img-fluid img-thumbnail" src="{$value.desphoto}?v={function="time()"}" style="height: 250px; width: 250px; object-fit: cover;" />
+                
+                <!-- Botão de remover usando o filename -->
+                <button type="button" onclick="marcarParaExcluirExistente('{$value.filename}')" 
+                    style="position: absolute; top: -5px; right: -5px;" 
+                    class="btn-remove-image">x</button>
+              </div>
+              {/loop}
+        </div>
+        <div class="form-group col-md-5">
+
+                  <label for="birthday_active">
+                      {if="$birthday.birthday_active == 1"}
+                      <input type="checkbox" class="form-check-input flat-red" id="birthday_active" name="birthday_active" value='{function="getUserId()"}' checked>
+                      
+                      <span><strong style="color:blue;"> Aniversariante Ativo </strong></span>
+
+                      {else}
+
+                      <input type="checkbox" class="form-check-input flat-red" id="birthday_active" name="birthday_active" value='{function="getUserId()"}'>
+                      
+                      <span><strong style="color:red;"> Marque está opção para ativar o Aniversariante</strong></span>
+                      {/if}
+                    </label>
+                <label for="id_user" style="display:none">
+                  <input type="checkbox" class="form-check-input flat-red" id="id_user" name="id_user" value='{function="getUserId()"}' required checked>
+                  Aceite os termos...
+                </label>
+              </div>
+
+
+               <div class="card-footer">
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salvar Alterações</button>
+                 <a href="/admin/birthdays/{$birthday.id_birthday}/delete" 
+                  onclick="return confirm('Deseja realmente excluir este registro?')" 
+                  class="btn btn-danger">
+                  <i class="fa fa-trash"></i> Excluir Registro
+                </a>
+              </div>
+              
+            </div>
+                    
+                <br>
+                  <!-- <div class="form-group">
+                    <label for="birthday_active">
+                      {if="$birthday.birthday_active == 1"}
+                      <input type="checkbox" class="form-check-input flat-red" id="birthday_active" name="birthday_active" value='{function="getUserId()"}' checked>
+                      
+                      <span><strong style="color:blue;">Anivesariante do dia </strong></span>
+                      {else}
+                      <input type="checkbox" class="form-check-input flat-red" id="birthday_active" name="birthday_active" value='{function="getUserId()"}'>
+                      
+                      <span> <strong style="color:red;">Marque para informar o anivesariante do dia </strong></span>    
+                      {/if}
+                    </label>
+                  </div> -->
+              </div>
+                <div class="form-row">
+                  <label style="display:none" for="id_user">
+                    <input type="checkbox" class="form-check-input flat-red" id="id_user" name="id_user"
+                      value='{function="getUserId()"}' required checked>
+                    Aceite os termos...
+                  </label>
+                </div>
+              
+             
+      </form>
+            <style>
+    .image-wrapper {
+        position: relative;
+        transition: transform 0.2s;
+    }
+    .image-wrapper:hover {
+        transform: scale(1.05);
+    }
+    .img-custom {
+        height: 140px; 
+        width: 140px; 
+        object-fit: cover; 
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn-remove-image {
+        position: absolute; 
+        top: -10px; 
+        right: -10px;
+        background-color: #dc3545; 
+        color: white; 
+        border: 2px solid white; 
+        border-radius: 50%;
+        width: 28px; 
+        height: 28px; 
+        font-weight: bold; 
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        z-index: 10;
+    }
+    .btn-remove-image:hover {
+        background-color: #a71d2a;
+    }
+    .section-title {
+        border-bottom: 2px solid #eee;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        font-weight: 600;
+        color: #555;
+    }
+</style>
+            <script>
+            let deletedPhotos = [];
+
+// 1. Função para fotos que já estão no servidor
+function marcarParaExcluirExistente(filename) {
+    if (confirm('Deseja marcar esta imagem para exclusão?')) {
+        const element = document.getElementById(`photo-${filename}-wrapper`);
+        if (element) {
+            element.style.display = 'none'; // Esconde a imagem
+        }
+        deletedPhotos.push(filename);
+        document.querySelector('#photos-to-delete').value = deletedPhotos.join(',');
+    }
+}
+
+// 2. Função para mostrar o preview das fotos que você acabou de selecionar
+function previewNovasFotos(input) {
+    const container = document.getElementById('new-images-preview');
+    container.innerHTML = ''; // Limpa previews anteriores
+
+    if (input.files) {
+        Array.from(input.files).forEach(file => {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const div = document.createElement('div');
+                div.style.position = 'relative';
+                div.innerHTML = `
+                    <div style="text-align:center;">
+                        <img src="${e.target.result}" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover; border: 2px solid #28a745;">
+                        <br><small class="text-success">Nova</small>
+                    </div>
+                `;
+                container.appendChild(div);
+            }
+            
+            reader.readAsDataURL(file);
+        });
+    }
+}
+                </script>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col  -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+

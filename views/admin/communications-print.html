@@ -1,0 +1,158 @@
+<link rel="shortcut icon" href="/res/site/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/res/admin/plugins/font-awesome/css/font-awesome.min.css">
+ <!-- Style -->
+ <link rel="stylesheet" href="/res/admin/dist/css/styleclass.css">
+<!DOCTYPE html >
+<head>
+
+  <!--[if gte mso 9]><style type=â€text/cssâ€>
+        body {
+        font-family: arial, sans-serif!important;
+        }
+        </style>
+    <![endif]-->
+</head>
+<body >
+    <table border="0" width="100%" cellpadding="0" cellspacing="0" >
+ <!--Botões-->
+    <tr>
+        <td>
+          <a>
+            <img class="logo" src="/res/site/img/shineray-da-fonte-desde.png">
+          </a>
+        </td>
+      </tr>
+      <div class="no-print">
+        <a  class="button" href="/admin/"><i class="fa fa-address-book"></i>
+        Home/Início
+        </a>  
+      </div>
+      <div class="no-print">
+        <!-- <a  class="button" href="/admin/communications/{$communication.id_communication}"><i class="fa fa-check-square-o"></i> -->
+        <a  class="button" href="/admin/communications"><i class="fa fa-check-square-o"></i>
+        Voltar para lista
+        </a>  
+      </div>
+      <div class="no-print">
+          <a href="#" class="button"   onclick="window.print();" ><i class="fa fa-print"></i> Imprimir / <i class="fa fa-save"></i> Salvar </a>
+      </div>
+    </table>
+
+         
+      
+      <table border="0" width="590" align="center" cellpadding="0" cellspacing="0" class="container590">
+      
+          <tr>
+            <td height="20" width="5" style="font-size: 20px; line-height: 80px;">&nbsp;</td>
+          </tr>
+          
+        <tr>
+          <td align="left">
+              <tr>
+                <td align="left"
+                  style="color: #141414; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
+                  <!-- section text ======-->
+                  <div >
+                    <div >
+                      <form >
+                        <div class="form-group" align="center">
+                          <label align="center"
+                          style="font-size: 25px; font-family: 'Roboto', Calibri, sans-serif; line-height: 50px;">
+                          <a href="" target="_blank" style="color: #312c32; text-decoration: none;">
+                            Comunicação</a></label>
+                        </div>
+                        <div class="form-group">
+                          <label align="center"
+                          style="color: #343434; font-size: 24px; font-family: Quicksand, Calibri, sans-serif; font-weight:700;letter-spacing: 3px; line-height: 35px;"
+                          class="main-header">
+                          <!-- section text ======-->
+                          <div align="center" style="line-height: 35px" class="no-print">
+                            Evento pelo <span style="color: #8D3132;">Canal de comunicação</span>
+                          </div></label>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                          <label><strong>Tipo de comunicação:</strong> {$communication.id_communication}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Data da comunicação:</strong> {function="Date($communication.dt_comm)"}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Setor da ocorrência:</strong> {$communication.st_oco}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Descrição da ocorrência:</strong> {$communication.descricao_oco}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Data da ocorrência:</strong> {function="Date($communication.dt_oco)"}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Retorno S/N:</strong> {$communication.feedback}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Nome:</strong> {$communication.nome}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Setor:</strong> {$communication.setor}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>E-mail</strong> {$communication.email}</label>
+                        </div>
+                        <div class="form-group">
+                          <label><strong>Telefone:</strong> {$communication.phone}</label>
+                        </div>
+             
+                        <div class="form-group" >
+                          <label>
+                            <table>
+                            <tr>
+                              <td height="20" width="5" style="font-size: 20px; line-height: 30px;">&nbsp;</td>
+                            </tr>
+                            </table>
+                          <strong>
+                            <center>Email us: <br> </strong><a href="mailto:"
+                            style="color: #888888; font-size: 14px; font-family: 'Roboto', Calibri, Sans-serif; font-weight: 150;">canaldecomunicacao@shineray.com.br</a>
+                          <p style="line-height: 15px"  >
+                            Atenciosamente,</br>
+                            Qualidade
+                          </center>
+                        </div>     
+                      </form>
+                      </div>
+                    </div>  
+                  </tr>
+      </table>
+  </td>
+  <table>
+    <tr>
+      <td align="left">
+          <tr>
+            <td align="left"
+              style="color: #141414; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
+              <!-- section text ======-->
+    <div>
+     
+     
+      </div>
+        <p>
+          <footer>
+         <center>
+           <img src="/res/site/img/shineray-da-fonte-rodape.png"
+             style="
+           width: 60%;
+            ">
+          </center>
+        </p>
+     </footer>
+    </div>
+ </table>
+<!-- end section -->
+<!-- main section -->
+<!-- end section -->
+<!-- contact section -->
+<!-- end section -->
+<!-- footer ====== -->
+<!-- end footer ====== -->
+</body>
+</html>
+

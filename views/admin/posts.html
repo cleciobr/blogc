@@ -1,0 +1,139 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1>Lista de Postagens</h1>
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                <li class="breadcrumb-item active">Artigos</li>
+            </ol>
+            </div>
+        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+        <div class="col-12">
+            <div class="card">
+            <div class="box-header">
+                <a href="/admin/posts/create" class="btn btn-success pull-right" style="margin-right: 20px; margin-top: 10px;"><i class="fa fa-plus-circle"></i>  Cadastrar Postagem</a>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="mb-3">
+                    <button type="button" id="btn-delete-all-posts" class="btn btn-danger" style="display:none;" onclick="excluirPostsSelecionados()">
+                        <i class="fa fa-trash"></i> Excluir Selecionados (<span id="selected-count-posts">0</span>)
+                    </button>
+                </div>
+
+                <table id="users" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px">
+                                <!-- Checkbox Mestre -->
+                                <input type="checkbox" id="check-all-posts">
+                            </th>
+                            <th>Titulo</th>
+                            <th>Autor</th>
+                            <th>Data</th>
+                            <th>Post ativo</th>
+                            <th style="width: 140px">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loop="$posts"}
+                        <tr>
+                            <td>
+                                <!-- Checkbox Individual -->
+                                <input type="checkbox" class="check-item-post" value="{$value.id_post}">
+                            </td>
+                            <td>{$value.titulo}</td>
+                            <td>{$value.autor}</td>
+                            <td style="width: 100px">{function="formatDate($value.dtpost)"}</td>
+                            <td>
+                                {if="$value.post_active == '1'"}
+                                    <span class="badge badge-success">Sim</span>
+                                {else}
+                                    <span class="badge badge-secondary">Não</span>
+                                {/if}
+                            </td>
+                            <td style="width: 200px">
+                                <a href="/admin/posts/{$value.id_post}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Editar</a>
+                                <a href="/admin/posts/{$value.id_post}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Excluir</a>
+                            </td>
+                        </tr>
+                        {/loop}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+ <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const body = document.querySelector('body');
+    const btnDelete = document.getElementById('btn-delete-all-posts');
+    const countSpan = document.getElementById('selected-count-posts');
+
+    function atualizarContador() {
+        const selecionados = document.querySelectorAll('.check-item-post:checked').length;
+        countSpan.textContent = selecionados;
+        btnDelete.style.display = selecionados > 0 ? 'inline-block' : 'none';
+    }
+
+    body.addEventListener('change', function(e) {
+        if (e.target && e.target.id === 'check-all-posts') {
+            const isChecked = e.target.checked;
+            document.querySelectorAll('.check-item-post').forEach(item => {
+                item.checked = isChecked;
+            });
+            atualizarContador();
+        }
+    });
+
+    body.addEventListener('change', function(e) {
+        if (e.target && e.target.classList.contains('check-item-post')) {
+            if (!e.target.checked) {
+                document.getElementById('check-all-posts').checked = false;
+            }
+            atualizarContador();
+        }
+    });
+});
+
+function excluirPostsSelecionados() {
+    const selecionados = document.querySelectorAll('.check-item-post:checked');
+    const ids = Array.from(selecionados).map(cb => cb.value);
+
+    if (confirm('Tem certeza que deseja excluir os ' + ids.length + ' posts selecionados?')) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/admin/posts/delete-all'; 
+
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'ids';
+        input.value = ids.join(',');
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+</script>

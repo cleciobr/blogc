@@ -1,0 +1,286 @@
+<!-- Navbar -->
+<!-- Modal -->
+<!--Popup-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <!-- Change class .modal-sm to change the size of the modal -->
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title w-100" id="myModalLabel">
+          Ficha de Notificação de Eventos
+        </h2>
+        <button type="button" id="btn-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <br>
+      <div class="centralizar">
+        <a href="/notificacao">
+          <img src="/res/site/img/svg/file.svg" alt="popups" class="img-fluid" />
+        </a>
+        <br>
+        <hr>
+        <h4>Os dados informados neste formulário são de total</h4>
+        <h4>sigilo, sendo manuseados apenas pelo Gerenciamento de Risco.</h4>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Modal-->
+<!--Popup-->
+<!--Main Navigation-->
+<main class="mt-5 pt-5 mb-5 pb-3">
+  <div class="container ">
+    {if="$success == 1"}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          Sua notificacao foi enviada com <strong>sucesso</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    {/if}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card wow fadeInLeftBig">
+          <div class="card-header" style="background-color: #8d1d2e;">
+            <h3 style="text-align: center; color: aliceblue;">Formulário de Notificação<br>Shineray do Brasil</h3>
+          </div>
+          <div class="card-body register-card-body">
+            <p class="login-box-msg"></p>
+
+            <h5>Sobre a Notificação</h5>
+            <hr>
+            1º - Não há a necessidade de se identificar;
+            <br>
+            2º - Os eventos notificáveis envolvem pacientes, processos e equipamentos (queixa técnica);
+            <br>
+            3º - Eventos envolvendo pacientes, precisam constar o nome do paciente, data de nascimento, o nº do
+            prontuário e registro;</p>
+            <br>
+            <h5>Notifique</h5>
+            Sinta-se seguro, as informações não serão vinculadas a nenhum colaborador específico, o objetivo é melhorar
+            a segurança do paciente, do colaborador e da Instituição;
+            <br>
+            <p class="login-box-msg" style="color: #b90808;">Preencha o formulario abaixo para realizar a notificacao*
+            </p>
+            <hr>
+            <form role="form" action="" method="post">
+              <div class="form-row">
+                <div class="col-md-12 bg-light p-3 mb-3 smalltitle-container">
+                  <h6 class="text-center smalltitle">A ocorrência envolveu um paciente?</h6>
+                </div>
+              </div>
+              <div class="form-group text-center">
+                <label for="patient">Sim:</label>
+                <input type="radio" id="patient" value="Sim" name="patient" onchange="toggleFields()" required>
+                <span style="padding: 1rem;"></span>
+                <label for="patient">Não:</label>
+                <input type="radio" id="patient" value="Não" name="patient" onchange="toggleFields()" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-2">
+                  <label for="">Data da Notificação*:</label>
+                  <input type="text" class="form-control" id="" name="" value="{function="DateAtual()"}" readonly>
+                </div>
+              </div>
+              <div id="campos-paciente">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="nome_pac">Nome do Paciente:</label>
+                    <input required type="text" class="form-control" placeholder="Digite o nome do paciente" id="nome_pac" name="nome_pac">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="dt_nasc">Data de Nasc.:</label>
+                    <input required type="date" class="form-control" id="dt_nasc" name="dt_nasc">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="atendimento">Atendimento:</label>
+                    <input required type="number" class="form-control" id="atendimento" name="atendimento" placeholder="Digite o atendimento">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="registro">Registro:</label>
+                    <input type="number" class="form-control" id="registro" name="registro"
+                      placeholder="Digite o número do registro" required>
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="dt_internamento">Data de internamento:</label>
+                    <input required type="date" class="form-control" id="dt_internamento" name="dt_internamento">
+                  </div>
+                </div>
+              </div>
+              <div id="campos-paciente2">
+                <div class="form-row">
+                  <div class="form-group col-md-2">
+                    <label for="dt_oco">Data Ocorrencia*:</label>
+                    <input required type="date" class="form-control" id="dt_oco" name="dt_oco">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="hr_oco">Hora da ocorrência*:</label>
+                    <input required  type="time" class="form-control" id="hr_oco" name="hr_oco">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="st_cante">Setor Notificante*: </label>
+                    <select required  type="text" id="st_cante" name="st_cante" class="form-control">
+                      <option disabled selected value="">Selecione setor notificante
+                        {loop="$departments"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="st_cado">Setor Notificado*: </label>
+                    <select required  type="text" id="st_cado" name="st_cado" class="form-control">
+                      <option disabled selected value="">Selecione setor notificado
+                        {loop="$departments"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-12 bg-light p-3 mb-3 smalltitle-container">
+                    <h6 class="text-center smalltitle"></h6>
+                  </div>
+                </div>
+                <div class="form-row" >
+                    <div class="form-group col-md-6">
+                      <div class="col-md-12 bg-light p-3 mb-3 smalltitle-container">
+                        <h6 class="text-center smalltitle">CLASSIFICAÇÃO DA OCORRÊNCIA</h6>
+                      </div>
+                      <div class="form-group col-md-12">
+                        <label>
+                          <strong>CIRCUNSTÂNCIA DE RISCO</strong> - Houve  potencial  significativo  para  ocorrência  do  dano,  mas  sem ocorrência 
+                          de evento com o paciente.
+                          <br>
+                          <br>
+                          <strong>NÃO CONFORMIDADE</strong> - Houve quebra na contratualização.
+                          <br>
+                          <br>
+                          <strong>NEAR MISS: QUASE ERRO</strong> - Incidente que não atinge o paciente.
+                          <br>
+                          <br>
+                          <strong>INCIDENTE SEM DANO</strong> - Evento que atingiu o paciente, mas não chegou a resultar em
+                          dano.
+                          <br><br>
+                          <strong>INCIDENTE COM DANO</strong> (Evento Adverso) - Evento que resultou em dano ao paciente.
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <div class="col-md-12 bg-light p-3 mb-3 smalltitle-container">
+                        <h6 class="text-center smalltitle">GRAU DO DANO</h6>
+                      </div>
+                      <div class="form-group col-md-12">
+                        <label>
+                          <strong>LEVE</strong> - Ocorrência de sintomas leves, perda de função ou danos mínimos / moderados,
+                          mas com duração rápida, e apenas foram necessárias intervenções mínimas.<br>
+                          <strong>MODERADO</strong> - Ocorrência de sintomas, com necessidade de intervenção, aumento do tempo
+                          de internação, com dano ou perda de função.<br>
+                          <strong>GRAVE</strong> - Ocorrência de sintomas, com necessidade de intervenção para suporte
+                          avançado à vida, ou intervenção clínica / cirúrgica de grande porte, causando diminuição
+                          daexpectativa de vida, com grande dano ou perda de função permanente ou de longo prazo.<br>
+                          <strong>ÓBITO</strong> - Dentro das probabilidades, em curto prazo o evento causou ou acelerou a
+                          morte.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="class_incident">Classificação do incidente: </label>
+                    <select required  type="text" id="class_incident" name="class_incident" class="form-control">
+                      <option disabled selected value="">Selecione do incidente
+                        {loop="$incidents"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="opcao">Classificação da ocorrência: </label>
+                    <select required  type="text" id="opcao" name="class_occ" class="form-control">
+                      <option disabled selected value="">Selecione da ocorrência
+                        {loop="$occurrences"}
+                      <option value3="{$value.days_occurrence}" value2="{$value.days_occurrence}" value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="classificacao">Classificação do dano: </label>
+                    <select  required type="text" id="classificacao" name="degree_damg" class="form-control" disabled>
+                      <option disabled selected value="">Selecione da ocorrência
+                        {loop="$degree_damgs"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="descricao">Descrição da ocorrência*: </label>
+                  <textarea required  id="descricao" name="descricao" class="form-control" placeholder="Descreva a ocorrência com todos os detalhes" rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="solution">O que foi realizado após a ocorrência / Ação imediata?: </label>
+                  <textarea required rows="5" id="solution" name="solution" class="form-control"
+                    placeholder="Descreva a ocorrência com todos os detalhes"></textarea>
+                </div>
+
+              </div>
+
+              <!-- <div class="form-group col-md-6">
+                    <div class="form-group">
+                      <label for="file">Anexar Arquivo: </label>
+                      <div>
+                        <small>
+                            <strong>Arquivos suportados: 
+                            <span class="text-red">.jpg, .jpeg, .png, .pdf, .rar, .zip</span> 
+                            </strong>
+                        </small>
+                      </div>
+                      <small>
+                        <strong> 
+                            Caso o arquivo enviado seja diferente do especificado acima, o sistema enviará como anexo uma imagem padrão do sistema e não arquivo errôneamente enviado.
+                        </strong>
+                      </small>
+                      <input type="file" class="form-control" id="file" name="file" />
+                  </div>
+                  </div> -->
+              <!-- /.col -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-block">Enviar Notificação</button>
+              </div>
+              <!--Div campo paciente 2-->
+          </div>
+          <!-- /.col -->
+          </form>
+          <!-- /.form-box -->
+
+          <script>
+            document.querySelector('#file').addBirthdayListener('change', function () {
+              var file = new FileReader();
+              file.onload = function () {
+                document.querySelector('#image-preview').src = file.result;
+              }
+              file.readAsDataURL(this.files[0]);
+            });
+          </script>
+        </div><!-- /.card -->
+      </div>
+    </div>
+  </div>
+  </div>
+
+  </div>
+  <!-- /.register-box -->
+</main>
+
+</body>

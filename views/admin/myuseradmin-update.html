@@ -1,0 +1,120 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        
+        <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/admin/users">Usuários</a></li>
+                <li class="breadcrumb-item active">Atualizar usuário</li>
+            </ol>
+            </div>
+        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header alert-info">
+                <h3 class="card-title">Atualizar usuário:</h3>
+                </div>
+                <!-- /.card-header -->
+
+            
+                <!-- form start -->
+                <form role="form" action="/admin/myuseradmin/{getUserId()}" method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="user_active">
+                          {if="$user.user_active == 1"}
+                          <input type="checkbox" class="form-check-input flat-red" id="user_active" name="user_active" value='{function="getUserId()"}' checked>
+                          
+                          <span><strong style="color:blue;">Usuário ativo </strong></span>
+                          {else}
+                          <input type="checkbox" class="form-check-input flat-red" id="user_active" name="user_active" value='{function="getUserId()"}'>
+                          
+                          <span> <strong style="color:red;">Usuário desativado </strong></span>    
+                          {/if}
+                        </label>
+                        <br />
+                    <div class="form-group">
+                    <label for="desname">Nome</label>
+                    <input type="text" class="form-control" id="desname" name="desname" placeholder="Digite o nome" value="{$user.desname}" required>
+                    </div>
+                    <div class="form-group">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Digite o login" value="{$user.login}" required>
+                    </div>
+                    <div class="form-row col-md-3">
+                        <label for="setor">Setor: </label>
+                        <select required type="text" 
+                        id="setor" 
+                        name="setor" 
+                        class="form-control">
+                          <option disabled selected value="{$user.setor}">{$user.setor}
+                            {loop="$departments"}
+                            {if="$value.name != $user.setor"}
+                          <option value="{$value.name}">
+                            {$value.name}
+                            {/if}
+                            {/loop}
+                        </select>
+                      </div>
+                    <div class="form-group">
+                        <label for="file">Foto</label>
+                        <input type="file" class="form-control" id="file" name="file" value="{$user.desphoto}">
+                        <div class="card card-widget">
+                            <div class="card-body">
+                                <img class="img-responsive img-fluid" width="150px" id="image-preview" src="{$user.desphoto}">
+                            </div>
+                        </div>
+                      </div>
+                    <label for="inadmin" required>Nivel de Acesso</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input form-check-label" id="inadmin" name="inadmin" value="1" {if="$user.inadmin == 1"}checked{/if}>
+                        Acesso Marketing
+                        <br>
+                        <input type="radio" class="form-check-input form-check-label" id="inadmin" name="inadmin" value="2" {if="$user.inadmin == 2"}checked{/if}>
+                        Acesso de Qualidade
+                        <br>
+                        <input type="radio" class="form-check-input form-check-label" id="inadmin" name="inadmin" value="3" {if="$user.inadmin == 3"}checked{/if}>
+                        Acesso de Telefonia / Recepção
+                        <br>
+                        <input type="radio" class="form-check-input form-check-label" id="inadmin" name="inadmin" value="0" {if="$user.inadmin == 0"}checked{/if}>
+                        Acesso de Administrador
+                    </div>
+               
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary alert-info">Salvar</button>
+                    <!-- <a {loop="$users"} href="/admin/users/{$value.id_user}/delete" {/loop} onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-primary btn-danger "><i class="fa fa-trash"></i> Excluir</a>
+               -->
+                <a href="/admin/myuser/{$user.id_user}/password" class="btn btn-primary alert-warning" id="btn-login"><i class="fa fa-unlock mr-2"></i>Alterar senha</a>
+                </div>
+               </form>
+            </div>
+            <!-- /.card -->
+            </div>
+            <!--/.col  -->
+        </div>
+        <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    

@@ -1,0 +1,134 @@
+{include="headersubscriptions"}
+
+    <title>Gerador de Assinatura Shineray</title>
+
+<body>
+    <div class="editor-container">
+        <!-- <div>
+            <div>
+                <a href="/" class="btn btn-success"><i class="fa fa-arrow-circle-left"></i> Voltar ao intranet</a>
+            </div>
+            <img src="/res/site/img/sbm.png">
+        </div> -->
+        <table>
+            <tr>
+                <td height="20" style="font-size: 80px; line-height: 80px; mso-line-height-rule: exactly;">&nbsp;</td>
+            </tr>
+        </table>
+        <img src="/res/site/img/shineray-motos-logo-01.png" class="assi">
+        <h2><center><strong>Gerador de Assinatura de E-mail </strong></center></h2>
+        <div class="preview-section">
+            <div id="signature-preview">
+                <img src="/res/site/assinatura_shineray/img/Assinatura Não Preenchida Shineray.png" class="bg-img" id="bg-display">
+                <div class="edit-layer p-info">
+                    <div class="p-name p-info2" id="out-name">Nome</div></div>
+                <div class="edit-layer p-info-sub">
+                    <div class="p-role p-info3" id="out-role">Setor</div>
+                </div>
+                <div class="edit-layer c-info">
+                    <div class="c-item-un"><span id="out-loc">Unidade</span></div>
+                    <div class="c-item-te"><span id="out-phone">Telefone: (00) 00000-0000</span></div>
+                    <div class="c-item-ra"><span id="out-ramal">Ramal:0000</span></div>
+                    <div class="c-item-cel"><span id="out-cel">Celular: (00) 00000-0000</span></div>
+                    <div class="c-item-em"><span id="out-email">email@shineraydobrasil.com.br</span></div>
+                </div>
+                <div class="f-links">
+                    <div class="f-item"><span id="out-site"></span></div>
+                    <div class="f-item"><span id="out-social"></span></div>
+                </div>
+            </div>
+        </div>
+    <form id="signature-form">
+        <div class="controls-grid">
+            <div class="input-group">
+                <label>Escolher Moldura</label>
+                <select type="text" id="in-bg" oninput="updatePreview()" required>
+                    <option value="">Selecione uma moldura</option>
+                    {loop="$subscriptions"}
+                    {if="$value.subscription_active == 1"}
+                        <option value="{$value.desphoto}" data-color="{$value.name_color}">{$value.name}</option>
+                    {/if}
+                    {/loop}
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Nome do colaborador</label>
+                <input type="text" id="in-name" maxlength="22" placeholder="Ex: João Silva" oninput="updatePreview()" required>
+            </div>
+            <div class="form-group">
+                            <label for="department">Setor </label>
+                            <select required type="text" 
+                            id="in-role"
+                            maxlength="31"
+                            oninput="updatePreview()"
+                            name="department" 
+                            class="form-control">
+                                <option disabled selected value="" required>Escolha a Setor
+                                {loop="$departments"}
+                                <option value="{$value.name}">{$value.name}
+                                {/loop}
+                </select>
+            </div>
+            <div class="form-group">
+                            <label for="unit">Unidade: </label>
+                            <select required type="text" 
+                            id="in-loc" 
+                            oninput="updatePreview()"
+                            name="unit" 
+                            class="form-control">
+                                <option disabled selected value="">Selecione a unidade
+                                {loop="$units"}
+                                <option value="{$value.name}">{$value.name}
+                                {/loop}
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Telefone</label>
+                <input type="text" id="in-phone" maxlength="25" placeholder="Ex: (81) 98888-7777" oninput="mascaraTelefone(this); updatePreview()" onfocus="if(this.value==='') this.value='Telefone: '">
+            </div>
+            <div class="input-group">
+                <label>Ramal</label>
+                <input type="text" id="in-ramal" maxlength="11" placeholder="Ex: 7777" oninput="mascaraRamal(this); updatePreview()" onfocus="if(this.value==='') this.value='Ramal: '">
+            </div>
+            <div class="input-group">
+                <label>Celular</label>
+                <input type="text" id="in-cel" maxlength="24"  placeholder="Ex: (81) 98888-7777" oninput="mascaraCelular(this); updatePreview()" onfocus="if(this.value==='') this.value='Celular: '">
+            </div>
+            <div class="input-group">
+                <label>E-mail</label>
+                <input type="text" id="in-email" list="email-options" placeholder="nome@exemplo.com" oninput="sugerirDominios(this); updatePreview()" required>
+                <datalist id="email-options"></datalist>
+            </div>
+        </div>
+        </form>
+        <div class="button-group">
+            <button class="btn-download imgdownload" onclick="downloadImage()">Baixar assinatura (PNG)</button>
+            <!-- <button class="btn-copy" onclick="copyHTML()">Copiar Código HTML</button> -->
+        </div>
+        
+        <div class="how-to-use" >
+            <h4 style="margin-top: 0;">Como usar:</h4>
+            <ol style="font-size: 14px; line-height: 1.6; margin-bottom: 0;">
+                <li>Preencha os dados nos campos acima.</li>
+                <li>A prévia será atualizada automaticamente.</li>
+                <li>Clique em <strong>"Baixar como Imagem"</strong> para salvar e usar no Outlook/Gmail.</li>
+                <!-- <li>Para adicionar novas molduras, coloque os arquivos na pasta <code>assets/</code> e edite o arquivo <code>index.html</code>.</li> -->
+            </ol>
+        </div>
+    </div>
+</body>
+<script>
+    function downloadImage() {
+    const form = document.getElementById('signature-form');
+
+    
+    if (!form.reportValidity()) {
+    
+        return;
+    }
+
+}
+</script>
+
+{include="footersubscriptions"}
+

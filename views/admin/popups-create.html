@@ -1,0 +1,76 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Lista de Popups</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/popups">Popups</a></li>
+            <li class="breadcrumb-item active">Cadastrar Popup</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header alert-info">
+              <h3 class="card-title">Cadastrar novo popup</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <!-- form start -->
+            <form role="form" action="/admin/popups/create" method="post" enctype="multipart/form-data">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="popup_title">Titulo do Popup</label>
+                  <input type="text" class="form-control" id="popup_title" name="popup_title"
+                    placeholder="Digite o nome do titulo" required>
+                </div>
+                <!-- Photo - File -->
+                <div class="form-group">
+                  <label for="file">Foto</label>
+                  <input type="file" class="form-control" id="file" name="file" />
+                  <img class="img-responsive img-fluid" id="image-preview" />
+                </div>
+                <!-- checkbox -->
+                <div class="form-group">
+                  <label style="display:none" for="popup_active">
+                    <input type="checkbox" class="form-check-input flat-red" id="popup_active" name="popup_active"
+                      value='{function="getUserId()"}' required checked>
+                    Popup Ativo?
+                  </label>
+                  <br>
+                  <label style="display:none" for="id_user">
+                    <input type="checkbox" class="form-check-input flat-red" id="id_user" name="id_user"
+                      value='{function="getUserId()"}' required checked>
+                    Aceite os termos...
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary alert-info">Cadastrar</button>
+
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col  -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

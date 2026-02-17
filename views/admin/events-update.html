@@ -1,0 +1,153 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Lista de Eventos</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/events">Eventos</a></li>
+            <li class="breadcrumb-item active">Alterar Evento</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header alert-info">
+              <h3 class="card-title">Alterar Evento</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <!-- form start -->
+            <form role="form" action="/admin/events/{$event.id_event}" method="post" enctype="multipart/form-data">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="name_event">Nome do Evento</label>
+                  <input type="text" class="form-control" id="name_event" name="name_event" value="{$event.name_event}"
+                    placeholder="Digite o nome do titulo" required>
+                </div>
+                <div class="form-group">
+                  <label for="description_event">Descrição do Evento</label>
+                  <input type="text" class="form-control" id="description_event" name="description_event" value="{$event.description_event}"
+                    placeholder="Digite o nome do autor" required>
+                </div>
+
+
+
+               <div class="form-group">
+  <input type="hidden" name="photos_to_delete" id="photos-to-delete" value="">
+
+    <div class="form-group">
+        <label for="file">Fotos</label>
+
+        <input type="file" class="form-control" id="file" name="files[]" value="4" multiple />
+        <div id="image-preview-container" style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;"></div>
+        <hr>
+        <label>Imagens Atuais:</label>
+        <div id="existing-images-container" style="display: flex; gap: 15px; flex-wrap: wrap;">
+            {loop="$events"}
+                <div id="photo-{$value.id_photo}-wrapper" style="position: relative; margin-top: 10px;">
+                    <img class="img-fluid img-thumbnail" src="{$value.desphoto}?v={function="time()"}" alt="{$value.desphoto}" style="height: 120px; width: 120px; object-fit: cover;" />
+
+                    <button type="button" onclick="marcarParaExcluirExistente({$value.id_photo})" 
+                        style="position: absolute; top: -5px; right: -5px;" 
+                        class="btn-remove-image">x</button>
+                </div>
+            {/loop}
+        </div>
+    </div>
+
+
+
+
+               <!-- checkbox -->
+                <div class="form-group">
+                  <label style="display:none" for="id_user">
+                    <input type="checkbox" class="form-check-input flat-red" id="id_user" name="id_user"
+                      value='{function="getUserId()"}' required checked>
+                    Aceite os termos...
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary alert-info"><i class="fa fa-save"></i> Salvar</button>
+                <a href="/admin/events/{$event.id_event}/delete" 
+                  onclick="return confirm('Deseja realmente excluir este registro?')" 
+                  class="btn btn-danger">
+                  <i class="fa fa-trash"></i> Excluir evento
+                </a>
+            </form>
+                    <style>
+             .btn-remove-image {
+                  background-color: #ff5248; 
+                  color: #eef5df; 
+                  border: none;
+                  border-radius: 50%;
+                  width: 28px;
+                  height: 28px;
+                  font-size: 16px;
+                  font-weight: bold;
+                  cursor: pointer;
+                  text-align: center;
+                  line-height: 28px; 
+                  padding: 0;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+              }
+
+              .btn-remove-image:hover {
+                  background-color: #e60000; /* Vermelho mais escuro no hover */
+              }
+            </style>
+
+           <script>
+             let deletedPhotoIds = [];
+
+// Função chamada ao clicar 'X' em imagem existente
+function marcarParaExcluirExistente(photoId) {
+    if (confirm('Deseja realmente excluir esta imagem ao salvar?')) {
+        // 1. Esconde a imagem visualmente
+        document.querySelector(`#photo-${photoId}-wrapper`).style.display = 'none';
+        
+        // 2. Adiciona o ID na lista de exclusão
+        deletedPhotoIds.push(photoId);
+        
+        // 3. Atualiza o campo oculto com a lista de IDs (separados por vírgula)
+        document.querySelector('#photos-to-delete').value = deletedPhotoIds.join(',');
+    }
+}
+// Seus scripts para imagens novas (arquivosAtuais, renderizarPreviews, removerImagem) continuam os mesmos.
+              </script>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col  -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<script>
+
+  document.querySelector('#file').addEventListener('change', function () {
+    var file = new FileReader();
+    file.onload = function () {
+      document.querySelector('#image-preview').src = file.result;
+    }
+    file.readAsDataURL(this.files[0]);
+  });
+
+</script>

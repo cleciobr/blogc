@@ -1,0 +1,137 @@
+{include="header"}
+
+<!-- Estilos para Modernizar o Layout -->
+<style>
+  @import url('https://fonts.googleapis.com');
+
+  :root {
+    --shineray-red: #e31d1a;
+    --dark-surface: #121212;
+  }
+
+  body { background-color: #f4f7f6; font-family: 'Montserrat', sans-serif; }
+
+  /* Ajuste para o menu não cobrir */
+  .training-wrapper { padding-top: 120px; padding-bottom: 80px; }
+
+  /* Título da Página */
+  .page-header { text-align: center; margin-bottom: 60px; }
+  .page-header h1 { font-weight: 800; font-size: 2.8rem; color: #1a1a1a; position: relative; display: inline-block; }
+  .page-header h1::after { content: ''; display: block; width: 60px; height: 5px; background: var(--shineray-red); margin: 10px auto 0; border-radius: 10px; }
+
+  /* Grid de Vídeos */
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+
+  /* Card de Treinamento */
+  .video-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+  }
+  .video-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+
+  /* Estilização do Player Plyr*/
+  .plyr { border-radius: 0; }
+  
+  .video-info { padding: 25px; text-align: center; }
+  .video-info h4 { font-weight: 700; font-size: 1.1rem; color: #333; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+
+  @media (max-width: 768px) {
+    .video-grid { grid-template-columns: 1fr; }
+    .page-header h1 { font-size: 2rem; }
+  }
+</style>
+
+<!-- CSS do Player -->
+<link rel="stylesheet" href="https://cdn.plyr.io" />
+
+<main class="training-wrapper">
+  <div class="container">
+    
+    <header class="page-header">
+      <h1>Treinamentos Shineray</h1>
+      <p class="text-muted mt-3">Capacitação técnica e comercial para o time de elite.</p>
+    </header>
+
+    <div class="video-grid">
+      
+      <!-- Card 1 -->
+      <div class="video-card wow fadeIn">
+        <div class="video-player">
+          <video class="js-player" playsinline controls>
+            <source src="/res/site/videos/Treinamento 1.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-info">
+          <h4>Treinamento 01</h4>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="video-card wow fadeIn" data-wow-delay="0.1s">
+        <div class="video-player">
+          <video class="js-player" playsinline controls>
+            <source src="/res/site/videos/Treinamento 2.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-info">
+          <h4>Treinamento 02</h4>
+        </div>
+      </div>
+
+
+      <!-- Card 3 -->
+      <div class="video-card wow fadeIn" data-wow-delay="0.2s">
+        <div class="video-player">
+          <video class="js-player" playsinline controls>
+            <source src="/res/site/videos/Treinamento 3.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-info">
+          <h4>Treinamento 03</h4>
+        </div>
+      </div>
+
+      <div class="video-card wow fadeIn">
+        <div class="video-player">
+          <video class="js-player" playsinline controls>
+            <source src="/res/site/videos/Treinamento 4.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-info">
+          <h4>Treinamento 04</h4>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</main>
+
+<!-- Botão Voltar ao Topo -->
+<a class="scroll-to-top rounded shadow-lg" href="#top" style="background: var(--shineray-red); color: white; padding: 10px 15px;">
+  <i class="fa fa-angle-up"></i>
+</a>
+
+<!-- SCRIPTS OTIMIZADOS -->
+<script src="/res/site/js/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.plyr.io"></script>
+<script src="/res/site/js/mdb.min.js"></script>
+
+<script>
+
+  new WOW().init();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const controls = [
+        'play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'
+    ];
+    const players = Plyr.setup('.js-player', { controls });
+  });
+</script>
+
+{include="footer"}

@@ -1,0 +1,217 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Cadastro de notificação</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/notifications">Lista de notificações</a></li>
+            <li class="breadcrumb-item active">Cadastrar Notificação</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+   <!--Notification-->
+   {include="statusbuttons"}
+   <!--Notification end-->
+  <!--Notification end-->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="container ">
+        {if="$success == 1"}
+        <div class="row">
+          <div class="col-md-12">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              Notificação foi cadastrado com <strong>sucesso</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        {/if}
+      </div>
+      <div class="row">
+        <!-- left column -->
+        <div class="col">
+          <div class="box-header d-flex justify-content-end">
+            <a href="/admin/multiplenotifications/create" class="btn btn-success" style="margin-top: 10px;">Cadastrar
+              Múltiplas Notificações</a>
+          </div>
+          <hr>
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header alert-info">
+              <h3 class="card-title">Cadastrar nova notificação</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <div class="card-body register-card-body">
+              <form role="form" action="/admin/notifications/create" method="post">
+                <div class="form-row">
+                  <div class="col-md-12 bg-light p-3 mb-3 smalltitle-container">
+                    <h6 class="text-center smalltitle">A ocorrência envolveu um paciente?</h6>
+                  </div>
+                </div>
+                <div class="form-group text-center" required>
+                  <label for="patient">Sim: </label>
+                  <input type="radio" id="patient" value="Sim" name="patient" onchange="toggleFields()" required>
+                  <span style="padding: 1rem;"></span>
+                  <label for="patient">Não: </label>
+                  <input type="radio" id="patient" value="Não" name="patient" onchange="toggleFields()" required>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-12 bg-light p-3 mb-3 smalltitle-container">
+                    <h6 class="text-center smalltitle"></h6>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-2">
+                    <label for="dt_notificacao">Data da Notificação*:</label>
+                    <input type="date" class="form-control" id="dt_notificacao" name="dt_notificacao">
+                  </div>
+                </div>
+                <div id="campos-paciente">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="nome_pac">Nome do Paciente: </label>
+                      <input type="text" class="form-control" placeholder="Digite o nome do paciente" id="nome_pac"
+                        name="nome_pac">
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="dt_nasc">Data de Nasc.*:</label>
+                      <input type="date" class="form-control" id="dt_nasc" name="dt_nasc">
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="atendimento">Atendimento:</label>
+                      <input type="number" class="form-control" id="atendimento" name="atendimento"
+                        placeholder="Digite o atendimento">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                      <label for="registro">Registro:</label>
+                      <input type="number" class="form-control" id="registro" name="registro"
+                        placeholder="Digite o número do registro">
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="dt_internamento">Data de internamento*:</label>
+                      <input type="date" class="form-control" id="dt_internamento" name="dt_internamento">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-2">
+                    <label for="dt_oco">Data Ocorrencia*:</label>
+                    <input type="date" class="form-control" id="dt_oco" name="dt_oco">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="hr_oco">Hora da ocorrência*:</label>
+                    <input type="time" class="form-control" id="hr_oco" name="hr_oco">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="st_cante">Setor Notificante*: </label>
+                    <select required type="text" id="st_cante" name="st_cante" class="form-control"><span>></span>
+                      <option disabled selected value="">Selecione setor notificante
+                        {loop="$departments"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="st_cado">Setor Notificado*: </label>
+                    <select required type="text" id="st_cado" name="st_cado" class="form-control"><span>></span>
+                      <option disabled selected value="">Selecione setor notificado
+                        {loop="$departments"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="class_incident">Classificação do incidente: </label>
+                    <select required type="text" id="class_incident" name="class_incident" class="form-control">
+                      <span>></span>
+                      <option disabled selected value="">Selecione Classificação do incidente
+                        {loop="$incidents"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="opcao">Classificação da ocorrência: </label>
+                    <select required type="text" id="opcao" name="class_occ" class="form-control"> <span>></span>
+                      <option disabled selected value="">Selecione da ocorrência
+                        {loop="$occurrences"}
+                      <option value3="{$value.days_occurrence}" value2="{$value.days_occurrence}" value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select> 
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="classificacao">Classificação do dano: </label>
+                    <select required type="text" id="classificacao" name="degree_damg" class="form-control" disabled>
+                      <span>></span>
+                      <option disabled selected value="">Selecione da ocorrência
+                        {loop="$degree_damgs"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="descricao">Descrição da ocorrência*: </label>
+                  <textarea id="descricao" name="descricao" class="form-control"
+                    placeholder="Descreva a ocorrência com todos os detalhes" rows="5" required></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="solution">O que foi realizado após a ocorrência / Ação imediata?: </label>
+                  <textarea rows="5" id="solution" name="solution" class="form-control"
+                    placeholder="Descreva a ocorrência com todos os detalhes"></textarea>
+                </div>
+
+            </div>
+
+            <!-- <div class="form-group col-md-6">
+              <div class="form-group">
+                <label for="file">Anexar Arquivo: </label>
+                <div>
+                   <small>
+                      <strong>Arquivos suportados: 
+                      <span class="text-red">.jpg, .jpeg, .png, .pdf, .rar, .zip</span> 
+                      </strong>
+                   </small>
+                </div>
+                <small>
+                   <strong> 
+                      Caso o arquivo enviado seja diferente do especificado acima, o sistema enviará como anexo uma imagem padrão do sistema e não arquivo errôneamente enviado.
+                   </strong>
+                </small>
+                <input type="file" class="form-control" id="file" name="file" />
+             </div>
+            </div> -->
+            <!-- /.col -->
+            <div class="card-footer">
+              <button type="submit" class="btn btn-info btn-block">Enviar Notificação</button>
+            </div>
+            <!-- /.col -->
+            </form>
+          </div>
+        </div>
+        <!-- /.card -->
+      </div>
+      <!--/.col  -->
+    </div>
+    <!-- /.row -->
+  </section>
+</div><!-- /.container-fluid -->

@@ -1,0 +1,1322 @@
+<!-- Main Footer -->
+<footer class="main-footer">
+  <!-- To the right -->
+  
+  <div class="float-right d-none d-sm-inline">
+    Desenvolvido por <a href="//shineray.com.br" target="_blank">Clécio Lins</a>
+  </div>
+
+  <!-- Default to the left -->
+  <strong>Copyright &copy; 2025 - <script type="text/javascript">document.write(new Date().getFullYear());</script> <a href="//shineray.com.br" target="_blank">Equipe de TI</a>.</strong> Todos os direitos reservados.
+</footer>
+</div>
+
+
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/res/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--  App -->
+<script src="/res/admin/dist/js/adminlte.min.js"></script>
+<!-- DataTables -->
+<!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>  -->
+<script src="/res/admin/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- SlimScroll -->
+<script src="/res/admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/res/admin/plugins/fastclick/fastclick.js"></script>
+<!--  for demo purposes -->
+<script src="/res/admin/dist/js/demo.js"></script>
+<!-- iCheck 1.0.1 -->
+<script type="text/javascript" src="/res/admin/plugins/iCheck/icheck.min.js"></script>
+<!-- Editor wysihtml5 -->
+<script src="/res/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- sidemenu -->
+<script src="/res/admin/plugins/iCheck/checknotification.js"></script>
+ <!--pop -->
+ <script type="text/javascript" src="/res/site/js/mdb.min.js"></script>
+ <script type="text/javascript" src="/res/site/OwlCarousel2-2.3.4/dist/owl.carousel.js"></script>
+ <script type="text/javascript" src="/res/site/js/hover3d.js"></script>
+ <script type="text/javascript" src="/res/admin/dist/js/table.js"></script>
+ <!-- <script type="text/javascript" src="/res/admin/dist/js/bootstrap.5.3.2.min.js"></script> -->
+ <script type="text/javascript" src="/res/admin/dist/js/popper.1.16.0.min.js"></script>
+ <script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js"></script>
+
+ <!-- <script type="text/javascript" src="/res/admin/dist/js/jquery-3.5.1.slim.min.js"></script>-->
+ <!--/ pop -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#users").DataTable({
+      "order": [[ 0, "desc" ]],
+      "dom": 'Bfrtip',
+      "buttons": [
+        'excel', 'print'
+      ],
+      "searching": true,
+      
+      "language": {
+        "zeroRecords": "Dado solicitado não encontrado",
+        "info": "Exibindo página _PAGE_ de _PAGES_",
+        "infoEmpty": "-",
+        "infoFiltered": "",
+        "search": "Pesquisar",
+        
+        "paginate": {
+            "next": "Próximo",
+            "previous": "Anterior",
+            "first": "Primeiro",
+            "last": "Último"
+        }
+      }
+    });
+
+    $('.textarea').wysihtml5({
+      toolbar: { fa: true }
+    });
+
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-blue',
+      radioClass   : 'iradio_flat-blue'
+    })
+
+  });
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    $("#dgs").DataTable({
+        "order": [[ 0, "desc" ]],
+        "dom": 'Bfrtip',
+        "buttons": [],
+        "searching": false, 
+        "language": {
+            "zeroRecords": "Dado solicitado não encontrado",
+            "info": "Exibindo página _PAGE_ de _PAGES_",
+            "infoEmpty": "-",
+            "infoFiltered": "",
+            "search": "Pesquisar",
+            "paginate": {
+                "next": "Próximo",
+                "previous": "Anterior",
+                "first": "Primeiro",
+                "last": "Último"
+            }
+        }
+    });
+
+  
+
+    // Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+        checkboxClass: 'icheckbox_flat-blue',
+        radioClass   : 'iradio_flat-blue'
+    });
+});
+</script>
+  
+<script>
+ $(document).ready(function() {
+    var table = $('#users').DataTable();
+
+
+    table.on('draw', function() {
+        updateTotal();
+    });
+
+    function updateTotal() {
+        var info = table.page.info();
+        var total = info.recordsDisplay;
+        $('#total').text('Total de linhas: ' + total);
+    }
+
+    updateTotal();
+});
+</script>
+
+<script>
+  $(document).ready(function() {
+     var table = $('#dgs').DataTable();
+ 
+ 
+     table.on('draw', function() {
+         updateTotal();
+     });
+ 
+     function updateTotal() {
+         var info = table.page.info();
+         var total = info.recordsDisplay;
+         $('#total').text('Total de linhas: ' + total);
+     }
+ 
+     updateTotal();
+ });
+ </script>
+
+
+ <!-- Theme configuration (navbar) -->
+
+ <script>
+  let navigationColor = localStorage.getItem('navigationColor'),
+      navbar = document.getElementById('mainNavbar');
+
+  if(navigationColor != null && navbar != null) {
+      if(navigationColor == 'inverted') {
+          navbar.classList.add('bg-dark', 'navbar-dark');
+          navbar.classList.remove('bg-white', 'navbar-light');
+      } else {
+          navbar.classList.add('bg-white', 'navbar-light');
+          navbar.classList.remove('bg-dark', 'navbar-dark');
+      }
+  }
+</script>    
+
+<script type="text/javascript" src="/res/admin/dist/js/theme.bundle.js"></script> 
+<script>
+  document.getElementById('showcanvasButton').addEventListener('click', function() {
+      var offcanvasDiv = document.getElementById('offcanvasCustomize');
+      offcanvasDiv.classList.add('show');
+      var offcanvasBS = new bootstrap.Offcanvas(offcanvasDiv);
+      offcanvasBS.show();
+  });
+</script>
+
+
+
+<script>
+// Theme switcher
+
+let themeSwitcher = document.getElementById('themeSwitcher');
+
+const getPreferredTheme = () => {
+if (localStorage.getItem('theme') != null) {
+    return localStorage.getItem('theme');
+}
+
+return document.documentElement.dataset.theme;
+};
+
+const setTheme = function (theme) {
+if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+} else {
+    document.documentElement.dataset.theme = theme;
+}
+
+localStorage.setItem('theme', theme);
+};
+
+const showActiveTheme = theme => {
+const activeBtn = document.querySelector(`[data-theme-value="${theme}"]`);
+
+document.querySelectorAll('[data-theme-value]').forEach(element => {
+    element.classList.remove('active');
+});
+
+activeBtn && activeBtn.classList.add('active');
+
+// Set button if demo mode is enabled
+document.querySelectorAll('[data-theme-control="theme"]').forEach(element => {
+    if (element.value == theme) {
+        element.checked = true;
+    }
+});
+};
+
+if (typeof themeSwitcher != 'undefined') {
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (localStorage.getItem('theme') != null) {
+        if (localStorage.getItem('theme') == 'auto') {
+            setTheme(getPreferredTheme());
+        }
+    }
+});
+
+window.addEventListener('load', () => {
+    showActiveTheme(getPreferredTheme());
+
+    document.querySelectorAll('[data-theme-value]').forEach(element => {
+        element.addEventListener('click', () => {
+            const theme = element.getAttribute('data-theme-value');
+
+            setTheme(theme);
+        })
+    })
+});
+}
+</script>
+<script>
+var themeConfig = {
+theme: JSON.parse('"light"'),
+isRTL: JSON.parse('false'),
+isFluid: JSON.parse('true'),
+sidebarBehaviour: JSON.parse('"fixed"'),
+navigationColor: JSON.parse('"inverted"')
+};
+
+var isRTL = localStorage.getItem('isRTL') === 'true',
+isFluid = localStorage.getItem('isFluid') === 'true',
+theme = localStorage.getItem('theme'),
+sidebarSizing = localStorage.getItem('sidebarSizing'),
+linkLTR = document.getElementById('stylesheetLTR'),
+linkRTL = document.getElementById('stylesheetRTL'),
+html = document.documentElement;
+
+if (isRTL) {
+linkLTR.setAttribute('disabled', '');
+linkRTL.removeAttribute('disabled');
+html.setAttribute('dir', 'rtl');
+} else {
+linkRTL.setAttribute('disabled', '');
+linkLTR.removeAttribute('disabled');
+html.removeAttribute('dir');
+}
+</script>
+
+
+    <!-- THEME CONFIGURATION -->
+    <script>
+        let themeAttrs = document.documentElement.dataset;
+    
+        for(let attr in themeAttrs) {
+            if(localStorage.getItem(attr) != null) {
+                document.documentElement.dataset[attr] = localStorage.getItem(attr);
+    
+                if (theme === 'auto') {
+                    document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    
+                    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                        e.matches ? document.documentElement.dataset.theme = 'dark' : document.documentElement.dataset.theme = 'light';
+                    });
+                }
+            }
+        }
+
+        
+    </script>
+
+
+
+<script>
+  $(document).ready(function() {
+    // 1. Ao carregar a página, verifica se o menu deve estar fechado
+    if (localStorage.getItem('sidebar-state') === 'collapsed') {
+      $('body').addClass('sidebar-collapse').trigger('collapsed.pushmenu');
+    }
+
+    // 2. Escuta o clique no botão do menu
+    $('[data-widget="pushmenu"]').on('click', function() {
+      // Pequeno delay para esperar a classe ser alternada pelo AdminLTE
+      setTimeout(function() {
+        if ($('body').hasClass('sidebar-collapse')) {
+          localStorage.setItem('sidebar-state', 'collapsed');
+        } else {
+          localStorage.setItem('sidebar-state', 'expanded');
+        }
+      }, 300);
+    });
+  });
+</script>
+
+<script>
+  function atualizarRelogio() {
+    const agora = new Date();
+    
+    // Formata a hora, minutos e segundos com dois dígitos
+    const horas = String(agora.getHours()).padStart(2, '0');
+    const minutos = String(agora.getMinutes()).padStart(2, '0');
+    const segundos = String(agora.getSeconds()).padStart(2, '0');
+    
+    const horaFormatada = `${horas}:${minutos}:${segundos}`;
+    
+    // Insere no elemento HTML
+    document.getElementById('relogio-real').textContent = horaFormatada;
+  }
+
+  // Executa a função a cada 1 segundo (1000 milissegundos)
+  setInterval(atualizarRelogio, 1000);
+
+  // Chama a função imediatamente para não esperar 1 segundo no primeiro load
+  atualizarRelogio();
+</script>
+
+
+<!-- <script>
+
+  var descricaoTextarea = document.getElementById("descricao");
+  var textoPadrao = descricaoTextarea.value;
+  document.querySelector("form").addEventListener("submit", function(event) {
+      if (descricaoTextarea.value === "") {
+          descricaoTextarea.value = textoPadrao;
+      }
+  });
+</script> -->
+<!-- <script>
+  function addBusinessDays(date, days) {
+    var count = 0;
+    while (days > 0) {
+      date.setDate(date.getDate() + 1);
+      if (date.getDay() !== 0 && date.getDay() !== 6) { 
+        days--;
+      }
+      count++;
+    }
+    return date;
+  }
+  
+  document.getElementById('opcao').addEventListener('change', function() {
+    var opcaoSelecionada = parseInt(this.value);
+    if (opcaoSelecionada != -1 ) {
+      var dataAtual = new Date();
+      var novaData = addBusinessDays(dataAtual, opcaoSelecionada);
+      var dia = novaData.getDate();
+      var mes = novaData.getMonth() + 1;
+      var ano = novaData.getFullYear();
+      var dataFormatada = dia + '/' + mes + '/' + ano;
+      document.getElementById('datacalc').value = dataFormatada;
+    } else {
+      document.getElementById('datacalc').value = ''; 
+    }
+  });
+  document.getElementById('classificacao').addEventListener('change', function() {
+      var opcaoSelecionada = parseInt(this.value);
+      if (opcaoSelecionada > 0) {
+        var dataAtual = new Date();
+        var novaData = addBusinessDays(dataAtual, opcaoSelecionada);
+        var dia = novaData.getDate();
+        var mes = novaData.getMonth() + 1;
+        var ano = novaData.getFullYear();
+        var dataFormatada = dia + '/' + mes + '/' + ano;
+        document.getElementById('datacalc').value= dataFormatada;
+      } else {
+        document.getElementById('datacalc').value = ''; 
+      }
+    });
+  </script> -->
+  <script>
+    function toggleFields() {
+        var pacienteRadio = document.querySelector('input[name="patient"]:checked').value;
+        var camposPaciente = document.getElementById('campos-paciente');
+
+        if (pacienteRadio === 'Sim') {
+            camposPaciente.style.display = 'block';
+            camposPaciente.querySelectorAll('input').forEach(function(input) {
+                input.setAttribute('required');
+            });
+        } else {
+            camposPaciente.style.display = 'none';
+            camposPaciente.querySelectorAll('input').forEach(function(input) {
+                input.removeAttribute('required', 'required');
+            });
+        }
+    }
+    toggleFields();
+</script>
+<!--without zero-->
+ <!-- <script>
+    function addBusinessDays(date, days) {
+    var count = 0;
+    while (days > 0) {
+      date.setDate(date.getDate() + 1);
+      if (date.getDay() !== 0 && date.getDay() !== 6) { 
+        days--;
+      }
+      count++;
+    }
+    return date;
+  }
+
+
+  document.getElementById('opcao').addEventListener('change', function() {
+    var opcaoSelecionada = parseInt(this.options[this.selectedIndex].getAttribute('value2')); // Obtenha o valor2 selecionado
+    if (opcaoSelecionada != -1 ) {
+      var dataAtual = new Date();
+      var novaData = addBusinessDays(dataAtual, opcaoSelecionada);
+      var dia = novaData.getDate();
+      var mes = novaData.getMonth() + 1;
+      var ano = novaData.getFullYear();
+      var dataFormatada = dia + '/' + mes + '/' + ano;
+      document.getElementById('datacalc').value= dataFormatada;
+      document.getElementById('days').value = opcaoSelecionada; 
+    } else {
+      document.getElementById('datacalc').value = ''; 
+      document.getElementById('days').value = ''; 
+    }
+  });
+  document.getElementById('classificacao').addEventListener('change', function() {
+    var opcaoSelecionada = parseInt(this.options[this.selectedIndex].getAttribute('value2')); // Obtenha o valor2 selecionado
+    if (opcaoSelecionada != -1 ) {
+      var dataAtual = new Date();
+      var novaData = addBusinessDays(dataAtual, opcaoSelecionada);
+      var dia = novaData.getDate();
+      var mes = novaData.getMonth() + 1;
+      var ano = novaData.getFullYear();
+      var dataFormatada = dia + '/' + mes + '/' + ano;
+      document.getElementById('datacalc').value= dataFormatada;
+      document.getElementById('days2').value = opcaoSelecionada; 
+    } else {
+      document.getElementById('datacalc').value = ''; 
+      document.getElementById('days2').value = ''; 
+    }
+  });
+</script>  -->
+<script>
+  document.getElementById('opcao').addEventListener('change', function() {
+    var opcaoSelecionada = parseInt(this.options[this.selectedIndex].getAttribute('value3')); 
+    if (opcaoSelecionada === -19999) {
+      document.getElementById('classificacao').disabled = false;
+    } else {
+      document.getElementById('classificacao').disabled = true;
+    }
+  });
+</script>
+<!--with zero-->
+<script>
+  function addBusinessDays(date, days) {
+      var count = 0;
+      while (days > 0) {
+          date.setDate(date.getDate() + 1);
+          if (date.getDay() !== 0 && date.getDay() !== 6) { 
+              days--;
+          }
+          count++;
+      }
+      return date;
+  }
+
+  document.getElementById('opcao').addEventListener('change', function() {
+      var opcaoSelecionada = parseInt(this.options[this.selectedIndex].getAttribute('value2')); 
+      if (opcaoSelecionada != -1 ) {
+          var dataAtual = new Date();
+          var novaData = addBusinessDays(dataAtual, opcaoSelecionada);
+          var dia = ('0' + novaData.getDate()).slice(-2);
+          var mes = ('0' + (novaData.getMonth() + 1)).slice(-2); 
+          var ano = novaData.getFullYear();
+          var dataFormatada = dia + '/' + mes + '/' + ano;
+          document.getElementById('datacalc').value = dataFormatada;
+          document.getElementById('days').value = opcaoSelecionada; 
+      } else {
+          document.getElementById('datacalc').value = ''; 
+          document.getElementById('days').value = ''; 
+      }
+  });
+
+  document.getElementById('classificacao').addEventListener('change', function() {
+      var opcaoSelecionada = parseInt(this.options[this.selectedIndex].getAttribute('value2')); 
+      if (opcaoSelecionada != -1 ) {
+          var dataAtual = new Date();
+          var novaData = addBusinessDays(dataAtual, opcaoSelecionada);
+          var dia = ('0' + novaData.getDate()).slice(-2); 
+          var mes = ('0' + (novaData.getMonth() + 1)).slice(-2); 
+          var ano = novaData.getFullYear();
+          var dataFormatada = dia + '/' + mes + '/' + ano;
+          document.getElementById('datacalc').value = dataFormatada;
+          document.getElementById('days2').value = opcaoSelecionada; 
+      } else {
+          document.getElementById('datacalc').value = ''; 
+          document.getElementById('days2').value = ''; 
+      }
+  });
+</script>
+<script>
+  document.getElementById('datacalc').addEventListener('input', function() {
+      var value = this.value;
+      
+      value = value.replace(/\D/g, '');
+      if (value.length > 2) {
+          value = value.substring(0, 2) + '/' + value.substring(2);
+      }
+      if (value.length > 5) {
+          value = value.substring(0, 5) + '/' + value.substring(5);
+      }
+      if (value.length > 10) {
+          value = value.substring(0, 10);
+      }
+      this.value = value;
+  });
+</script>
+
+<script>
+  document.getElementById('opcao2').addEventListener('change', function() {
+    var opcaoSelecionada = parseInt(this.options[this.selectedIndex].getAttribute('value3')); 
+    if (opcaoSelecionada === -19999) {
+      document.getElementById('classificacao2').disabled = false;
+    } else {
+      document.getElementById('classificacao2').disabled = true; 
+    }
+  });
+</script>
+
+<script>
+  document.getElementById('calcdate').addEventListener('input', function() {
+      var value = this.value;
+      
+      value = value.replace(/\D/g, '');
+      if (value.length > 2) {
+          value = value.substring(0, 2) + '/' + value.substring(2);
+      }
+      if (value.length > 5) {
+          value = value.substring(0, 5) + '/' + value.substring(5);
+      }
+      if (value.length > 10) {
+          value = value.substring(0, 10);
+      }
+      this.value = value;
+  });
+</script>
+
+<!-- <script>
+  var inputTelefone = document.getElementById('dataerr');
+    inputTelefone.addEventListener('input', function(event) {
+        var datacalc = this.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+
+        if (datacalc.length > 0) {
+          datacalc = '+' + datacalc;
+            if (datacalc.length > 3) {
+              datacalc = datacalc.substring(0, 3) + '(' + datacalc.substring(3);
+            }
+            if (datacalc.length > 7) {
+              datacalc = datacalc.substring(0, 7) + ')' + datacalc.substring(7);
+            }
+            if (datacalc.length > 12) {
+              datacalc = datacalc.substring(0, 13) + '-' + datacalc.substring(13);
+            }
+            if (datacalc.length > 18) {
+              datacalc = datacalc.substring(0, 18);
+            }
+        }
+        this.value = phone;
+    });
+</script> -->
+<!-- <script>
+  Inputmask('99/99/9999').mask(document.getElementById('datacalc'));
+</script> -->
+
+
+
+
+<!-- Somente na última página -->
+<!-- <script>
+$(document).ready(function() {
+    var table = $('#users').DataTable();
+
+
+    table.on('draw', function() {
+        var info = table.page.info();
+        var total = info.recordsDisplay; 
+        $('#total').text('Total de registros: ' + total);
+    });
+});
+</script> -->
+
+<!-- <script>
+  Totaltable = function contaLinhasTabela() {
+var table1 = document.getElementById('tbody');
+var linhas = table1.getElementsByTagName('tr');
+var qtdRegistros = document.getElementById('qtd-registros');
+
+qtdRegistros.textContent = linhas.length + ' Registros';
+
+
+console.log(qtdRegistros.textContent);
+
+}
+Totaltable();
+</script> -->
+
+
+<!-- <script>
+  total = window.EventCounts = Totaltable = function contaLinhasTabela() {
+ var table1 = document.getElementById('tbody');
+ var linhas = table1.getElementsByTagName('tr');
+ var qtdRegistros = document.getElementById('qtd-registros');
+ 
+ qtdRegistros.textContent = linhas.length + ' Registros';
+ 
+ if(
+ console.log(qtdRegistros.textContent)< 1)
+  {Totaltable();}
+  else 0
+ }
+ total();
+ </script> -->
+
+
+
+<!-- <script>
+  window.onload = function()
+{
+    document.getElementById('form-exemplo').onsubmit = function (event) 
+    {
+        if ( CPF.validate(document.getElementById('cpf').value) !== true ) 
+        {
+            alert("CPF invalido");
+            return false;
+        }
+    };
+};
+</script> -->
+
+
+<!-- <script type="text/javascript">
+  $(document).ready(function () {
+    $("#users").DataTable({
+      "order": [[ 0, "desc" ]],
+      "dom": 'Bfrtip',
+      "buttons": [
+        'excel', 'pdf', 'print'
+      ],
+      
+      "language": {
+        "zeroRecords": "Dado solicitado não encontrado",
+        "info": "Exibindo página _PAGE_ de _PAGES_",
+        "infoEmpty": "-",
+        "infoFiltered": "",
+        "search": "Pesquisar",
+        
+        "paginate": {
+            "next": "Próximo",
+            "previous": "Anterior",
+            "first": "Primeiro",
+            "last": "Último"
+        }
+      }
+    });
+
+    $('.textarea').wysihtml5({
+      toolbar: { fa: true }
+    });
+
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-blue',
+      radioClass   : 'iradio_flat-blue'
+    })
+
+  });
+</script> -->
+<!-- 
+<script type="text/javascript">
+
+  $(document).ready(function () {
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+            $(input).next()
+            .attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+        }
+        else {
+            var img = input.value;
+            $(input).next().attr('src',img);
+        }
+    }
+
+    function verificaMostraBotao(){
+      $('input[type=file]').each(function(index){
+          if ($('input[type=file]').eq(index).val() != ""){
+              readURL(this);
+              $('.hide').show();
+          }
+      });
+    }
+
+    $('input[type=file]').on("change", function(){
+      verificaMostraBotao();
+    });
+
+    $('.hide').on("click", function(){
+      $(document.body).append($('<input />', {type: "file" }).change(verificaMostraBotao));
+      $(document.body).append($('<img />'));
+      $('.hide').hide();
+    });
+  });
+  
+</script> -->
+
+<script type="text/javascript" src="/res/admin/dist/js/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+<!-- Status -->
+<script>
+function initializeCharts() {
+      //month cado
+        var totalNotificationsmonthcado = parseInt({$concludedmonthcado}) + parseInt({$latemonthcado}) + parseInt({$ontimemonthcado});
+        var percentConcludedMonthCado = totalNotificationsmonthcado !== 0 ? (parseInt({$concludedmonthcado}) / totalNotificationsmonthcado) * 100 : 0;
+        var percentLateMonthCado= totalNotificationsmonthcado !== 0 ? (parseInt({$latemonthcado}) / totalNotificationsmonthcado) * 100 : 0;
+        var percentOnTimeMonthCado = totalNotificationsmonthcado !== 0 ? (parseInt({$ontimemonthcado}) / totalNotificationsmonthcado) * 100 : 0;
+      //year cado
+        var totalNotificationsyearcado = parseInt({$concludedyearcado}) + parseInt({$lateyearcado}) + parseInt({$ontimeyearcado});
+        var percentConcludedYearCado = totalNotificationsyearcado !== 0 ? (parseInt({$concludedyearcado}) / totalNotificationsyearcado) * 100 : 0;
+        var percentLateYearCado = totalNotificationsyearcado !== 0 ? (parseInt({$lateyearcado}) / totalNotificationsyearcado) * 100 : 0;
+        var percentOnTimeYearCado = totalNotificationsyearcado !== 0 ? (parseInt({$ontimeyearcado}) / totalNotificationsyearcado) * 100 : 0;
+      //month cante
+        var totalNotificationsmonthcante = parseInt({$concludedmonthcante}) + parseInt({$latemonthcante}) + parseInt({$ontimemonthcante});
+        var percentConcludedMonthCante = totalNotificationsmonthcante !== 0 ? (parseInt({$concludedmonthcante}) / totalNotificationsmonthcante) * 100 : 0;
+        var percentLateMonthCante = totalNotificationsmonthcante !== 0 ? (parseInt({$latemonthcante}) / totalNotificationsmonthcante) * 100 : 0;
+        var percentOnTimeMonthCante = totalNotificationsmonthcante !== 0 ? (parseInt({$ontimemonthcante}) / totalNotificationsmonthcante) * 100 : 0;
+      //year cante
+        var totalNotificationsyearcante = parseInt({$concludedyearcante}) + parseInt({$lateyearcante}) + parseInt({$ontimeyearcante});
+        var percentConcludedYearCante = totalNotificationsyearcante !== 0 ? (parseInt({$concludedyearcante}) / totalNotificationsyearcante) * 100 : 0;
+        var percentLateYearCante = totalNotificationsyearcante !== 0 ? (parseInt({$lateyearcante}) / totalNotificationsyearcante) * 100 : 0;
+        var percentOnTimeYearCante = totalNotificationsyearcante !== 0 ? (parseInt({$ontimeyearcante}) / totalNotificationsyearcante) * 100 : 0;
+
+      var statusNotificationsByMonthDataCado = {
+          labels: [
+              percentConcludedMonthCado.toFixed(2) + '% - Concluída: {$concludedmonthcado}',
+              percentOnTimeMonthCado.toFixed(2) + '% - No prazo: {$ontimemonthcado}',
+              percentLateMonthCado.toFixed(2) + '% - Atrasado: {$latemonthcado}'
+          ],
+          datasets: [{
+              data: [
+                  parseInt({$concludedmonthcado}),
+                  parseInt({$ontimemonthcado}),
+                  parseInt({$latemonthcado})
+              ],
+              backgroundColor: ['#0328fc', '#faefd2', '#fc0339'],
+              hoverBackgroundColor: ['#FFCE56', '#36A2EB', '#FF6384']
+          }]
+      };
+
+
+    var statusNotificationsByYearDataCado = {
+        labels: [ 
+              percentConcludedYearCado.toFixed(2) + '% - Concluída: {$concludedyearcado}',
+              percentOnTimeYearCado.toFixed(2) + '% - No prazo: {$ontimeyearcado}',
+              percentLateYearCado.toFixed(2) + '% - Atrasado: {$lateyearcado}'
+                ],
+        datasets: [{
+            data: [{$concludedyearcado}, {$ontimeyearcado}, {$lateyearcado} ],
+            backgroundColor: ['#0328fc', '#faefd2', '#fc0339'],
+            hoverBackgroundColor: ['#FFCE56', '#36A2EB', '#FF6384']
+        }]
+    };
+
+    var notificationsBySectorByMonthDataCante = {
+      labels: [
+              percentConcludedMonthCante.toFixed(2) + '% - Concluída: {$concludedmonthcante}',
+              percentOnTimeMonthCante.toFixed(2) + '% - No prazo: {$ontimemonthcante}',
+              percentLateMonthCante.toFixed(2) + '% - Atrasado: {$latemonthcante}'
+          ],
+          datasets: [{
+              data: [
+                   parseInt({$concludedmonthcante}),
+                   parseInt({$ontimemonthcante}),
+                   parseInt({$latemonthcante})
+              ],
+            backgroundColor: ['#0328fc', '#faefd2', '#fc0339'],
+            hoverBackgroundColor: ['#FFCE56', '#36A2EB', '#FF6384']
+        }]
+    };
+
+    var notificationsBySectorByYearDataCante = {
+      labels: [ 
+              percentConcludedYearCante.toFixed(2) + '% - Concluída: {$concludedyearcante}',
+              percentOnTimeYearCante.toFixed(2) + '% - No prazo: {$ontimeyearcante}',
+              percentLateYearCante.toFixed(2) + '% - Atrasado: {$lateyearcante}'
+                ],
+        datasets: [{
+            data: [{$concludedyearcante}, {$ontimeyearcante}, {$lateyearcante}],
+            backgroundColor: ['#0328fc', '#faefd2', '#fc0339'],
+            hoverBackgroundColor: ['#FFCE56', '#36A2EB', '#FF6384']
+        }]
+    };
+
+    var totalsmonthsoco=({$totalmonthcantejan})+
+                        ({$totalmonthcantefev})+ 
+                        ({$totalmonthcantemar})+ 
+                        ({$totalmonthcanteabr})+ 
+                        ({$totalmonthcantemai})+ 
+                        ({$totalmonthcantejun})+ 
+                        ({$totalmonthcantejul})+ 
+                        ({$totalmonthcanteago})+ 
+                        ({$totalmonthcanteset})+ 
+                        ({$totalmonthcanteout})+
+                        ({$totalmonthcantenov})+ 
+                        ({$totalmonthcantedez});
+
+     var notificationsByMonthData = {
+         labels: ['Janeiro: {$totalmonthcantejan}', 
+                  'Fevereiro: {$totalmonthcantefev}', 
+                  'Março: {$totalmonthcantemar}', 
+                  'Abril: {$totalmonthcanteabr}', 
+                  'Maio: {$totalmonthcantemai}', 
+                  'Junho: {$totalmonthcantejun}', 
+                  'Julho: {$totalmonthcantejul}',
+                  'Agosto: {$totalmonthcanteago}', 
+                  'Setembro: {$totalmonthcanteset}', 
+                  'Outubro: {$totalmonthcanteout}', 
+                  'Novembro: {$totalmonthcantenov}', 
+                  'Dezembro: {$totalmonthcantedez}', 
+                  'Total: '+totalsmonthsoco],
+         datasets: [{
+             label: 'Número de Notificações',
+             data: [{$totalmonthcantejan}, 
+                    {$totalmonthcantefev}, 
+                    {$totalmonthcantemar}, 
+                    {$totalmonthcanteabr}, 
+                    {$totalmonthcantemai}, 
+                    {$totalmonthcantejun}, 
+                    {$totalmonthcantejul}, 
+                    {$totalmonthcanteago}, 
+                    {$totalmonthcanteset}, 
+                    {$totalmonthcanteout},
+                    {$totalmonthcantenov}, 
+                    {$totalmonthcantedez},
+                     (totalsmonthsoco)] ,
+             backgroundColor: '#0f49a6',
+             borderColor: '#0f49a6',
+             borderWidth: 1
+         }]
+           };
+
+    
+    var chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        
+    };
+
+    
+    var statusNotificationsByMonthChartCado = new Chart(document.getElementById('statusNotificationsByMonthChartCado'), {
+        type: 'doughnut',
+        data: statusNotificationsByMonthDataCado,
+        options: chartOptions
+    });
+
+    var statusNotificationsByYearChartCado = new Chart(document.getElementById('statusNotificationsByYearChartCado'), {
+        type: 'doughnut',
+        data: statusNotificationsByYearDataCado,
+        options: chartOptions
+    });
+
+    var notificationsBySectorByMonthChartCante = new Chart(document.getElementById('notificationsBySectorByMonthChartCante'), {
+        type: 'doughnut',
+        data: notificationsBySectorByMonthDataCante,
+        options: chartOptions
+    });
+
+    var notificationsBySectorByYearChartCante = new Chart(document.getElementById('notificationsBySectorByYearChartCante'), {
+        type: 'doughnut',
+        data: notificationsBySectorByYearDataCante,
+        options: chartOptions
+    });
+
+
+    //Vertical
+     var notificationsByMonthChartVertical = new Chart(document.getElementById('notificationsByMonthChartVertical'), {
+         type: 'bar',
+         data: notificationsByMonthData,
+         options: chartOptions
+     });
+   
+      //Vertical end
+    
+}
+
+initializeCharts();
+</script>
+<!-- Class Oco -->
+<script>
+  function initializeCharts() {
+    //var  occurrences = [{loop="$occurrences"}'{$value.name}',{/loop}]
+   var notificationsByMonthChartHorizontalDataOco = {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        datasets: [{
+            label: 'Número de Notificações',
+            data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 12, 12, 12] ,
+            backgroundColor: '#0f49a6',
+            borderColor: '#0f49a6',
+            borderWidth: 1,
+            indexAxis: 'y'
+        }]
+    };
+   
+    var notificationsByYearChartHorizontalDataOco = {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        datasets: [{
+            label: 'Número de Notificações',
+            data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 12, 12, 12] ,
+            backgroundColor: '#0f49a6',
+            borderColor: '#0f49a6',
+            borderWidth: 1,
+            indexAxis: 'y'
+        }]
+    };
+
+    var chartOptions = {
+        responsive: true,
+        maintainAspectRatio: true,
+    };
+
+
+    var notificationsByMonthChartHorizontalOco = new Chart(document.getElementById('notificationsByMonthChartHorizontalOco'), {
+        type: 'bar',
+        data: notificationsByMonthChartHorizontalDataOco,
+        options: chartOptions
+    });
+
+   
+    var notificationsByYearChartHorizontalOco = new Chart(document.getElementById('notificationsByYearChartHorizontalOco'), {
+        type: 'bar',
+        data: notificationsByYearChartHorizontalDataOco,
+        options: chartOptions
+    });
+
+
+
+
+  }
+    initializeCharts();
+</script>
+<!-- Damg -->
+<script>
+    function initializeCharts() {
+      var notificationsByMonthChartVerDataDano = {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        datasets: [{
+            label: 'Número de Notificações',
+            data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 12, 12, 12] ,
+            backgroundColor: '#0f49a6',
+            borderColor: '#0f49a6',
+            borderWidth: 1
+        }]
+    };
+
+    var notificationsByYearChartVerDataDano= {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        datasets: [{
+            label: 'Número de Notificações',
+            data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 12, 12, 12] ,
+            backgroundColor: '#0f49a6',
+            borderColor: '#0f49a6',
+            borderWidth: 1
+        }]
+    };
+
+    var notificationsByMonthChartVerDataDesoco = {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        datasets: [{
+            label: 'Número de Notificações',
+            data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 12, 12, 12] ,
+            backgroundColor: '#0f49a6',
+            borderColor: '#0f49a6',
+            borderWidth: 1
+        }]
+    };
+
+    var notificationsByYearChartVerDataDesoco= {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        datasets: [{
+            label: 'Número de Notificações',
+            data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 12, 12, 12] ,
+            backgroundColor: '#0f49a6',
+            borderColor: '#0f49a6',
+            borderWidth: 1
+        }]
+    };
+    var chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        
+    };
+
+
+
+    var notificationsByMonthChartVerDano = new Chart(document.getElementById('notificationsByMonthChartVerDano'), {
+        type: 'bar',
+        data: notificationsByMonthChartVerDataDano,
+        options: chartOptions
+    });
+    var notificationsByYearChartVerDano = new Chart(document.getElementById('notificationsByYearChartVerDano'), {
+        type: 'bar',
+        data: notificationsByYearChartVerDataDano,
+        options: chartOptions
+    });
+
+    var notificationsByMonthChartVerDesoco = new Chart(document.getElementById('notificationsByMonthChartVerDesoco'), {
+        type: 'bar',
+        data: notificationsByMonthChartVerDataDesoco,
+        options: chartOptions
+    });
+    var notificationsByYearChartVerDesoco = new Chart(document.getElementById('notificationsByYearChartVerDesoco'), {
+        type: 'bar',
+        data: notificationsByYearChartVerDataDesoco,
+        options: chartOptions
+    });
+
+
+
+  }
+    initializeCharts();
+</script>
+<!-- Incident -->
+<script>
+  function initializeCharts() {
+   var notificationsByMonthChartHorizontalDataIn = {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        datasets: [{
+            label: 'Número de Notificações',
+            data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 12, 12, 12] ,
+            backgroundColor: '#0f49a6',
+            borderColor: '#0f49a6',
+            borderWidth: 1,
+            indexAxis: 'y'
+        }]
+    };
+   
+    var notificationsByYearChartHorizontalDataIn = {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        datasets: [{
+            label: 'Número de Notificações',
+            data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 12, 12, 12] ,
+            backgroundColor: '#0f49a6',
+            borderColor: '#0f49a6',
+            borderWidth: 1,
+            indexAxis: 'y'
+        }]
+    };
+
+    var notificationsByMonthChartHorizontalDataPro = {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        datasets: [{
+            label: 'Número de Notificações',
+            data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 12, 12, 12] ,
+            backgroundColor: '#0f49a6',
+            borderColor: '#0f49a6',
+            borderWidth: 1,
+            indexAxis: 'y'
+        }]
+    };
+   
+    var notificationsByYearChartHorizontalDataPro = {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho','Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        datasets: [{
+            label: 'Número de Notificações',
+            data: [65, 59, 80, 81, 56, 55, 40, 12, 12, 12, 12, 12] ,
+            backgroundColor: '#0f49a6',
+            borderColor: '#0f49a6',
+            borderWidth: 1,
+            indexAxis: 'y'
+        }]
+    };
+
+    var chartOptions = {
+        responsive: true,
+        maintainAspectRatio: true,
+        
+    };
+
+
+    var notificationsByMonthChartHorizontalIn = new Chart(document.getElementById('notificationsByMonthChartHorizontalIn'), {
+        type: 'bar',
+        data: notificationsByMonthChartHorizontalDataIn,
+        options: chartOptions
+    });
+
+   
+    var notificationsByYearChartHorizontalIn = new Chart(document.getElementById('notificationsByYearChartHorizontalIn'), {
+        type: 'bar',
+        data: notificationsByYearChartHorizontalDataIn,
+        options: chartOptions
+    });
+
+    var notificationsByMonthChartHorizontalPro = new Chart(document.getElementById('notificationsByMonthChartHorizontalPro'), {
+        type: 'bar',
+        data: notificationsByMonthChartHorizontalDataPro,
+        options: chartOptions
+    });
+
+   
+    var notificationsByYearChartHorizontalPro = new Chart(document.getElementById('notificationsByYearChartHorizontalPro'), {
+        type: 'bar',
+        data: notificationsByYearChartHorizontalDataPro,
+        options: chartOptions
+    });
+
+
+
+
+  }
+    initializeCharts();
+</script>
+<script src="/res/admin/dist/js/html2canvas.min.js"></script>
+<script>
+    function downloadDivAsJpg() {
+        const content = document.getElementById('contentdownload');
+        const elementsToHide = content.querySelectorAll('.no-print');
+
+        elementsToHide.forEach(element => {
+            element.style.display = 'none'; 
+        });
+
+        html2canvas(content).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'Boletim-{$names}-{$month}-{$year}-STATUS.jpg';
+            link.href = canvas.toDataURL('image/jpeg');
+            link.click();
+
+            elementsToHide.forEach(element => {
+                element.style.display = ''; // Restaura a exibição dos elementos ocultos
+            });
+        });
+    }
+</script>
+<script>
+  function downloadDivAsJpg2() {
+      const content = document.getElementById('contentdownload2');
+      const elementsToHide = content.querySelectorAll('.no-print2');
+
+      elementsToHide.forEach(element => {
+          element.style.display = 'none'; 
+      });
+
+      html2canvas(content).then(canvas => {
+          const link = document.createElement('a');
+          link.download = 'Boletim-{$names}-{$month}-{$year}-CLASS.jpg';
+          link.href = canvas.toDataURL('image/jpeg');
+          link.click();
+
+          elementsToHide.forEach(element => {
+              element.style.display = ''; // Restaura a exibição dos elementos ocultos
+          });
+      });
+  }
+</script>
+<script>
+  function downloadDivAsJpg3() {
+      const content = document.getElementById('contentdownload3');
+      const elementsToHide = content.querySelectorAll('.no-print3');
+
+      elementsToHide.forEach(element => {
+          element.style.display = 'none'; 
+      });
+
+      html2canvas(content).then(canvas => {
+          const link = document.createElement('a');
+          link.download = 'Boletim-{$names}-{$month}-{$year}-TIPO.jpg';
+          link.href = canvas.toDataURL('image/jpeg');
+          link.click();
+
+          elementsToHide.forEach(element => {
+              element.style.display = ''; // Restaura a exibição dos elementos ocultos
+          });
+      });
+  }
+</script>
+<script>
+  
+  function hideMessage() {
+      $('.alert').fadeOut('slow'); 
+  }
+
+  $(document).ready(function() {
+    
+      if ($('.alert').length) {
+         
+          var timeout = 3000;
+          
+          setTimeout(hideMessage, timeout);
+      }
+  });
+</script>
+
+<script>
+  document.getElementById('showOffcanvasButton').addEventListener('click', function() {
+      var offcanvasDiv = document.getElementById('offcanvasCustomize');
+      offcanvasDiv.classList.add('show');
+      var offcanvasBS = new bootstrap.Offcanvas(offcanvasDiv);
+      offcanvasBS.show();
+  });
+</script> 
+<script>
+ document.getElementById('showOffcanvasButton').addEventListener('click', function() {
+    mostrarOffcanvas();
+});
+
+
+function mostrarOffcanvas() {
+  var offcanvasDiv = document.getElementById('offcanvasCustomize');
+  offcanvasDiv.classList.add('show');
+  var offcanvasBS = new bootstrap.Offcanvas(offcanvasDiv);
+  offcanvasBS.show();
+}
+
+</script>
+<script>
+ 
+
+document.getElementById('notificationsCollapse').addEventListener('click', function() {
+    mostrarOffcanvas();
+});
+
+function mostrarOffcanvas2() {
+  var offcanvasDiv = document.getElementById('notificationsCollapse');
+  offcanvasDiv.classList.add('show');
+  var offcanvasBS = new bootstrap.Offcanvas(offcanvasDiv);
+  offcanvasBS.show();
+}
+</script>
+
+
+<!--Attention-->
+<!-- <script>
+  window.onload = function() {
+    var currentPagePath = window.location.pathname;
+    console.log(currentPagePath); // Adiciona esta linha para depuração
+    var dashboardLink = document.getElementById('dashboard-link');
+    var usersLink = document.getElementById('users-link');
+
+    if (currentPagePath === '/admin') {
+      dashboardLink.classList.add('alert-info');
+    } else if (currentPagePath === '/admin/users') {
+      usersLink.classList.add('alert-info');
+    }
+  };
+</script> -->
+
+<!-- <script>
+  window.onload = function() {
+    var currentPagePath = window.location.pathname;
+    var dashboardLink = document.getElementById('dashboard-link22');
+    var usersLink = document.getElementById('users-link22');
+
+    if (currentPagePath === '/admin') {
+      dashboardLink.classList.add('alert-info');
+    } else if (currentPagePath === '/admin/users') {
+      usersLink.classList.add('alert-info');
+    }
+  };
+</script> -->
+
+
+
+<script type="text/javascript" src="/res/admin/dist/js/quill.min.js"></script>
+<script type="text/javascript" src="/res/admin/dist/js/quill.js"></script>
+
+<script>
+  // Inicializar o Quill
+  var quill = new Quill('#editor-container', {
+      theme: 'snow'
+  });
+</script>
+
+
+</body>
+
+</html>

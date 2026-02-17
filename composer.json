@@ -1,0 +1,20 @@
+{
+  "name": "intranet/shi",
+  "description": "",
+  "authors": [
+    {
+      "name": "Equipe de TI. Todos os direitos reservados. Shineray",
+      "email": "suporte@shineraydobrasil.com.br"
+    }
+  ],
+  "require": {
+    "slim/slim": "2.0",
+    "rain/raintpl": "3.0.0",
+    "phpmailer/phpmailer": "5.2.22"
+  },
+  "autoload": {
+    "psr-4": {
+      "Php\\": "vendor\\php\\php-classes\\src"
+    }
+  }
+}

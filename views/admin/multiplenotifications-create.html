@@ -1,0 +1,371 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Cadastro Mútiplos</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/notifications">Lista de notificações</a></li>
+            <li class="breadcrumb-item active">Cadastrar mútiplas Notificações</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="container ">
+        {if="$success == 1"}
+        <div class="row">
+          <div class="col-md-12">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              Sua notificacao foi enviada com <strong>sucesso</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          </div>
+        </div>
+        {/if}
+      </div>
+      <div class="row">
+        <!-- left column -->
+        <div class="col">
+          <div class="box-header d-flex justify-content-end">
+            <a href="/admin/notifications/create" class="btn btn-success" style="margin-right: 10px; margin-top: 10px;">Cadastrar Notificação</a>
+          </div>
+          <hr>
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header alert-info">
+              <h3 class="card-title">Cadastrar nova notificação</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <div class="card-body register-card-body">
+              {if="$_POST == ''"}
+      <div class="card-body">
+        <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h5><i class="icon fa fa-check"></i> Notificação enviado com sucesso!</h5>
+        </div>
+      </div>
+      {/if}
+            <form role="form" action="/admin/multiplenotifications/create" method="post">
+                <label for="quant_rg" style="color: crimson;"><strong>Digite quantidade de notificações que deseja com atenção.</strong> </label>
+                <div class="form-row">
+                  <div class="form-group col-md-2">
+                    <label for="quant_rg">Número de notificações: </label>
+                    <input type="number" class="form-control" placeholder="Número de notificações" id="quant_rg" name="quant_rg" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-12 bg-light p-3 mb-3 smalltitle-container">
+                      <h6 class="text-center smalltitle">A ocorrência envolveu um paciente?</h6>
+                  </div>
+                </div>
+                  <div class="form-group text-center" required>
+                      <label for="patient">Sim: </label>
+                      <input type="radio" id="patient"  value="Sim" name="patient" onchange="toggleFields()" required>   
+                      <span style="padding: 1rem;"></span>
+                      <label for="patient" >Não: </label>
+                      <input type="radio" id="patient" value="Não" name="patient" onchange="toggleFields()" required>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-12 bg-light p-3 mb-3 smalltitle-container">
+                        <h6 class="text-center smalltitle"></h6>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="">Data da Notificação*:</label>
+                        <input type="text" class="form-control" id="" name="" value="{function="DateAtual()"}" readonly>
+                    </div>
+                  </div>
+                      <div id="campos-paciente">
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="nome_pac">Nome do Paciente: </label>
+                            <input type="text" class="form-control" placeholder="Digite o nome do paciente" id="nome_pac" name="nome_pac">
+                          </div>
+                            <div class="form-group col-md-2">
+                              <label for="dt_nasc">Data de Nasc.*:</label>
+                              <input type="date" class="form-control" id="dt_nasc" name="dt_nasc" >
+                            </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-4">
+                            <label for="atendimento">Atendimento:</label>
+                            <input type="number" class="form-control" id="atendimento" name="atendimento" placeholder="Digite o atendimento">
+                          </div>
+                        
+                          <div class="form-group col-md-4">
+                            <label for="registro">Registro:</label>
+                            <input type="number" class="form-control" id="registro" name="registro" placeholder="Digite o número do registro">
+                          </div>
+                          <div class="form-group col-md-2">
+                            <label for="dt_internamento">Data de internamento*:</label>
+                            <input type="date" class="form-control" id="dt_internamento" name="dt_internamento" >
+                          </div>
+                        </div>
+                      </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-2">
+                            <label for="dt_oco">Data Ocorrencia*:</label>
+                            <input type="date" class="form-control" id="dt_oco" name="dt_oco" >
+                          </div>
+                          <div class="form-group col-md-2">
+                            <label for="hr_oco">Hora da ocorrência*:</label>
+                            <input type="time" class="form-control" id="hr_oco" name="hr_oco" >
+                          </div>
+                        </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="st_cante">Setor Notificante*: </label>
+                          <select required type="text" id="st_cante" name="st_cante" class="form-control"> 
+                            <option disabled selected value="">Escolha o setor notificante
+                            {loop="$departments"}
+                            <option value="{$value.name}">{$value.name}
+                            {/loop}
+                          </select>
+                        </div>
+                      <div class="form-group col-md-6">
+                          <label for="st_cado">Setor Notificado*: </label>
+                          <select 
+                            required
+                            type="text"
+                            id="st_cado"
+                            name="st_cado" 
+                            class="form-control"
+                          >
+                            <option disabled selected value="">Escolha o setor notificado
+                              {loop="$departments"}
+                            <option value="{$value.name}">{$value.name}
+                              {/loop}
+                          </select>
+                        </div>
+                     </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="class_incident">Classificação do incidente: </label>
+                        <select required type="text" id="class_incident" name="class_incident" class="form-control"> <span>></span>
+                          <option disabled selected value="">Classificação do incidente
+                          {loop="$incidents"}
+                          <option value="{$value.name}">{$value.name}
+                          {/loop}
+                        </select>
+                      </div>
+                      <div class="form-group col-md-4">
+                          <label for="opcao2">Classificação da ocorrência: </label>
+                          <select required type="text" id="opcao2" name="class_occ" class="form-control"> <span>></span>
+                            <option disabled selected value="">Selecione da ocorrência
+                            {loop="$occurrences"}
+                            <option value3="{$value.days_occurrence}" value2="{$value.days_occurrence}" value="{$value.name}">{$value.name}
+                            {/loop}
+                          </select>
+                        </div> 
+                        <div class="form-group col-md-4">
+                          <label for="classificacao2">Classificação do dano: </label>
+                          <select required type="text" id="classificacao2" name="degree_damg" class="form-control" disabled> <span>></span>
+                            <option disabled selected value="">Selecione do dano
+                            {loop="$degree_damgs"}
+                            <option value2="{$value.days_degree_damg}" value="{$value.name}">{$value.name}
+                            {/loop}
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="descricao">Descrição da ocorrência*: </label>
+                      <textarea id="descricao" name="descricao" class="form-control" placeholder="Descreva a ocorrência com todos os detalhes" rows="5" required ></textarea>
+                    </div>
+        
+                    <div class="form-group">
+                      <label for="solution">O que foi realizado após a ocorrência / Ação imediata?: </label>
+                      <textarea 
+                        rows="5"
+                        id="solution"
+                        name="solution"
+                        class="form-control"
+                        placeholder="Descreva a ocorrência com todos os detalhes"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                    <!--Reclassificação de risco da qualidade-->
+              <div class="card card-secundary">
+                <div class="card-header alert-info">
+                  <h3 class="card-title">Reclassificação de risco da qualidade</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                
+                <div class="card-body register-card-body">
+                  <div class="form-row col-md-4">
+                    <label for="patientsecurity">Qualidade e segurança do paciente:</label>
+                    <select required type="text" id="patientsecurity" name="patientsecurity" class="form-control">
+                      <option disabled selected value="patientsecurity">
+                        <span>></span>Selecione Qualidade e segurança do paciente
+                        {loop="$patientsecuritys"}
+                      <option value="{$value.name}">{$value.name}
+                        {/loop}
+                    </select>
+                  </div>
+                  <hr>
+                  <div class="form-row">
+                    <div class="col-md-12 bg-light p-3 mb-3 smalltitle-container text-center">
+                      <!-- Adicionando a classe text-center aqui -->
+                      <h6 class="smalltitle"><strong>Investigação de evento?</strong></h6>
+                    </div>
+                  </div>
+                  <div class="form-row justify-content-center">
+                    <div class="form-group col-md-1">
+                      <input type="radio" id="eventinvestigation" name="eventinvestigation" value="Sim" >
+                      <label for="eventinvestigation">Sim</label>
+                  </div>
+                  <div class="form-group col-md-1">
+                      <input type="radio" id="eventinvestigation2" name="eventinvestigation" value="Não">
+                      <label for="eventinvestigation2">Não</label>
+                  </div>
+                  </div>
+                  <br>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="internacionalsecurity">Meta internacionais de segurança:</label>
+                      <select type="text" id="internacionalsecurity" name="internacionalsecurity" class="form-control">
+                        <option disabled selected value="internacionalsecurity">
+                          <span>></span>Selecione do incidente
+                          {loop="$internacionalsecuritys"}
+                        <option value="{$value.name}">{$value.name}
+                          {/loop}
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-3">
+                      <label for="qclass_incident">Classificação do incidente: </label>
+                      <select type="text" id="qclass_incident" name="qclass_incident" class="form-control">
+                        <option disabled selected value="qclass_incident"><span>></span>Selecione do incidente
+                          {loop="$incidents"}
+                        <option value="{$value.name}">{$value.name}
+                          {/loop}
+                      </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="opcao">Classificação da ocorrência*: </label>
+                      <input type="hidden" id="days" name="days">
+                      <select required type="text" id="opcao" name="qclass_occ" class="form-control">
+                        <option disabled selected value=""> <span>></span>classificação da ocorrência
+                          {loop="$occurrences"}
+                          <option value3="{$value.days_occurrence}" value2="{$value.days_occurrence}" value="{$value.name}">{$value.name}
+                          {/loop}
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="classificacao" for="opcao" >Classificação do dano*: </label>
+                      <input type="hidden" id="days2" name="days2">
+                      <select required type="text" id="classificacao"  name="qdegree_damg" class="form-control" disabled > 
+                        <option disabled selected value=""> <span>></span>Classificação do dano 
+                          {loop="$degree_damgs"}
+                          <option value2="{$value.days_degree_damg}" value="{$value.name}">{$value.name} 
+                            {/loop}
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="datacalc">Prazo do retorno:</label>
+                      <input type="text" class="form-control" id="datacalc" name="return_date">
+                    </div>
+                  </div>
+                    <hr>
+                        <div class="form-row">
+                          <!-- <div class="form-group col-md-3">
+                            <label for="process">Processo:</label>
+                            <select required type="text" id="process" name="process" class="form-control">
+                              <option disabled selected value=""> <span>></span>Selecione Processo
+                                {loop="$processs"}
+                                <option value="{$value.name}">{$value.name}
+                                {/loop}
+                              </select>
+                          </div> -->
+                          <div class="form-group col-md-3">
+                            <label for="problem">Problema:</label>
+                            <select required type="text" id="problem" name="problem" class="form-control">
+                              <option disabled selected value=""> <span>></span>Selecione  Problema
+                                {loop="$problems"}
+                                <option value="{$value.name}">{$value.name}
+                                {/loop}
+                              </select>
+                          </div>
+                          <div class="form-group col-md-3">
+                            <label for="fact_occurred">Fato ocorrido:</label>
+                            <select required type="text" id="fact_occurred" name="fact_occurred" class="form-control">
+                              <option disabled selected value=""> <span>></span>Selecione Fato ocorrido
+                                {loop="$factoccurreds"}
+                                <option value="{$value.name}">{$value.name}
+                                {/loop}
+                              </select>
+                          </div>
+                          <div class="form-group col-md-3">
+                            <label for="validation_date">Data da validação:</label>
+                            <input type="text" class="form-control" id="validation_date" value="{function="DateAtual()"}" name="validation_date" required >
+                          </div>
+                        </div>
+                      <!-- <div class="form-group">
+                        <label for="proposed_action">Ação proposta implantada: </label>
+                        <textarea  class="form-control"
+                          placeholder="Descreva da ação proposta implantada" id="proposed_action" name="proposed_action" rows="5" required ></textarea>
+                      </div> -->
+                     <div class="form-group col-md-3">
+                        <label for="conclusion">Conclusão da verificação:</label>
+                          <select required type="text" id="conclusion" name="conclusion" class="form-control"> <span>></span>
+                            <option disabled selected> <span>></span>Selecione conclusão
+                              {loop="$conclusions"}
+                            <option value="{$value.name}">{$value.name}
+                            {/loop}
+                          </select>
+                      </div> 
+                      <!-- <div class="form-group text-center" required>
+                        {loop="$conclusions"}
+                        |<label for="conclusion" style="padding: 10px;">{$value.name}: </label>
+                        <input type="radio" id="conclusion"  value="{$value.name}" name="conclusion" onchange="toggleFields()"  required>
+                        {/loop}
+                    </div> -->
+                    <!-- Enviar -->
+                <!-- <div class="form-group col-md-6">
+                  <div class="form-group">
+                    <label for="file">Anexar Arquivo: </label>
+                    <div>
+                       <small>
+                          <strong>Arquivos suportados: 
+                          <span class="text-red">.jpg, .jpeg, .png, .pdf, .rar, .zip</span> 
+                          </strong>
+                       </small>
+                    </div>
+                    <small>
+                       <strong> 
+                          Caso o arquivo enviado seja diferente do especificado acima, o sistema enviará como anexo uma imagem padrão do sistema e não arquivo errôneamente enviado.
+                       </strong>
+                    </small>
+                    <input type="file" class="form-control" id="file" name="file" />
+                 </div>
+                </div> -->
+                    <!-- /.col -->
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-info btn-block">Cadastrar mútiplas Notificações</button>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+            </form>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col  -->
+      </div>
+      <!-- /.row -->
+      </section>
+    </div><!-- /.container-fluid -->
+  

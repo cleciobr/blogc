@@ -1,0 +1,87 @@
+{include="sidemenu"}
+<!--Main Navigation-->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1>Relatório de Notificações por setor</h1>
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/admin/notifications">Home</a></li>
+                <li class="breadcrumb-item active">Notificações</li>
+            </ol>
+            </div>
+        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <main class="mt-5 pt-5 mb-5 pb-3" >
+                <div class="container " >
+                {if="$error == true"}
+                <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Não possui <strong>registro! Tente outra data!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                </div>
+                {/if}
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                        <li class="breadcrumb-item">Relatório</li>
+                    </ol>
+                    </div>
+                </div>
+                </div><!-- /.container-fluid -->
+                </section>
+                    <div class="row" >
+                    <div class="col-md-12">
+                        <div class="card wow fadeInLeftBig"> 
+                            <form role="form" action="/admin/reports" method="post">
+                                <div class="card-header form-group col-md-12" style="background-color: #c8080e;color: aliceblue; height: -50rem;" > 
+                                    <div class="form-row">
+                                            <h5>Relatório de Notificações por setor</h5>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="st_cante">Setor</label>
+                                    <select required type="text" id="st_cante" name="st_cante" class="form-control"> 
+                                        <option disabled selected value="">Selecione o setor para gerar o relatório</option>
+                                        {loop="$departments"}
+                                        <option value="{$value.name}">{$value.name}</option>
+                                        {/loop}
+                                    </select>
+                                        <label for="month"> Mês:</label>
+                                        <input class="form-control col-md-5" type="number" id="month" name="month" min="01" max="12" step="1" value="{function="{formatDateMes(month);"}"  required>
+                                        <label for="year"> Ano:</label>
+                                        <input class="form-control col-md-5" type="number" id="year" name="year" min="1900" max="2099" step="1" value="{function="{formatDateAno(year);"}"  required>
+                                    
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-info btn-block">Gerar</button>
+                                        </div>
+                                    
+                                </div>
+                            </form>
+                        </div><!-- /.card -->
+                </div><!-- /.col -->
+                </div><!-- /.row -->
+            
+            </section>
+            </div>
+            <!-- /.content-header -->
+            </div>
+            <!-- /.content-wrapper -->
+            </main>
+            </body>
+</div>
+

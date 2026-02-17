@@ -1,0 +1,105 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Lista de Ramais</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/ramais">Ramais</a></li>
+            <li class="breadcrumb-item active">Atualizar ramal</li>
+        </ol>
+        </div>
+    </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header alert-info">
+            <h3 class="card-title">Atualizar Ramal</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form role="form" action="/admin/ramais/{$ramal.id_agenda}" method="post">
+            <div class="card-body">
+                <div class="form-group col-md-6">
+                    <label for="colaborador">Colaborador</label>
+                    <input type="text" class="form-control" id="colaborador" name="colaborador" placeholder="Digite o colaborador" value="{$ramal.colaborador}">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label for="unidade">unidade</label>
+                        <select type="text" class="form-control" id="unidade" name="unidade" placeholder="Digite a unidade" value="{$ramal.unidade}">
+                        <option disabled selected value="" required>{$ramal.unidade}
+                                    {loop="$units"}
+                            <option value="{$value.name}">{$value.name}
+                                    {/loop}
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="setor_sala">Setor</label>
+                        <select type="text" class="form-control" id="setor_sala" name="setor_sala" placeholder="Digite o setor" value="{$ramal.setor_sala}">
+                            <option disabled selected value="" required>{$ramal.setor_sala}
+                                    {loop="$departments"}
+                            <option value="{$value.name}">{$value.name}
+                                    {/loop}
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2 ">
+                        <label for="ramal">Ramal</label>
+                        <input type="text" class="form-control" id="ramal" name="ramal" placeholder="Digite o ramal" value="{$ramal.ramal}">
+                    </div>
+                    <div class="form-group col-md-2 ">
+                        <label for="celular">Celular</label>
+                        <input type="text" class="form-control" id="celular" name="celular" value="{$ramal.celular}">
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="emails">E-mail</label>
+                    <input type="text" class="form-control" id="emails" name="emails" placeholder="Digite o colaborador" value="{$ramal.emails}">
+                </div>
+                <label for="ativo">
+                          {if="$ramal.ativo == 'S'"}
+                          <input type="checkbox" class="form-check-input flat-red" id="ativo" name="ativo" value="{$ramal.ativo}" checked>
+                          
+                          <span><strong style="color:blue;">Ramal ativo </strong></span>
+                          {else}
+                          <input type="checkbox" class="form-check-input flat-red" id="ativo" name="ativo" value="{$ramal.ativo}">
+                          
+                          <span> <strong style="color:red;">Ramal desativado, marque para ativar</strong></span>    
+                          {/if}
+                  </label>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary alert-info">Salvar</button>
+                <a href="/admin/ramais/{$ramal.id_agenda}/delete" 
+                  onclick="return confirm('Deseja realmente excluir este registro?')" 
+                  class="btn btn-danger">
+                  <i class="fa fa-trash"></i> Excluir Registro
+                </a>
+            </div>
+            </form>
+        </div>
+        <!-- /.card -->
+        </div>
+        <!--/.col  -->
+    </div>
+    <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

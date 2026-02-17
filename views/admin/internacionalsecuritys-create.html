@@ -1,0 +1,79 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1>Lista de Metas internacionais de segurança</h1>
+            </div>
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/admin/internacionalsecuritys">Metas internacionais de segurança</a></li>
+                <li class="breadcrumb-item active">Cadastrar Meta internacional de segurança</li>
+            </ol>
+            </div>
+        </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+    <div class="container-fluid">
+        <div class="container ">
+            {if="$success == True"}
+            <div class="row">
+                <div class="col-md-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Meta internacional de segurança cadastrado com <strong>sucesso</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                </div>
+            </div>
+            {/if}
+            </div>
+        <div class="row">
+            <!-- left column -->
+            <div class="col">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header alert-info">
+                <h3 class="card-title">Cadastrar novo Meta internacional de segurança</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form" action="/admin/internacionalsecuritys/create" method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                    <label for="name">Nome do Meta internacional de segurança</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome do Meta internacional de segurança" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descrition">Descrição<span style="color: red;"> (Este campo não é obrigatório)</span></label>
+                        <input type="text" class="form-control" id="descrition" name="descrition" placeholder="Digite a descrição da Meta internacional de segurança">
+                    </div>
+                    <div class="form-group">
+                    <label for="cod_internacionalsecurity">Código do Meta internacional de segurança<span style="color: red;"> (Este campo não é obrigatório)</span></label>
+                    <input type="text" class="form-control" id="cod_internacionalsecurity" name="cod_internacionalsecurity" placeholder="Digite o código do Meta internacional de segurança">
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary alert-info">Cadastrar</button>
+                </div>
+                </form>
+            </div>
+            <!-- /.card -->
+            </div>
+            <!--/.col  -->
+        </div>
+        <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

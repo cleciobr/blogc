@@ -1,0 +1,117 @@
+{include="sidemenu"}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Cadastrar novo usuário</h1>
+          </div>
+          <div class="col-sm-6 ">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin/users">Usuários</a></li>
+              <li class="breadcrumb-item active">Cadastrar usuário</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header alert-info">
+                <h3 class="card-title">Cadastrar novo usuário</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/admin/users/create" method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="user_active">Usuário Ativo?</label>
+                      <input type="checkbox" class="form-check-input flat-red" id="user_active" name="user_active" value='{function="getUserId()"}' checked>
+                      
+                    <label for="id_user" style="display:none">
+                      <input type="checkbox" class="form-check-input flat-red" id="id_user" name="id_user" value='{function="getUserId()"}' required checked>
+                      Aceite os termos...
+                    </label>
+                  </div>
+                  
+                    <div class="form-group col-md-7">
+                      <label for="desname">Nome</label>
+                      <input type="text" class="form-control" id="desname" name="desname" placeholder="Digite o nome" maxlength="23" required >
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                          <label for="login">Login</label>
+                          <input type="text" class="form-control" id="login" name="login" placeholder="Digite o login" maxlength="23" required placeholder>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="senha" >Senha</label>
+                          <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite a senha"required>
+                          </div>
+                        <div class="form-group col-md-3">
+                          <label for="setor">Setor: </label>
+                          <select required type="text" 
+                          id="setor" 
+                          name="setor" 
+                          class="form-control">
+                            <option disabled selected value="">Escolha o setor
+                              {loop="$departments"}
+                            <option value="{$value.name}">{$value.name}
+                              {/loop}
+                          </select>
+                        </div>
+                  </div>
+                  <br>
+                  <div class="form-row col-md-3">
+                    <label for="file">Foto do usuário</label>
+                    <input type="file" class="form-control" id="file" name="file" />
+                    <img class="img-responsive img-fluid" id="image-preview"/>
+                  </div>
+                    <div class="form-row col-md-3">
+                      <label for="inadmin">Nivel de Acesso</label>
+                      <select id="inadmin" name="inadmin" class="browser-default custom-select" required>
+                        <option required selected value="">Escolha o nível de acesso</option>
+                        
+                        <!-- <option value="1">Marketing</option> -->
+                        <option value="2">Qualidade</option>
+                        <!-- <option value="3">Telefonia / Recepção</option> -->
+                        <option value="0">Administrador</option>
+                      </select>
+                   </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary alert-info" >Cadastrar</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+          </div>
+          <!--/.col  -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <script>
+    
+    document.querySelector('#file').addEventListener('change', function(){
+      var file = new FileReader();
+      file.onload = function() {
+        document.querySelector('#image-preview').src = file.result;
+      }
+      file.readAsDataURL(this.files[0]);
+    });
+
+  </script>

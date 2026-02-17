@@ -1,0 +1,226 @@
+{include="header"}
+    <!--Main Navigation-->
+    <!--- Main Content -->
+    <main class="mt-5 pt-5">
+      <div class="container">
+        <!-- Video Section -->
+        <section class="mt-5 wow fadeIn">
+          <h1 class="h1 mb-5" style="text-align: center">
+            Treinamentos 
+          </h1>
+          <div class="row">
+            <div class="col-md mb">
+              <h4 class="h4 mb-3 mt3" style="text-align: center">
+                Plano Terapêutico no MEDVIEW
+              </h4>
+              <video class="video-fluid z-depth-1" controls>
+                <source
+                  src="/res/site/videos/VideoPlanoTerapeutico.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+          <h1 class="h1 mb-5">
+
+	  </h1>
+	  <div class="row">
+            <div class="col-md mb">
+              <h4 class="h4 mb-3 mt3" style="text-align: center">
+                Plano Terapêutico no Formulário Padrão
+              </h4>
+              <video class="video-fluid z-depth-1" controls>
+                <source
+                  src="/res/site/videos/plano_terapeutico.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+          <br />
+          </h1>
+          <div class="row">
+            <div class="col-md mb">
+              <h4 class="h4 mb-3 mt3" style="text-align: center">
+                Protocolo SEPSE
+              </h4>
+              <video class="video-fluid z-depth-1" controls>
+                <source
+                  src="/res/site/videos/Protocolo_SEPSE.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+          <br />
+          </h1>
+          <div class="row">
+            <div class="col-md mb">
+              <h4 class="h4 mb-3 mt3" style="text-align: center">
+                Protocolo Dor Torácica
+              </h4>
+              <video class="video-fluid z-depth-1" controls>
+                <source
+                  src="/res/site/videos/Protocolo_dor_toracica.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+
+        </section>
+      </div>
+    </main>
+    <!--- End Main Content -->
+    <hr class="my-6">
+    <!-- botao scroll to top-->
+    <a
+      class="scroll-to-top rounded"
+      data-toggle="tooltip"
+      data-placement="top"
+      title="Voltar ao topo"
+      href="#top"
+      style="display: inline;"
+    >
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <footer class="page-footer center-on-small-only ">
+      <!--Footer links-->
+      <div class="container my-5">
+        <div class="row mt-4">
+          <!--First column-->
+          <div class="col-lg-3 col-md-6">
+            <h5 class="title mb-3">
+              <strong>Sobre a Intranet</strong>
+            </h5>
+            <p>
+              A Intranet é uma plataforma de facilidades para o funcionário do
+              Shineray e também divulgação de materiais e eventos pertinentes a
+              todos.
+            </p>
+          </div>
+          <!--/.First column-->
+          <hr class="w-100 clearfix d-sm-none" />
+          <!--Second column-->
+          <div class="col-lg-2 col-md-6 ml-auto">
+            <h5 class="title mb-3">
+              Links
+            </h5>
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/blog">Blog</a>
+              </li>
+              <li>
+                <a href="/events">Eventos</a>
+              </li>
+              <li>
+                <a href="/docs">Docs</a>
+              </li>
+              <li>
+                <a href="/treinamentos">Treinamentos</a>
+              </li>
+              <li>
+                <a href="/notificacao">Notificação</a>
+              </li>
+              <li>
+                <a href="/convenios">Lista de Convênios</a>
+              </li>
+            </ul>
+          </div>
+          <!--/.Second column-->
+          <hr class="w-100 clearfix d-sm-none" />
+          <!--Third column-->
+          <div class="col-lg-2 col-md-6 ml-auto">
+            <h5 class="title mb-3">
+              Ferramentas
+            </h5>
+            <ul>
+              <li>
+                <a
+                  href="http://setores"
+                  target="_blank"
+                  >teste</a
+                >
+              </li>
+              <li>
+                <a href="//glpi/" target="_blank">Sistema de chamado</a>
+              </li>
+              <li>
+                <a href="//Email/" target="_blank">Email</a>
+              </li>
+              <li>
+                <a href="https://t" target="_blank">E</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--/.Footer links-->
+
+      <hr />
+
+      <!--Call to action-->
+      <div class="call-to-action">
+        <h4 class="mb-5">Intranet Shineray</h4>
+        <ul>
+          <li>
+            <h6>
+              Tem alguma sugestão, reclamação, ideia para o seu dia a dia de
+              trabalho.
+            </h6>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="//Email/"
+              class="btn btn-primary"
+              rel="nofollow"
+              >Ouvidoria@shineray.com.br</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!--/.Call to action-->
+
+      <!--Copyright-->
+      <div class="footer-copyright">
+        <div class="container-fluid">
+        Copyright &copy; 2024 - <script type="text/javascript">document.write(new Date().getFullYear());</script>
+          <a target="_blank" href="//shineray.com.br"> Equipe de TI. Todos os direitos reservados. </a>
+        </div>
+      </div>
+      <!--/.Copyright-->
+    </footer>
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script
+      type="text/javascript"
+      src="/res/site/js/jquery-3.2.1.min.js"
+    ></script>
+    <!-- -->
+    <script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/res/site/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/res/site/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/res/site/js/mdb.min.js"></script>
+
+    <script type="text/javascript" src="/res/site/js/scrolltotop.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+      // Animations initialization
+      new WOW().init();
+
+      // Initialize Plyr video players
+      const players = Array.from(document.querySelectorAll("video")).map(
+        p => new Plyr(p)
+      );
+    </script>
+  </body>
+</html>

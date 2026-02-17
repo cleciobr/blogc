@@ -1,0 +1,164 @@
+
+<footer class="content text-dark" style="position: fixed;
+                                left: 0;
+                                bottom: 0;
+                                width: 100%;
+                                color: #343a40;
+                                text-align: center;
+                                padding: 10px 0;">
+    <!-- To the right -->
+    
+    <div >
+      Desenvolvido por <a href="//shineray.com.br" target="_blank">Clécio Lins</a>
+    </div>
+  
+    <!-- Default to the left -->
+    <strong >Copyright &copy; 2025 - <script type="text/javascript">document.write(new Date().getFullYear());</script> <a href="//shineray.com.br" target="_blank">Equipe de TI</a>. </strong> Todos os direitos reservados.
+
+  </footer>
+
+  
+
+ <!-- Theme configuration (navbar) -->
+
+ <script>
+    let navigationColor = localStorage.getItem('navigationColor'),
+        navbar = document.getElementById('mainNavbar');
+  
+    if(navigationColor != null && navbar != null) {
+        if(navigationColor == 'inverted') {
+            navbar.classList.add('bg-dark', 'navbar-dark');
+            navbar.classList.remove('bg-white', 'navbar-light');
+        } else {
+            navbar.classList.add('bg-white', 'navbar-light');
+            navbar.classList.remove('bg-dark', 'navbar-dark');
+        }
+    }
+  </script>    
+  
+  <script type="text/javascript" src="/res/admin/dist/js/theme.bundle.js"></script> 
+  <script>
+    document.getElementById('showcanvasButton').addEventListener('click', function() {
+        var offcanvasDiv = document.getElementById('offcanvasCustomize');
+        offcanvasDiv.classList.add('show');
+        var offcanvasBS = new bootstrap.Offcanvas(offcanvasDiv);
+        offcanvasBS.show();
+    });
+  </script>
+  
+  
+  
+  <script>
+  // Theme switcher
+  
+  let themeSwitcher = document.getElementById('themeSwitcher');
+  
+  const getPreferredTheme = () => {
+  if (localStorage.getItem('theme') != null) {
+      return localStorage.getItem('theme');
+  }
+  
+  return document.documentElement.dataset.theme;
+  };
+  
+  const setTheme = function (theme) {
+  if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  } else {
+      document.documentElement.dataset.theme = theme;
+  }
+  
+  localStorage.setItem('theme', theme);
+  };
+  
+  const showActiveTheme = theme => {
+  const activeBtn = document.querySelector(`[data-theme-value="${theme}"]`);
+  
+  document.querySelectorAll('[data-theme-value]').forEach(element => {
+      element.classList.remove('active');
+  });
+  
+  activeBtn && activeBtn.classList.add('active');
+  
+  // Set button if demo mode is enabled
+  document.querySelectorAll('[data-theme-control="theme"]').forEach(element => {
+      if (element.value == theme) {
+          element.checked = true;
+      }
+  });
+  };
+  
+  if (typeof themeSwitcher != 'undefined') {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (localStorage.getItem('theme') != null) {
+          if (localStorage.getItem('theme') == 'auto') {
+              setTheme(getPreferredTheme());
+          }
+      }
+  });
+  
+  window.addEventListener('load', () => {
+      showActiveTheme(getPreferredTheme());
+  
+      document.querySelectorAll('[data-theme-value]').forEach(element => {
+          element.addEventListener('click', () => {
+              const theme = element.getAttribute('data-theme-value');
+  
+              setTheme(theme);
+          })
+      })
+  });
+  }
+  </script>
+  <script>
+  var themeConfig = {
+  theme: JSON.parse('"light"'),
+  isRTL: JSON.parse('false'),
+  isFluid: JSON.parse('true'),
+  sidebarBehaviour: JSON.parse('"fixed"'),
+  navigationColor: JSON.parse('"inverted"')
+  };
+  
+  var isRTL = localStorage.getItem('isRTL') === 'true',
+  isFluid = localStorage.getItem('isFluid') === 'true',
+  theme = localStorage.getItem('theme'),
+  sidebarSizing = localStorage.getItem('sidebarSizing'),
+  linkLTR = document.getElementById('stylesheetLTR'),
+  linkRTL = document.getElementById('stylesheetRTL'),
+  html = document.documentElement;
+  
+  if (isRTL) {
+  linkLTR.setAttribute('disabled', '');
+  linkRTL.removeAttribute('disabled');
+  html.setAttribute('dir', 'rtl');
+  } else {
+  linkRTL.setAttribute('disabled', '');
+  linkLTR.removeAttribute('disabled');
+  html.removeAttribute('dir');
+  }
+  </script>
+  
+  
+      <!-- THEME CONFIGURATION -->
+      <script>
+          let themeAttrs = document.documentElement.dataset;
+      
+          for(let attr in themeAttrs) {
+              if(localStorage.getItem(attr) != null) {
+                  document.documentElement.dataset[attr] = localStorage.getItem(attr);
+      
+                  if (theme === 'auto') {
+                      document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      
+                      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                          e.matches ? document.documentElement.dataset.theme = 'dark' : document.documentElement.dataset.theme = 'light';
+                      });
+                  }
+              }
+          }
+  
+          
+      </script>
+  
+  
+  

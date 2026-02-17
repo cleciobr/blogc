@@ -1,0 +1,173 @@
+{include="sidemenu"}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Modelo de assinatura</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/subscriptions">Modelo de assinatura</a></li>
+            <li class="breadcrumb-item active">Cadastrar Modelo de assinatura</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header alert-info">
+              <h3 class="card-title">Modelo de assinatura</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+    <form role="form" action="/admin/subscriptions/create" method="post" enctype="multipart/form-data">
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="cod_subscription">Código do modelo de assinatura</label>
+              <input type="text" class="form-control" id="cod_subscription" name="cod_subscription" placeholder="Código">
+            </div>
+            <div class="form-group col-md-7"></div>
+            <div class="form-group col-md-5">
+              <label for="name">Nome do modelo de assinatura</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Nome do modelo de assinatura" required>
+            </div>
+            <!-- <div class="form-group col-md-3">
+              <label for="name_color">Cor do cargo na moldura</label>
+              <input type="text" class="form-control" id="name_color" name="name_color" placeholder="Ex.: #e30613">
+            </div> -->
+          <div class="form-group col-md-3">
+            <label for="name_color">Cor do cargo na moldura</label>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="color" class="form-control" id="name_color" name="name_color" 
+                      list="default-colors" value="#000000" oninput="updateColorPreview(this.value)"
+                      style="height: 40px; width: 60px; padding: 2px;">
+                <div id="color-indicator" style="width: 30px; height: 30px; border-radius: 50%; border: 1px solid #000000; background-color: #000000;"></div>
+                <span id="hex-text" style="font-family: monospace; font-size: 14px;">#000000</span>
+            </div>
+            <datalist id="default-colors">
+                <option value="#e30613">Vermelho Shineray</option>
+                <option value="#183e7a">Azul Shineray</option>
+                <option value="#000000">Preto</option>
+                <option value="#ffffff">Branco</option>
+                <option value="#444444">Cinza Escuro</option>
+            </datalist>
+            <small class="text-muted">Selecione ou clique para personalizar.</small>
+          </div>
+
+
+            <div class="form-group col-md-7">
+              <label for="description">Descrição do modelo de assinatura</label>
+              <input type="textarea" class="form-control" id="description" name="description" placeholder="Descrição do modelo de assinatura">
+            </div>
+            <div class="form-group col-md-7">
+                
+                        <label for="file">Upload do modelo de assinatura</label>
+                            <input type="file" class="form-control" id="file" name="file" required />
+                            
+             
+                          <div id="image-preview-container"></div>
+                    <p class="help-block">Selecione somente um modelo.</p>
+            </div>
+
+             <div class="form-group col-md-7">
+                  <input type="checkbox" class="form-check-input flat-red" id="subscription_active" name="subscription_active" value='{function="getUserId()"}' checked>
+                <label for="subscription_active">Modelo de assinatura Ativa?</label>
+                  <label for="id_user" style="display:none">
+                      <input type="checkbox" class="form-check-input flat-red" id="id_user" name="id_user" value='{function="getUserId()"}' required checked>
+                      Aceite os termos...
+                  </label>
+              </div>
+            </div>
+        </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-success">
+                  <i class="fa fa-paper-plane"></i> Salvar modelo
+              </button>
+            </div>
+    </form>
+  <style>
+             .btn-remove-image {
+                  background-color: #ff5248; 
+                  color: #eef5df; 
+                  border: none;
+                  border-radius: 50%;
+                  width: 28px;
+                  height: 28px;
+                  font-size: 16px;
+                  font-weight: bold;
+                  cursor: pointer;
+                  text-align: center;
+                  line-height: 28px; 
+                  padding: 0;
+                  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+              }
+
+              .btn-remove-image:hover {
+                  background-color: #e60000; /* Vermelho mais escuro no hover */
+              }
+            </style>
+
+           <script>
+              let arquivosAtuais = [];
+
+              document.querySelector('#file').addEventListener('change', function() {
+                  const input = this;
+                  
+                  arquivosAtuais = Array.from(input.files);
+                  renderizarPreviews();
+              });
+
+              function renderizarPreviews() {
+                  const container = document.querySelector('#image-preview-container');
+                  container.innerHTML = ''; 
+
+                  arquivosAtuais.forEach((file, index) => {
+                      const reader = new FileReader();
+                      reader.onload = function(e) {
+                          const div = document.createElement('div');
+                          div.style.position = 'relative';
+                          
+                          div.innerHTML = `
+                              <img src="${e.target.result}" style="object-fit: cover;" class="img-thumbnail">
+                              <button type="button" onclick="removerImagem(${index})" 
+                                  style="position: absolute; top: -5px; right: -5px;" 
+                                  class="btn-remove-image">x</button> 
+                          `;
+                          container.appendChild(div);
+                      }
+                      reader.readAsDataURL(file);
+                  });
+              }
+
+              function removerImagem(index) {
+                  arquivosAtuais.splice(index, 1);
+                  const dt = new DataTransfer();
+                  arquivosAtuais.forEach(file => dt.items.add(file));
+                  document.querySelector('#file').files = dt.files;
+                  renderizarPreviews();
+              }
+              </script>
+
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col  -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

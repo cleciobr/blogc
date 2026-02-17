@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { margin: 0; padding: 0; }
+        .signature-container {
+            position: relative;
+            width: 1024px; /* Reduzido para metade da resolução original para melhor exibição em e-mails */
+            height: 171px;
+            font-family: Arial, sans-serif;
+            color: #333;
+            overflow: hidden;
+        }
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .editable-content {
+            position: absolute;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        /* Nome e Cargo (Lado Esquerdo) */
+        .personal-info {
+            left: 40px;
+            top: 60px;
+            width: 350px;
+        }
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            color: #000;
+        }
+        .role {
+            font-size: 16px;
+            margin: 5px 0 0 0;
+            color: #C41219; /* Vermelho Shineray */
+        }
+        /* Contatos (Centro) */
+        .contact-info {
+            left: 515px;
+            top: 40px;
+            width: 250px;
+            font-size: 14px;
+        }
+        .contact-item {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        /* Links Sociais (Rodapé) */
+        .footer-links {
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 3;
+            font-size: 12px;
+            font-weight: bold;
+            color: #FFF;
+            text-transform: uppercase;
+        }
+        .footer-item {
+            margin: 0 40px;
+            display: flex;
+            align-items: center;
+        }
+        a { text-decoration: none; color: inherit; }
+    </style>
+</head>
+<body>
+    <div class="signature-container" id="signature">
+        <img src="assets/moldura1.png" class="background-image" id="bg-image">
+        
+        <!-- Área Editável: Nome e Cargo -->
+        <div class="editable-content personal-info">
+            <div class="name" id="display-name">NOME DO COLABORADOR</div>
+            <div class="role" id="display-role">Cargo / Departamento</div>
+        </div>
+
+        <!-- Área Editável: Contatos -->
+        <div class="editable-content contact-info">
+            <div class="contact-item" style="margin-top: 5px;">
+                <span id="display-location">Cidade - UF</span>
+            </div>
+            <div class="contact-item" style="margin-top: 8px;">
+                <span id="display-phone">(00) 00000-0000</span>
+            </div>
+            <div class="contact-item" style="margin-top: 10px;">
+                <span id="display-email">email@shineray.com.br</span>
+            </div>
+        </div>
+
+        <!-- Rodapé (Pode ser fixo ou editável) -->
+        <div class="footer-links">
+            <div class="footer-item">
+                <span id="display-site">WWW.SHINERAYDOBRASIL.COM.BR</span>
+            </div>
+            <div class="footer-item">
+                <span id="display-social">@SHINERAYDOBRASIL</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

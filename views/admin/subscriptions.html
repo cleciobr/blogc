@@ -1,0 +1,147 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Lista Modelos de assinatura</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                        <li class="breadcrumb-item active">Modelos de assinatura</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="box-header">
+                        <a href="/admin/subscriptions/create" class="btn btn-success pull-right"
+                            style="margin-right: 20px; margin-top: 10px;"><i class="fa fa-plus-circle"></i>  Cadastrar Modelo de assinatura</a>
+                        <div class="dropdown" style="display: inline-block;">
+                            <!-- <button style="margin-left:10px; margin-right: 91rem; " class="btn btn-grey dropdown-toggle" type="button" id="toggleActiveDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Desativar/Ativar Selecionados
+                            </button> -->
+                            <div class="dropdown-menu" aria-labelledby="toggleActiveDropdown">
+                                <button class="dropdown-item toggle-action" data-action="activate">Ativar</button>
+                                <button class="dropdown-item toggle-action" data-action="deactivate">Desativar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="subscriptions" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <!-- <th style="width: 10px"><input type="checkbox" id="selectAll"></th> -->
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Código</th>
+                                    <th>Ativo?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {loop="$subscriptions"}
+                                <tr>
+                                    <!-- <td><input type="checkbox" class="form-check-input flat-red subscription-checkbox" data-id="{$value.id_subscription}"></td> -->
+                                    <td>{$value.id_subscription}</td>
+                                    <td>{$value.name}</td>
+                                    <td>{$value.subscription_active}</td>
+                                    <td>
+                                        {if="$value.subscription_active == 1"}Ativado{else}Desativado{/if}
+                                    </td>
+                                    <!-- <td>
+                                        <input type="checkbox" class="form-check-input flat-red subscription-active-checkbox" data-id="{$value.id_subscription}" {if="$value.subscription_active == 1"}checked{/if}>
+                                    </td> -->
+                                    <td>
+                                        <a href="/admin/subscriptions/{$value.id_subscription}" class="btn btn-primary btn-sm"><i
+                                                class="fa fa-edit"></i> Editar</a>
+                                        <a href="/admin/subscriptions/{$value.id_subscription}/delete"
+                                            onclick="return confirm('Deseja realmente excluir este registro?')"
+                                            class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Excluir</a>
+                                    </td>
+                                </tr>
+                                {/loop}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", function() {
+  // Selecionar ou desselecionar todos os checkboxes
+document.getElementById("selectAll").addEventListener("change", function() {
+        var checkboxes = document.querySelectorAll(".subscription-checkbox");
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = document.getElementById("selectAll").checked;
+        });
+    });
+    document.getElementById("toggleActiveDropdown").addEventListener("click", function(event) {
+        event.preventDefault(); // Evita o comportamento padrão do botão
+    });
+
+    // Ação ao selecionar Ativar ou Desativar na dropdown
+    var toggleActionButtons = document.querySelectorAll(".toggle-action");
+    toggleActionButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            var action = this.getAttribute("data-action");
+            toggleActiveSubscriptions(action);
+        });
+    });
+
+    // Função para ativar ou desativar usuários selecionados
+    function toggleActiveSubscriptions(action) {
+        var checkboxes = document.querySelectorAll(".subscription-checkbox:checked");
+        var ids = [];
+        checkboxes.forEach(function(checkbox) {
+            ids.push(checkbox.getAttribute("data-id"));
+        });
+
+        if (ids.length === 0) {
+            alert("Por favor, selecione pelo menos um usuário.");
+            return;
+        }
+
+        var confirmMessage = "Deseja realmente " + (action === "activate" ? "ativar" : "desativar") + " os usuários selecionados?";
+        if (confirm(confirmMessage)) {
+            // Aqui você pode enviar os IDs selecionados para o backend para ativar/desativar os usuários
+            console.log("IDs selecionados:", ids);
+            // Você pode usar AJAX para isso
+            // Por exemplo:
+            // fetch('/admin/subscriptions/toggle-active', {
+            //   method: 'POST',
+            //   body: JSON.stringify({ ids: ids, action: action }),
+            //   headers: {
+            //     'Content-Type': 'application/json'
+            //   }
+            // }).then(response => {
+            //   if (response.ok) {
+            //     // Recarregar a página ou atualizar a lista de usuários
+            //     window.location.reload();
+            //   } else {
+            //     // Lidar com erros
+            //     console.error('Erro ao ativar/desativar usuários');
+            //   }
+            // });
+        }
+    }
+
+  });
+</script> -->

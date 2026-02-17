@@ -1,0 +1,76 @@
+{include="sidemenu"}
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Lista de Convênios</h1>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item active">Convênios</li>
+            </ol>
+          </ol>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="box-header">
+              <a href="/admin/convenants/create" class="btn btn-success pull-right"
+                style="margin-right: 20px; margin-top: 10px;"><i class="fa fa-plus-circle"></i>  Cadastrar Convênio</a>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="users" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Convênio</th>
+                    <th>Call Center</th>
+                    <th>Site</th>
+                    <th style="width: 140px">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loop="$convenants"}
+                  <tr>
+                    <td>{$value.name_convenant}</td>
+                    <td>{$value.call_center}</td>
+                    <td>
+                      <a href="{$value.site}" target="_blank">{$value.site}</a>
+                    </td>
+                    <td style="width: 200px">
+                      <a href="/admin/convenants/{$value.id_convenant}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>
+                        Editar</a>
+                      <a href="/admin/convenants/{$value.id_convenant}/delete"
+                        onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-sm"><i
+                          class="fa fa-trash"></i> Excluir</a>
+                    </td>
+                  </tr>
+                  {/loop}
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

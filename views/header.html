@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Shineray</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Bootstrap core CSS -->
+    <link href="/res/site/css/bootstrap.css" rel="stylesheet" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+    <!-- Material Design Bootstrap -->
+    <link href="/res/site/css/mdb.css" rel="stylesheet" />
+    <!-- Material Design Bootstrap -->
+    <link href="/res/site/css/mdb2.css" rel="stylesheet" />
+    <!-- Your custom styles (optional) -->
+    <link href="/res/site/css/style.css" rel="stylesheet" />
+        <!-- Your custom styles (optional) -->
+        <link href="/res/site/css/style2.css" rel="stylesheet" />
+    <!-- Footer CSS -->
+    <link href="/res/site/css/mdbnew.css" rel="stylesheet" />
+    <!-- DataTables -->
+    <link
+      rel="stylesheet"
+      href="/res/admin/plugins/datatables/dataTables.bootstrap4.min.css"
+    />
+    <!-- Ownl Carousel-->
+    <link
+      rel="stylesheet"
+      href="/res/site/OwlCarousel2-2.3.4/dist/assets/owl.carousel.css"
+    />
+    <!-- Link do favicon -->
+    <link
+      rel="shortcut icon"
+      href="/res/site/img/shineray2.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css"
+    />
+    <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+        .navbar:not(.top-nav-collapse) {
+          background: #c8080e !important;
+        }
+      }
+
+      .main-img img,
+      .imgs img {
+        width: 100%;
+      }
+
+      .imgs {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 5px;
+      }
+
+
+      /* Estilização da Seção de Ícones */
+        #icons .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(196, 18, 25, 0.15);
+            border-color: #c41219;
+        }
+
+        .icon-wrapper {
+            margin-bottom: 20px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-wrapper img {
+            max-height: 80px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .icon-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            flex-grow: 1; /* Garante que o botão fique sempre embaixo */
+        }
+
+        .btn-service {
+            background-color: #c41219;
+            color: white;
+            border-radius: 25px;
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 15px;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-service:hover {
+            background-color: #a00e14;
+            color: #fff;
+        }
+
+        /* Ajuste para a citação do Spurgeon */
+        .quote-text {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #777;
+            border-left: 3px solid #c41219;
+            padding-left: 10px;
+            text-align: left;
+        }
+
+        /* Título do Evento com detalhe */
+    .event-title {
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        padding-bottom: 15px;
+        color: #333;
+    }
+    
+    .event-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background-color: #c41219; /* Vermelho Shineray */
+        border-radius: 2px;
+    }
+
+    /* Card de Foto Moderno */
+    .photo-card {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: none;
+    }
+
+    .photo-card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Ajuste na paginação/botão */
+    .btn-all-events {
+        background-color: #333 !important;
+        border: none !important;
+        border-radius: 25px !important;
+        padding: 12px 35px !important;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 14px;
+        transition: 0.3s;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn-all-events:hover {
+        background-color: #c41219 !important;
+        color: #fff !important;
+        transform: translateY(-2px);
+    }
+
+        /* Container do Carrossel */
+       #carouselExampleIndicators {
+            margin-top: 30px; 
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            background-color: #fff; /* Fundo branco caso a imagem demore a carregar */
+        }
+
+
+        .carousel-item img {
+              width: 100%;
+              height: auto; 
+              max-height: 480px;
+              object-fit: cover; 
+              transition: transform 5s ease;
+          }
+        @media (max-width: 768px) {
+                .carousel-item img {
+                    height: 220px !important; 
+                    object-fit: cover; 
+                }
+            }
+
+            .carousel-item.active img {
+                transform: scale(1.03); 
+            }
+
+        .carousel-caption-custom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px 40px 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            color: white;
+            text-align: left;
+        }
+
+        .carousel-caption-custom h2 {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Controles customizados */
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        #carouselExampleIndicators:hover .carousel-control-prev,
+        #carouselExampleIndicators:hover .carousel-control-next {
+            opacity: 1;
+        }
+
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: rgba(196, 18, 25, 0.8); /* Vermelho Shineray */
+            padding: 25px;
+            border-radius: 50%;
+            background-size: 50%;
+        }
+
+        
+    </style>
+
+    <style>
+    .section-title {
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .section-subtitle {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 40px;
+    }
+
+    .goals-carousel-container {
+        padding: 0 50px; 
+    }
+    .goals-image {
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        padding: 10px; 
+    }
+
+    .goals-image:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .owl-carousel .owl-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    </style>
+    <!-- Ramais -->
+    <style>
+        /* ... [Mantenha o CSS anterior para .ramais-titulo, .ramais-intro, etc.] ... */
+        
+        .card.ramal-card {
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: none;
+            overflow: hidden;
+        }
+
+        #tabelaRamais thead th {
+            background-color: #c41219; /* Vermelho Shineray */
+            color: white;
+            font-weight: 600;
+            border: none;
+        }
+
+        /* Aplica o vermelho claro (tom rosa) nas linhas ímpares */
+        #tabelaRamais tbody tr:nth-child(odd) {
+          background-color: #f8d7da; 
+        }
+
+        /* Aplica o branco puro nas linhas pares */
+        #tabelaRamais tbody tr:nth-child(even) {
+          background-color: #ffffff; 
+        }
+        
+        /* Células da Tabela */
+        #tabelaRamais td, #tabelaRamais th {
+            padding: 15px;
+            font-size: 0.9rem;
+            border-top: 1px solid #dee2e6;
+        }
+        #tabelaRamais tbody tr:hover {
+            background-color: #f0f0f0; /* Feedback visual ao passar o mouse */
+        }
+    </style>
+
+
+     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+        <script type="module" src="https://ajax.googleapis.com"></script>
+    <script nomodule src="https://unpkg.com"></script>
+    
+    <style>
+        model-viewer {
+            cursor: grab; 
+            z-index: 10;
+        }
+    </style>
+    
+  </head>
+ <body id="top" > 
+  <body class="" > 
+     <header>
+    {loop="$popups"} {if="$value.popup_active == $displayPopupControl"}
+      <div
+        class="modal fade"
+        id="{$key}"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"> 
+        <!-- Change class .modal-sm to change the size of the modal -->
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title w-100" id="myModalLabel">
+                {$value.popup_title}
+              </h2>
+              <button
+                type="button"
+                id="btn-{$key}"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <img src="{$value.desphoto}" alt="popups" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+      </div>
+      {else} {$displayPopupControl = 1} {/if} {/loop} 
+      <!-- Navbar -->
+      <nav
+        class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"
+        id="scrollNav">
+        <div class="container">
+          <!-- Brand -->
+            <a class="navbar-brand" href="/">
+            <img class="logo" src="/res/site/img/sbm.png" alt="Intranet" />
+            <h6></h6>
+          </a> 
+          <!-- Collapse -->
+           <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> 
+ 
+
+
+
+
+
+
+
+
+
+<style>
+  /* Menu*/
+  .navbar-nav .nav-link {
+    font-weight: 600;
+    font-size: 13px;
+    /*text-transform: uppercase;*/
+    letter-spacing: 1px;
+    padding: 10px 15px !important;
+    transition: all 0.3s ease;
+    position: relative;
+    color: #fff !important;
+  }
+
+ 
+  .navbar-nav .nav-item .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+    width: 0;
+    height: 2px;
+    background: #e31d1a; 
+    transition: width 0.3s ease;
+  }
+
+  .navbar-nav .nav-item .nav-link:hover::after {
+    width: calc(100% - 30px);
+  }
+
+  /* Estilização do Dropdown */
+    .dropdown-menu {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding: 10px;
+    margin-top: 0 !important; 
+    background: #1a1a1a !important; 
+    display: none; 
+  }
+
+  .dropdown-item {
+    color: #bbb !important;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    transition: 0.2s;
+  }
+
+  .dropdown-item {
+    color: #bbb !important;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    transition: 0.2s;
+  }
+
+  .dropdown-item:hover {
+    background: #e31d1a !important;
+    color: #fff !important;
+  }
+
+  /* Botões da Direita */
+  .my-acess-panel {
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    margin-left: 10px;
+    font-size: 12px !important;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .my-acess-panel:hover {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #fff !important;
+  }
+
+  /* Dropdown abrir no hover ou clique único */
+  @media (min-width: 992px) {
+    .nav-item.dropdown:hover .dropdown-menu {
+      display: block !important;
+      animation: fadeIn 0.2s ease-out forwards;
+    }
+  }
+
+  .nav-item.dropdown:hover > .dropdown-toggle {
+    color: #e31d1a !important;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+   /* Container dos botões da direita */
+  .nav-flex-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre os botões sem usar margin */
+    flex-wrap: nowrap; 
+  }
+
+  .my-acess-panel {
+    white-space: nowrap; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;    
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 50px !important; 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    padding: 0 20px !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+  }
+
+  /* Efeito Hover Individual */
+  .btn-site:hover {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #fff !important;
+  }
+
+  .btn-admin {
+    border-color: #e31d1a !important;
+    color: #e31d1a !important;
+  }
+
+  .btn-admin:hover {
+    background: #e31d1a !important;
+    color: #fff !important;
+  }
+
+  
+  @media (max-width: 1200px) {
+    .my-acess-panel i { display: none; }
+    .my-acess-panel { min-width: 100px; padding: 0 10px !important; }
+  }
+</style>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- Left -->
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+    <li class="nav-item"><a class="nav-link" href="/events">Eventos</a></li>
+    <li class="nav-item"><a class="nav-link" href="/docs">Docs</a></li>
+    <li class="nav-item"><a class="nav-link" href="/treinamentos">Treinamentos</a></li>
+    <li class="nav-item"><a class="nav-link" href="http://ramais/" target="_blank">Ramais</a></li>
+    <li class="nav-item"><a class="nav-link" href="/subscriptions/">Assinaturas</a></li>
+    
+    <!-- FIX CLIQUE DUPLO: Removido atributos que causam conflito e adicionada lógica de clique único -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" 
+         href="javascript:void(0)" 
+         id="navbarDropdown" 
+         role="button" 
+         data-toggle="dropdown" 
+         aria-haspopup="true" 
+         aria-expanded="false">
+         Ferramentas
+      </a>
+      <div class="dropdown-menu shadow-lg" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="//glpi/" target="_blank"><i class="fa fa-ticket-alt mr-2"></i> Abrir chamado</a>
+        <a class="dropdown-item" href="#ramais"><i class="fa fa-phone mr-2"  ></i> Ramais</a>
+      </div>
+    </li>
+  </ul>
+
+<!-- Right -->
+<ul class="navbar-nav nav-flex-icons ml-auto">
+  <li class="nav-item">
+    <a href="http://shineray.com.br" class="nav-link my-acess-panel btn-site" target="_blank">
+      <i class="fa fa-globe mr-2"></i> Site Shineray
+    </a>
+  </li>
+  <li class="nav-item">
+    <a href="/admin" class="nav-link my-acess-panel btn-admin">
+      <i class="fa fa-shield mr-2"></i> Admin
+    </a>
+  </li>
+</ul>
+</div>
+
+        </div>
+      </nav>
+
+      <!-- Navbar -->
+     <!-- <hr class="my-6">

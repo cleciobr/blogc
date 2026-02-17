@@ -1,0 +1,68 @@
+{include="sidemenu"}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Lista de Fato ocorridos</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/factoccurreds">Fato ocorridos</a></li>
+            <li class="breadcrumb-item active">Atualizar Fato ocorrido</li>
+        </ol>
+        </div>
+    </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="container ">
+        </div>
+        <div class="row">
+            <!-- left column -->
+            <div class="col">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header alert-info">
+                <h3 class="card-title">Atualizar Fato ocorrido</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form" action="/admin/factoccurreds/{$factoccurred.id_factoccurred}" method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">Nome do fato ocorrido</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome do fato ocorrido" value="{$factoccurred.name}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descrition">Descrição do fato ocorrido</label>
+                        <label for="cod_degree_damg"><span style="color: red;"> (Este campo não é obrigatório)</span></label>
+                        <input type="text" class="form-control" id="descrition" name="descrition" placeholder="Descrição do fato ocorrido" value="{$factoccurred.descrition}">
+                    </div>
+                    <div class="form-group">
+                        <label for="cod_factoccurred">Código do fato ocorrido</label>
+                        <label for="cod_degree_damg"><span style="color: red;"> (Este campo não é obrigatório)</span></label>
+                        <input type="text" class="form-control" id="cod_factoccurred" name="cod_factoccurred" placeholder="Digite o código do fato ocorrido" value="{$factoccurred.cod_factoccurred}">
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary alert-info">Salvar</button>
+                </div>
+                </form>
+            </div>
+        <!-- /.card -->
+        </div>
+        <!--/.col  -->
+    </div>
+    <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

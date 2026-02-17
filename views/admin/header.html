@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!-- <html> -->
+ <html lang="pt-br" data-theme="light" data-sidebar-behaviour="fixed" data-navigation-color="inverted" data-is-fluid="true">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="refresh" content="2000;URL=/admin/ausente">
+  <title>Admin | Shineray</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="/res/admin/plugins/font-awesome/css/font-awesome.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/res/admin/dist/css/adminlte.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+  <!-- Theme style Oficial AdminLTE 3.2 (Habilita a classe .dark-mode) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/res/admin/plugins/datatables/dataTables.bootstrap4.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Link do favicon -->
+  <link rel="shortcut icon" href="/res/admin/dist/img/favicon2.ico" type="image/x-icon">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="/res/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="/res/admin/plugins/iCheck/all.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Style -->
+  <link rel="stylesheet" href="/res/admin/dist/css/style.css">
+  <link rel="stylesheet" href="/res/admin/dist/css/notification.css">
+  <link rel="stylesheet" href="/res/admin/dist/css/consult.css">
+  <link rel="stylesheet" href="/res/admin/dist/css/bootstrap.5.3.2.css">
+  <!-- <link rel="stylesheet" href="/res/admin/dist/css/all.5.15.4.min.css" /> -->
+
+  <link rel="stylesheet" href="/res/admin/dist/css/theme.bundle.css" id="stylesheetLTR">
+  <link rel="stylesheet" href="/res/admin/dist/css/theme.rtl.bundle.css" id="stylesheetRTL">
+  
+</head>
+
+<body class="sidebar-mini">
+  
+  <div class="wrapper">
+    <!-- Navbar -->
+<!-- Navbar Modernizada -->
+<nav class="main-header navbar navbar-expand navbar-light bg-white border-bottom-0 shadow-sm py-2">
+  
+  <!-- Lado Esquerdo: Menu e Título -->
+  <ul class="navbar-nav align-items-center">
+    <li class="nav-item">
+      <a class="nav-link text-secondary" data-widget="pushmenu" href="#" role="button">
+        <i class="fa fa-bars"></i>
+      </a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <h1 class="h5 mb-0 font-weight-bold text-dark ml-2">Admin Shineray</h1>
+    </li>
+  </ul>
+
+  <!-- Lado Direito: Ações de Usuário -->
+  <ul class="navbar-nav ml-auto align-items-center">
+    
+    <!-- Link Perfil (Estilo Ghost/Sutil) -->
+    <li class="nav-item">
+      <a class="nav-link btn-dark alert-dark px-3" href="/admin/myuser/{function="getUserId()"}">
+        <i class="fa fa-user-circle-o mr-1"></i> 
+        <span class="d-none d-md-inline"></span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-secondary" id="btn-tema" href="#" role="button">
+        <i class="fa fa-moon-o"></i>
+      </a>
+    </li>
+    </li>
+<style>
+  /* MODO CLARO (PADRÃO) */
+    .main-header {
+        background-color: #ffffff !important;
+    }
+    .main-header h1.text-dark {
+        color: #333333 !important; /* Título Admin Shineray escuro */
+    }
+    .main-header .nav-link {
+        color: #555555 !important; /* Ícones de menu e tema escuros */
+    }
+
+    /* MODO ESCURO (DARK MODE) */
+    body.dark-mode .main-header {
+        background-color: #252525 !important; /* Fundo da navbar escuro */
+        border-color: #333 !important;
+    }
+
+    body.dark-mode .main-header h1, 
+    body.dark-mode .main-header h1.text-dark,
+    body.dark-mode .main-header .nav-link,
+    body.dark-mode .main-header .fa-bars,
+    body.dark-mode .main-header #btn-tema i {
+        color: #ffffff !important; /* TUDO BRANCO NO HEADER NO MODO ESCURO */
+    }
+
+    /* Ajuste do botão de Perfil na Navbar no modo escuro */
+    body.dark-mode .main-header .btn-dark.alert-dark {
+        background-color: #444 !important;
+        color: #fff !important;
+        border: 1px solid #555 !important;
+    }
+
+    /* Ajuste do botão Sair no modo escuro */
+    body.dark-mode .main-header .btn-outline-danger {
+        color: #ff4d4d !important;
+        border-color: #ff4d4d !important;
+    }
+  /* 1. Labels (Títulos dos campos: titulo, Autor, Descrição...) */
+    body.dark-mode .card-body label {
+        color: #ffffff !important;
+    }
+
+    /* 2. Inputs e Textarea (Campos de digitação) */
+    body.dark-mode .form-control {
+        background-color: #3d3d3d !important;
+        color: #ffffff !important;
+        border: 1px solid #555 !important;
+    }
+
+    /* 3. Placeholder (Aquele texto cinza que some quando você digita) */
+    body.dark-mode .form-control::placeholder {
+        color: #aaaaaa !important;
+    }
+
+    /* 4. Card Header (Cadastrar nova postagem) */
+    body.dark-mode .card-header.alert-info {
+        background-color: #17a2b8 !important; /* Mantém o azul, mas ajusta o tom se necessário */
+        color: #ffffff !important;
+    }
+
+    /* 5. Títulos do Cabeçalho (Lista de Postagens) */
+    body.dark-mode h1, 
+    body.dark-mode .breadcrumb-item, 
+    body.dark-mode .breadcrumb-item a {
+        color: #ffffff !important;
+    }
+
+    /* 6. Linha Separadora (hr) */
+    body.dark-mode hr {
+        border-top: 1px solid #555 !important;
+    }
+
+    /* 7. Editor de Texto (Caso o WYSIWYG mude a cor do fundo) */
+    body.dark-mode .wysihtml5-sandbox {
+        background-color: #ffffff !important; /* Mantém branco para o editor ser legível */
+        filter: invert(90%) hue-rotate(180deg); /* Inverte as cores do editor para simular dark mode */
+    }
+  /* 1. Header (Onde tem a logo e o relógio) */
+    body.dark-mode .bg-white.shadow-sm.rounded {
+        background-color: #2d2d2d !important; /* Troca o fundo branco do card principal */
+        border: 1px solid #444;
+    }
+
+    /* 2. Forçar títulos h1 e h2 que usam text-dark ou font-weight-bold */
+    body.dark-mode h1, 
+    body.dark-mode h2, 
+    body.dark-mode .text-dark {
+        color: #ffffff !important;
+    }
+
+    /* 3. Textos Muted (Descrição e "Hoje é...") */
+    body.dark-mode .text-muted {
+        color: #bbbbbb !important;
+    }
+
+    /* 4. Cards de Métricas (Hoje, Mês, etc) */
+    body.dark-mode .card.border-0.shadow-sm {
+        background-color: #2d2d2d !important;
+        border: 1px solid #444 !important;
+    }
+
+    /* 5. Botões de Outline (Ramais e Setores) */
+    body.dark-mode .btn-outline-danger {
+        color: #ff4d4d !important;
+        border-color: #ff4d4d !important;
+    }
+    body.dark-mode .btn-outline-danger:hover {
+        background-color: #ff4d4d !important;
+        color: #fff !important;
+    }
+
+    /* 6. Links "Ver mais" */
+    body.dark-mode .stretched-link {
+        filter: brightness(1.5); /* Deixa as cores verde/azul mais vivas no fundo escuro */
+    }
+
+    /* 7. Ajuste para a logo (Caso ela tenha fundo branco, podemos dar uma opacidade) */
+    body.dark-mode img[src*="shineray-motos-logo"] {
+        filter: drop-shadow(0px 0px 2px white); /* Dá um leve contorno para não sumir no preto */
+    }
+  /* FORÇA TUDO DENTRO DA TABELA A FICAR CLARO NO MODO ESCURO */
+  body.dark-mode, 
+  body.dark-mode .content-wrapper, 
+  body.dark-mode .main-footer {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+  }
+
+  /* AJUSTE ESPECÍFICO PARA TABELAS */
+  body.dark-mode .table, 
+  body.dark-mode .table td, 
+  body.dark-mode .table th,
+  body.dark-mode .dataTables_wrapper,
+  body.dark-mode .dataTables_info,
+  body.dark-mode .pagination .page-link {
+    color: #ffffff !important; /* Força letra branca */
+    background-color: #2d2d2d !important; /* Fundo cinza escuro */
+    border-color: #444 !important; /* Bordas suaves */
+  }
+
+  /* DESTAQUE PARA O CABEÇALHO DA TABELA */
+  body.dark-mode .table thead th {
+    background-color: #3d3d3d !important;
+    color: #007bff !important; /* Títulos em azul para destacar */
+  }
+
+  /* AJUSTE PARA CARDS E FORMULÁRIOS */
+  body.dark-mode .card, 
+  body.dark-mode .card-header {
+    background-color: #2d2d2d !important;
+    border-bottom: 1px solid #444;
+  }
+
+  body.dark-mode .form-control {
+    background-color: #3d3d3d !important;
+    color: #ffffff !important;
+    border: 1px solid #666 !important;
+  }
+
+  /* Ajuste para não sumir o texto dos botões */
+  body.dark-mode .btn-default {
+    background-color: #444 !important;
+    color: #fff !important;
+    border: 1px solid #555;
+  }
+  /* AJUSTE PARA OS CARDS E TEXTOS DAS POSTAGENS */
+body.dark-mode .card {
+    background-color: #2d2d2d !important;
+    border: 1px solid #444 !important;
+}
+
+/* Força o título a ignorar a classe text-dark */
+body.dark-mode .card-body h6, 
+body.dark-mode .card-body h6.text-dark {
+    color: #ffffff !important;
+}
+
+/* Força o texto cortado a ignorar a classe text-muted */
+body.dark-mode .card-body p, 
+body.dark-mode .card-body p.text-muted {
+    color: #cccccc !important;
+}
+
+/* Ajuste para os botões "Ver" e "Editar" */
+body.dark-mode .btn-light {
+    background-color: #3d3d3d !important;
+    border-color: #555 !important;
+    color: #ffffff !important;
+}
+
+/* Título da seção (Últimas Postagens) */
+body.dark-mode h4 {
+    color: #ffffff !important;
+}
+
+/* Efeito de hover suave no card no modo escuro */
+body.dark-mode .transition-hover:hover {
+    background-color: #383838 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+}
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const btnTema = document.getElementById('btn-tema');
+    const body = document.body;
+    const icon = btnTema.querySelector('i');
+
+    function aplicarTema(tema) {
+      if (tema === 'dark') {
+        body.classList.add('dark-mode');
+        // Muda o ícone para Sol no modo escuro
+        if(icon) icon.classList.replace('fa-moon-o', 'fa-sun-o');
+        localStorage.setItem('tema-shineray', 'dark');
+      } else {
+        body.classList.remove('dark-mode');
+        // Muda o ícone para Lua no modo claro
+        if(icon) icon.classList.replace('fa-sun-o', 'fa-moon-o');
+        localStorage.setItem('tema-shineray', 'light');
+      }
+    }
+
+    const temaSalvo = localStorage.getItem('tema-shineray') || 'light';
+    aplicarTema(temaSalvo);
+
+    btnTema.addEventListener('click', (e) => {
+      e.preventDefault();
+      const novoTema = body.classList.contains('dark-mode') ? 'light' : 'dark';
+      aplicarTema(novoTema);
+    });
+  });
+</script>
+
+    <!-- Botão Sair (Mais limpo e Perigoso) -->
+    <li class="nav-item ml-2">
+      <a href="/admin/logout" class="btn btn-outline-danger btn-sm px-3 rounded-pill border-0" >
+        <i class="fa fa-power-off mr-1"></i> Sair
+      </a>
+    </li>
+    
+  </ul>
+</nav>

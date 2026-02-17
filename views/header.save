@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Intranet - Shineray</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Bootstrap core CSS -->
+    <link href="/res/site/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
+    <!-- Material Design Bootstrap -->
+    <link href="/res/site/css/mdb2.css" rel="stylesheet" />
+    <!-- Your custom styles (optional) -->
+    <link href="/res/site/css/style2.css" rel="stylesheet" />
+    <link href="/res/site/css/mdbnew.css" rel="stylesheet" />
+    <link href="/res/site/css/mdb.css" rel="stylesheet" />
+    <link
+      rel="shortcut icon"
+      href="/res/site/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <!-- Template styles -->
+    <style rel="stylesheet">
+      /* TEMPLATE STYLES */
+      main {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+      }
+      .extra-margins {
+        margin-top: 1rem;
+        margin-bottom: 2.5rem;
+      }
+      .jumbotron {
+        text-align: center;
+      }
+      .navbar {
+        background-color: #8d1d2e;
+      }
+
+      footer.page-footer {
+        background-color: #8d1d2e;
+        margin-top: 2rem;
+      }
+
+      .navbar .btn-group .dropdown-menu a:hover {
+        color: #000 !important;
+      }
+
+      .navbar .btn-group .dropdown-menu a:active {
+        color: #fff !important;
+      }
+    </style>
+  </head>
+
+  <body id="top" class="grey lighten-3">
+    <!--Main Navigation-->
+    <header>
+      <!-- Navbar -->
+      <nav
+        class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"
+      >
+        <div class="container">
+          <!-- Brand -->
+          <a class="navbar-brand waves-effect active" href="/">
+            <img class="logo" src="/res/site/img/logo.png" alt="Intranet" />
+            <strong class="white-text">Intranet</strong>
+          </a>
+
+          <!-- Collapse -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Links -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto text-white">
+              <li class="nav-item">
+                <a class="nav-link waves-effect" href="/blog">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/events">Eventos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/notificacao">Notificação</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/docs">Docs</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/treinamentos">Treinamentos</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link js-scroll-trigger" href="/#ramais"> Ramais </a>
+            </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Ferramentas
+                </a>
+                <div
+                  class="dropdown-menu hove"
+                  aria-labelledby="navbarDropdown"
+                  style="background: #8d1d2e;"
+                >
+                  <a
+                    class="dropdown-item"
+                    href="//glpi/"
+                    target="_blank"
+                    style="text-decoration: none;"
+                    >Sistema de chamado</a
+                  >
+                  <a class="dropdown-item" href="//Email" target="_blank"
+                    >Email</a
+                  >
+                  <a
+                    class="dropdown-item"
+                    href="https://t"
+                    target="_blank"
+                    >E</a
+                  >
+                  <a 
+                  class="dropdown-item" href="https://shineray.nydusrh.com/" 
+                  target="_blank">Contra cheque (RH Nydus)</a>
+                  <a
+                    class="dropdown-item"
+                    href="//sislu.dasa.com.br"
+                    target="_blank"
+                    >Cerpe</a
+                  >
+                  <a class="dropdown-item" href="/convenios">Lista de Convênios</a>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                <a
+                  href="http://shineray.com.br"
+                  class="nav-link border border-light rounded waves-effect"
+                  target="_blank"
+                >
+                  <i class="fa fa-medkit mr-2"></i>Shineray
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar -->
+    </header>

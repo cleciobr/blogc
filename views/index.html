@@ -1,0 +1,469 @@
+    <!--Carousel Wrapper-->
+
+<!--Carousel Wrapper-->
+      <table>
+      <tr>
+        <td height="10" style="font-size: 40px; line-height: 70px;">&nbsp;</td>
+      </tr>
+    </table>
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide carousel-fade"
+      data-ride="carousel">
+      <div class="carousel-inner">
+        {loop="$posts"} {if="$value.post_active == $displayBannerControl"}
+        {if="$classActiveControl == 2"}
+        <div class="carousel-item active">
+          <a href="/blog/{$value.id_post}/{$value.url_slug}">
+            <img
+              class="d-block w-100 img-fluid"
+              src="{$value.desphoto}"
+              alt="{$value.titulo}"/>
+	            
+	  </a>
+        </div>
+        {$classActiveControl = 1} {else}
+        <div class="carousel-item">
+          <a href="/blog/{$value.id_post}/{$value.url_slug}"
+            ><img
+              class="d-block w-100 img-fluid"
+              src="{$value.desphoto}"
+              alt="{$value.titulo}"
+          /></a>
+        </div>
+        {/if} {else} {$displayBannerControl = 1} {/if} {/loop}
+      </div>
+
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <!--/.Carousel Wrapper-->
+  </header>
+  <!-- Contato Shineray
+    <div style="text-align: center"><h4 style="text-align: center">
+      <strong style="color: #8d1d2e">Central telefônica</strong>
+    (81) 3416-0000 / 3125-8810</h4>
+    <h6><strong style="color: #8d1d2e"> Marcação de Consultas & Exames</strong>
+      <strong>(81) 3416-0075 / 3125-8850 (seg. à sex, das 07h às 19h e sáb. das 08h às 14h)</strong></h6>
+      <strong style="color: #8d1d2e">Para visualizar todos os ramais <a href="#ramais">CLIQUE AQUI.</a></strong>
+    </div>-->
+    <hr> 
+   <section class="birthday-container">
+    {$hasBirthday = 0}
+    {loop="$birthday"}
+        {if="$value.birthday_active == $classBirthdayActive"}
+            {$hasBirthday = 1}
+        {/if}
+    {/loop}
+
+    {if="$hasBirthday == 1"}
+    <div class="container">
+      <div class="text-center mb-5">
+        <h1 class="wow fadeIn">
+          Aniversariante(s) <strong style="color: #c8080e">do DIA</strong>
+        </h1>
+      </div>
+      
+      <div class="row justify-content-center">
+        {loop="$birthday"}
+          {if="$value.birthday_active == $classBirthdayActive"}
+            <!-- Mudado para col-lg-12 para ocupar a largura total do container -->
+            <div class="col-lg-12 birthday-wrapper wow zoomIn text-center">
+              
+              <div class="photo-box">
+                {if="count($value.photos) > 1"}
+                  <div class="owl-carousel-photos owl-carousel">
+                    {loop="$value.photos"}
+                      <img src="{$value.desphoto}" alt="Aniversariante" class="img-birthday-photo">
+                    {/loop}
+                  </div>
+                {elseif="count($value.photos) == 1"}
+                  {loop="$value.photos"}
+                    <img src="{$value.desphoto}" alt="Aniversariante" class="img-birthday-photo">
+                  {/loop}
+                {else}
+                  <img src="/res/site/img/avatar-default.png" class="img-birthday-photo">
+                {/if}
+              </div>
+
+              <h5 class="birthday-name">{$value.name_birthday}</h5>
+              <span class="birthday-date"><i class="fa fa-calendar"></i> {function="date('d/m', strtotime($value.date_birthday))"}</span>
+              
+            </div>
+          {/if}
+        {/loop}
+      </div>
+    </div>
+    {/if}
+    <style>
+    .birthday-container {
+    padding: 40px 0;
+    background: #f8f9fa; 
+    border-radius: 15px;
+    }
+    .birthday-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .img-birthday-photo {
+      width: 100% !important;     
+      max-width: 700px !important;
+      height: auto !important;
+      display: block !important;
+      margin: 0 auto !important;   
+      object-fit: contain;        
+      border-radius: 10px; 
+      border: 5px solid #fff;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2); 
+      transition: transform 0.3s ease;
+    }
+    
+    .owl-carousel-photos .owl-item {
+      display: flex;
+      justify-content: center;
+    }
+    .img-birthday-photo:hover {
+      transform: scale(1.05); 
+      border-color: #c8080e;
+    }
+    .birthday-name {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .birthday-date {
+      font-size: 0.9rem;
+      color: #666;
+      background: #eee;
+      padding: 2px 10px;
+      border-radius: 20px;
+    }
+  </style>
+</section>
+<!--/Birthdays-->
+<hr>
+  <!--Main layout-->
+  <main>
+    <div class="container">
+<section class="mt-5 wow fadeIn">
+    <!-- Cabeçalho do Evento -->
+    <div class="row mb-5">
+        <div class="col text-center">
+            <h2 class="event-title">
+                {loop="$event"} {$value.name_event} {/loop}
+            </h2>
+            <p class="text-muted mt-2">Galeria de fotos oficial</p>
+        </div>
+    </div>
+    
+    <!-- Galeria -->
+    <div class="row justify-content-center">
+        {loop="$photos"}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="photo-card">
+                    <a data-fancybox="gallery" href="{$value.desphoto}">
+                        <img
+                            src="{$value.desphoto}"
+                            alt="Evento Shineray"
+                            class="img-fluid"
+                            style="width: 100%; height: 280px; object-fit: cover; display: block;"
+                        />
+                    </a>
+                </div>
+            </div>
+        {/loop}
+    </div>
+
+    <!-- Botão de Ação -->
+    <div class="row mt-4">
+        <div class="col-12 d-flex justify-content-center">
+            <a href="/events" class="btn btn-all-events">
+                <i class="fa fa-th-large mr-2"></i> Ver Todos os Eventos
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<hr class="my-5" />
+
+
+     <!-- Section icones -->
+<!-- Section icones -->
+<section class="mt-5 wow fadeIn" id="icons">
+    <div class="row">
+        <!-- Eventos -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="service-card">
+                <div class="icon-wrapper">
+                    <img src="/res/site/img/svg/megafone.avif" alt="Eventos">
+                </div>
+                <h3>Eventos</h3>
+                <p>Acompanhe os eventos internos, comunicados e datas importantes.</p>
+                <a href="/events" class="btn btn-service">Visualizar Eventos</a>
+            </div>
+        </div>
+
+        <!-- Treinamentos -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="service-card">
+                <div class="icon-wrapper">
+                    <img src="/res/site/img/svg/aprender.svg" alt="Treinamentos">
+                </div>
+                <h3>Treinamentos</h3>
+                <div class="quote-text">
+                    "A mente que se abre a um novo conhecimento jamais retorna ao seu tamanho original."
+                    <br><small>— Charles Spurgeon</small>
+                </div>
+                <a href="/treinamentos" class="btn btn-service">Acessar Portal</a>
+            </div>
+        </div>
+
+        <!-- Arquivos/SVR04 -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="service-card">
+                <div class="icon-wrapper">
+                    <img src="/res/site/img/New_Power_BI_Logo.png" alt="Arquivos">
+                </div>
+                <h3>BI</h3>
+                <p>Acesse relatórios compartilhados da Shineray.</p>
+                <a href="https://bi.grupobci.rec.br:8082/hub/my/published" target="_blank" class="btn btn-service">Acessar BI</a>
+            </div>
+        </div>
+        <!-- Protheus -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="service-card">
+                <div class="icon-wrapper">
+                    <img src="/res/site/img/protheus.jpg" style="max-height: 120px;" alt="Protheus">
+                </div>
+                <h3>ERP Protheus</h3>
+                <p>Portal TOTVS para gestão operacional, estoque e linha de montagem Shineray.</p>
+                <a href="https://protheus12.grupobci.rec.br:11000/webapp/" target="_blank" class="btn btn-service">Entrar no Sistema</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+      <hr class="my-5" />
+
+          <!--Section: Main info-->
+    <section  class="mt-5 wow fadeIn">
+        <!--Grid row-->
+            <div class="row">
+                <!--Grid column - Onde o 3D fica -->
+                <div class="col-md-6 mb-4">
+                    <div class="project"style="pointer-events: none !important;">
+                        <div class="project__card" >
+                            <model-viewer
+                                src="/res/site/img/modelo+3d+geométrico+vermelho.glb"
+                                alt="Modelo 3D Geométrico Vermelho"
+                                shadow-intensity="1"
+                                camera-controls
+                                auto-rotate
+                                orbit-sensitivity="1.5"
+                                style="width: 100%; height: 350px; cursor: grab;" 
+                                class="isolated-3d-viewer" 
+                            ></model-viewer>
+                        </div>
+                    </div>
+                </div>
+                <style>
+
+                    /* .project, .project__card, .col-md-1, .row {
+                        pointer-events: none !important;
+                    } */
+
+                    .isolated-3d-viewer {
+                        pointer-events: auto !important;
+                        z-index: 10 !important; 
+                        cursor: grab;
+                    }
+                </style>
+                <!--Grid column-->
+
+                <!--Grid column - Onde o texto fica -->
+                <div class="col-md-6 mb-4">
+                    <div class="info">
+                        <!-- Main heading -->
+                        <h2 class="h1 mb-3" style="text-align: center">Política da Qualidade</h2>
+                        <p style="text-align: center">
+                            A Shineray tem como compromisso na montagem de motos 
+                            ciclomotores e quadriciclos, buscar a satisfação dos 
+                            clientes e atendimento dos requisitos legais, por meio 
+                            de processos operacionais e de gestão da qualidade 
+                            continuamente melhorados.
+                        </p>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+
+
+                    <!--Grid row-->
+      </section>
+
+      <!-- <section>
+       <div class="embed-responsive embed-responsive-16by9">
+    <iframe
+        class="embed-responsive-item"
+        src="https://www.youtube.com/watch?v=r8NZKQRfh8g"
+        title="Título do seu vídeo"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+          ></iframe>
+      </div>
+            </section> -->
+      <!--Section: Main info-->
+
+      <hr class="my-5" />
+
+      <section class="mt-5 wow fadeIn">
+        <div class="class">
+          <h1 class="h1 mb-3" style="text-align: center">
+            Revolucione seu futuro com a tecnologia, economia e qualidade Shineray.
+          </h1>
+          <p style="text-align: center">
+            A shineray implementa metas para segurança para o colaborador com o <br />
+            objetivo de oferecer um ambiente cada vez mais seguro.
+          </p>
+        </div>
+        <br />
+
+        <div class="owl-carousel">
+          <div>
+            <img
+              src="/res/site/img/01.png"
+              class="img-fluid px-4"
+              alt="Meta 1"
+            />
+          </div>
+          <div>
+            <img
+              src="/res/site/img/02-1.png"
+              class="img-fluid px-4"
+              alt="Meta 2"
+            />
+          </div>
+          <div>
+            <img
+              src="/res/site/img/01-4.png"
+              class="img-fluid px-4"
+              alt="Meta 3"
+            />
+          </div>
+          <div>
+            <img
+              src="/res/site/img/01-4.webp"
+              class="img-fluid px-4"
+              alt="Meta 4"
+            />
+          </div>
+          <div>
+            <img
+              src="/res/site/img/01-5.jpg"
+              class="img-fluid px-4"
+              alt="Meta 5"
+            />
+          </div>
+          <div>
+            <img
+              src="/res/site/img/01-6.jpg"
+              class="img-fluid px-4"
+              alt="Meta 6"
+            />
+          </div>
+        </div>
+      </section>
+      <!--Section: Main info-->
+<hr>
+      <!-- <hr class="my-5" id="ramais" /> -->
+       <style>
+        html {
+          scroll-behavior: smooth;
+        }
+       </style>
+            <div id="ramais" style="padding-top: 100px; margin-top: -100px;"></div>
+            <section class="mt-5 mb-5 wow fadeIn">
+              <div class="tabelaRamal">
+                <div class="infoRamal">
+                  <!-- Main heading -->
+                  <h1 class="h1 mb-3" style="text-align: center">Lista de Ramais</h1>
+                  <p style="text-align: center">
+                    A shineray é muito grande não dá pra decorar todos os ramais
+                    <br />
+                    Digite o setor ou o ramal ou o colaborador e clique em
+                    <strong>Pesquisar</strong> e faça uma consulta:
+                  </p>
+                </div>
+              </div> 
+        <div class="card">
+          <div class="card-body">
+            <!--Table-->
+            <table
+              id="tabelaRamais"
+              class="table table-hover table-responsive-md table-fixed table-striped"
+            >
+              <!--Table head-->
+              <thead>
+                <tr>
+                  <th>Unidade</th>
+                  <th>Setor</th>
+                  <th>Ramal</th>
+                  <th>Colaborador</th>
+                  <th>Celular</th>
+                  <th>E-mail</th>
+                </tr>
+              </thead>
+              <!--Table head-->
+
+              <!--Table body-->
+              <tbody>
+                {loop="$ramal"}
+                <tr>
+                  {if="$value.ativo='s'"}
+                  <th>{$value.unidade}</th>
+                  <th>{$value.setor_sala}</th>
+                  <td>{$value.ramal}</td>
+                  <td>{$value.colaborador}</td>
+                  <td>{$value.celular}</td>
+                  <td>{$value.emails}</td>
+                  {else}
+                  {/if}
+                </tr>
+
+                {/loop}
+              </tbody>
+              <!--Table body-->
+            </table>
+            <!--Table-->
+          </div>
+        </div>
+      </section>
+      <!--Main layout-->
+    </div>
+  </main>
+</body>

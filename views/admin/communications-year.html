@@ -1,0 +1,141 @@
+{include="sidemenu"}
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Lista de Comunicações no ano</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/admin/communications">Home</a></li>
+            <li class="breadcrumb-item active">Comunicações no ano</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <!-- <div class="box-header">
+            <a href="/admin/communications/create" class="btn btn-success pull-right"
+              style="margin-right: 20px; margin-top: 10px;">Cadastrar Comunicação/a>
+          </div> -->
+
+
+          <!-- <div class="card-body">Status:
+            <table>
+              <thead>
+                <tr>
+                  <th><a class="statusclassgreen btn btn-success"  href="/admin/communications/noclass" >
+                    Classificado</a>
+                  </th>
+                  <th><a  class="statusclassyellow btn btn-warning"  href="/admin/communications" >
+                    Não Classificado</a>
+                  </th>
+                  <th><a class="statusclassred btn btn-danger" href="/admin/communications">
+                    Incompleto</a>
+                  </th>
+          
+              </thead>
+            </table>
+          </div> -->
+
+          <div class="card-body">
+            <table id="users" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+
+                  <th style="width: 10px">id</th>
+                  <th>Tipo de comunicação</th>
+                  <th>Data da comunicação</th>
+                  <th>Setor da ocorrência</th>
+                  <th>Descrição da ocorrência</th>
+                  <th>Data da ocorrência</th>
+                  <th>Retorno S/N</th>
+                  <th>Nome</th> 
+                  <th>Setor</th>
+                  <th>email</th>
+                  <th>Fone</th>
+                  <th>Imprimir</th>
+              </thead>
+              <tbody>
+                  {loop="$communicationsyear"}
+                    <tr>
+                      <td>{$value.id_communication}</td>
+                      <td>{$value.praise}</td>
+                      <td>
+                        
+                        {if="$value.dt_comm != ''"} 
+                        {function="formatDate($value.dt_comm)"}
+                        {else}
+                          -
+                        {/if}
+                      </td>
+                      <td>
+                        {if="$value.st_oco != ''"}
+                          {$value.st_oco}
+                        {else}
+                          -
+                        {/if}
+                      </td>
+                      <td>{$value.descricao_oco}</td>
+                      <td>{function="formatDate($value.dt_oco)"}</td>
+                      <td>{$value.feedback}</td>
+                      <td>{$value.nome}</td>
+                      <td>{$value.setor}</td>
+                       <td>{$value.email}</td>
+                       <td>{$value.phone}</td>
+                      
+
+                      <td>
+                     
+                       <!-- {if="$value.descricao_oco == ''"}-->
+                          <!--  <a  href="/admin/communications/{$value.id_communication}" -->
+                                <!--class="btn btn-primary btn-sm" ><i class="fa fa-edit" ></i>-->
+                                <!-- Classificar -->
+                               <!-- <i class="fa fa-bookmark" style="color:#fbff00"></i> -->
+                          <!-- </a>-->
+                       <!-- {elseif="$value.descricao_oco = '*'"}-->
+                            <!-- <a  href="/admin/communications/{$value.id_communication}" -->
+                               <!-- class="btn btn-primary btn-sm" ><i class="fa fa-edit" ></i> -->
+                                <!-- Classificar  -->
+                               <!-- <i class="fa fa-bookmark" style="color:#1eff00"></i> -->
+                            <!--</a> -->
+                            <!-- {else}-->
+                            <!-- <a  href="/admin/communications/{$value.id_communication}" -->
+                                <!--class="btn btn-primary btn-sm" ><i class="fa fa-edit" ></i> -->
+                                <!-- Classificar  -->
+                                <!-- <i class="fa fa-bookmark" style="color:#d11d1d"></i> -->
+                           <!-- </a> -->
+                       <!-- {/if}  -->
+
+
+                <a href="/admin/communications/class/{$value.id_communication}/print" class="btn btn-outline-secondary btn-sm"><i class="fa fa-print"
+                  style="
+                  width: 37px; 
+                  height: 20px;"
+                  ></i>Imprimir</a>
+                
+                    <!-- <a href="/admin/communication/{$value.id_communication}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Excluir</a>-->
+                  </td>
+                </tr>
+                {/loop}
+              </tbody>
+            </table>
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
+    </div>
+  </section>
+
+</div>
+<!-- /.content-wrapper -->
