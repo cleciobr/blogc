@@ -27,7 +27,7 @@ public function __construct() {
     $user = getenv('DB_USER');
     $pass = getenv('DB_PASS');
     
-    $cert = __DIR__ . "/admin/cert/ca.pem"; 
+    $cert = __DIR__ . "/res/admin/cert/ca.pem"; 
 
     try {
         $this->conn = new PDO(
